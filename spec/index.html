@@ -21,11 +21,14 @@
       previousMaturity:     "REC",
       prevRecShortname:     "n-triples",
 
-      editors:  [
-        { name: "Gavin Carothers", url: "http://gavin.carothers.name/",
-                company: "Lex Machina, Inc", companyURL: "http://lexmachina.com/"},
-        { name: "Andy Seaborne",
-                company: "The Apache Software Foundation", companyURL: "http://www.apache.org/"},
+      editors: [
+        { name: "Gregg Kellogg", w3cid: "44770" },
+        { name: "Dominik Tomaszuk", w3cid: "44239"},
+      ],
+
+      formerEditors:  [
+        { name: "Gavin Carothers" },
+        { name: "Andy Seaborne", w3cid: "29909"}
       ],
 
       authors:  [
@@ -326,8 +329,11 @@
     </section>
   </section>
 
-  <section id="section-ack" class="informative">
-    <h2>Acknowledgements</h2>
+<section id="section-ack" class="informative">
+  <h2>Acknowledgements</h2>
+
+  <section class="informative">
+    <h3>Acknowledgements for RDF 1.1</h3>
     <p>The editor of the RDF 1.1 edition acknowledges valuable contributions from Gregg Kellogg, Eric Prud'hommeaux, Dave Beckett, David Robillard, Gregory Williams, Pat Hayes, Richard Cyganiak, Henry S. Thompson,
       Peter Ansell, Evan Patton and David Booth.</p>
     <p>This specification is a product of extended deliberations by the
@@ -335,41 +341,40 @@
       It draws upon the earlier specification in [[RDF-TESTCASES]], edited by Dave Beckett.</p>
   </section>
 
-  <section class="appendix" id="sec-changes">
-    <h2>Change log</h2>
+  <section class="informative">
+    <h3>Acknowledgements for RDF 1.2</h3>
 
-  <section id="changes-between-proposed-recommendation-and-recommendation">
-    <h3>Changes between Proposed Recommendation and Recommendation</h3>
-    <ul>
-      <li><a href="https://lists.w3.org/Archives/Public/public-rdf-comments/2014Feb/0009.html">Bug in grammar rule [6]</a> concerning language-typed literals fixed.</li>
-    </ul>
-  </section>
+    <p>In addition to the editors, the following people have contributed to this specification:
+      <span id="gh-contributors"></span>
+    </p>
 
-  <section id="changes-between-candidate-recommendation-and-proposed-recommendation">
-    <h3>Changes between Candidate Recommendation and Proposed Recommendation</h3>
-    <ul>
-      <li>A normative reference to RDF Concepts was added.</li>
-      <li>The text for &quot;Canonical N-Triples&quot; has been made into a separate section.</li> 
-    </ul>
-  </section>
+    <p data-include="common/participants.html"></p>
 
-  <section id="changes-between-last-call-working-draft-and-candidate-recommendation">
-    <h3>Changes between Last Call Working Draft and Candidate recommendation</h3>
-    <p>No substantive changes.</p>
+    <p class="ednote">Recognize members of the Task Force? Not an easy to find list of contributors.</p>
   </section>
+</section>
 
-  <section id="changes-between-last-call-working-draft-and-publication-as-note">
-    <h3>Changes between Last Call Working Draft and publication as Note</h3>
-    <ul>
-      <li>Section defines <a href="#dfn-canonical-n-triples-document">canonical
-N-Triples document</a>.
-      </li><li>White space rules defined outside of grammar, as in Turtle.
-      </li><li>Comment processing defined.
-      </li><li>Parsing is defined.
-      </li><li>Removed &quot;Summary of differences in N-Triples and Turtle&quot;.
-      </li><li>Recommendation track, not a working group Note.
-    </li></ul>
-  </section>
+<section class="appendix informative" id="changes-11">
+  <h2>Changes between publication as Note and RDF 1.1 Recommendation</h2>
+
+  <ul>
+    <li>Section defines <a>canonical N-Triples document</a>.</li> <li>White space rules defined outside of grammar, as in Turtle.</li>
+    <li>Comment processing defined.</li>
+    <li>Parsing is defined.</li>
+    <li>Removed &quot;Summary of differences in N-Triples and Turtle&quot;.</li>
+    <li>Recommendation track, not a working group Note.</li>
+    <li>A normative reference to RDF Concepts was added.</li>
+    <li>The text for &quot;Canonical N-Triples&quot; has been made into a separate section.</li> 
+    <li><a href="https://lists.w3.org/Archives/Public/public-rdf-comments/2014Feb/0009.html">Bug in grammar rule [6]</a> concerning language-typed literals fixed.</li>
+  </ul>
+</section>
+
+<section class="appendix informative" id="changes-12">
+  <h2>Changes between RDF 1.1 and RDF 1.2</h2>
+
+  <ul>
+    
+  </ul>
 </section>
 
 <section class="appendix" id="sec-mediaReg-n-triples">
