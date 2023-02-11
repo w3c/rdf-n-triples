@@ -95,7 +95,7 @@
       of an <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triple</a>.
       These may be separated by white space (spaces <code>U+0020</code> or tabs <code>U+0009</code>).
       This sequence is terminated by a '<code>.</code>'
-      (optionaly proceded by white space),
+      (optionaly proceded by white space and/or a comment),
       and a new line (optional at the end of a document).</p>
 
     <pre class="example ntriples" data-transform="updateExample">
@@ -124,22 +124,31 @@
   <section id="sec-n-triples-language">
     <h2>N-Triples Language</h2>
 
-    <p>An N-Triples document is composed of a sequence
-      of <a href="#simple-triples">simple triples</a>,
-      one for each line.
-      Lines consisteng entirely of white space  (spaces <code>U+0020</code> or tabs <code>U+0009</code>)
-      and/or comments are permitted before or after each triple.</p>
+    <p>An N-Triples document allows writing down an
+      <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>
+      in a textual form.
+      An RDF graph is made up of <a href="#simple-triples">simple triples</a>
+      consisting of a
+      <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
+      <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
+      <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>
+      and optional blank lines.
+      Comments may be given after a '<code>#</code>' that is not part of
+      another lexical token and continue to the end of the line.</p>
 
     <section id="simple-triples">
       <h3>Simple Triples</h3>
 
       <p>The simplest triple statement is a sequence of
         (<a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
-        <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>,
+        <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
         <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>) terms,
-        and terminated by '<code>.</code>' after each triple.
-        White space MAY occur beteween elements of this sequence.
-        Comments MAY occur after the terminating '<code>.</code>'.</p>
+        and terminated by '<code>.</code>'.
+        White space (spaces <code>U+0020</code> or tabs <code>U+0009</code>) may surround terms,
+        except where significant as noted in the <a href="#n-triples-grammar">grammar</a>.</p>
+
+      <p>Comments are treated as white space, and may be given after a '<code>#</code>' that is not part of
+        another lexical token and continue to the end of the line.</p>
 
       <pre class="example ntriples" data-transform="updateExample">
         <!--
@@ -238,11 +247,11 @@
       same.  Implementers are encouraged to produce this form.</p>
     <p>Canonical N-Triples has the following additional constraints on layout:</p>
     <ul>
-      <li>The whitespace following <code>subject</code>,
+      <li>The white space following <code>subject</code>,
         <code>predicate</code>, 
         and <code>object</code> MUST be a single space, 
         (<code>U+0020</code>).  All other locations that allow 
-        whitespace MUST be empty.</li>
+        white space MUST be empty.</li>
       <li>There MUST be no comments.</li>
       <li><code>HEX</code> MUST use only uppercase letters (<code>[A-F]</code>).</li>
       <li>Characters MUST NOT be represented by <code>UCHAR</code>.</li>
@@ -307,14 +316,41 @@
   <section id="n-triples-grammar">
     <h2>Grammar</h2>
     <p>An N-Triples document is a Unicode [[UNICODE]] character string encoded in UTF-8.
-    Unicode code points only in the range U+0 to U+10FFFF inclusive are allowed.</p>
-    <p>White space (tab U+0009 or space U+0020) is allowed, but not required, before or after terminals.
-      White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.</p>
-    <p>Comments in N-Triples take the form of '<code>#</code>', 
-      outside an <code>IRIREF</code> or <code>STRING_LITERAL_QUOTE</code>, and continue
-      up-to, and excluding, the end of line (<code>EOL</code>), 
-      or end of file if there is no end of line after the comment
-      marker. Comments are treated as white space.</p>
+      Unicode code points only in the range U+0 to U+10FFFF inclusive are allowed.</p>
+
+    <section id="sec-grammar-ws">
+      <h3>White Space</h3>
+
+      <p>White space (tab U+0009 or space U+0020) is allowed, but not required, before or after terminals.
+        Rule names below in capitals indicate where white space is significant;
+        these form a possible choice of terminals for constructing an N-Triples parser.</p>
+
+      <p>White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.</p>
+
+      <p>Blank lines, consisting of only white space and/or comments,
+        MAY appear wherever a <code><a href="#grammar-production-triple">triple</a></code> production is allowed,
+        and are treated as white space.</p>
+
+      <p class="note">N-Triples allows only horizontal white space  (tab U+0009 or space U+0020)
+        as compared to Turtle [[RDF12-TURTLE]] which also treats
+        <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>)
+        and <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>)
+        as white space.</p>
+    </section>
+
+    <section id="sec-grammar-comments">
+      <h3>Comments</h3>
+
+      <p>Comments in N-Triples take the form of '<code>#</code>',
+        outside an <a href="#grammar-production-IRIREF">IRIREF</a> or <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>,
+        and continue to the end of line
+        (marked by characters
+        <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span> or
+        <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>))
+        or end of file if there is no end of line after the comment
+        marker.
+        Comments are treated as white space.</p>
+    </section>
 
     <p>The <abbr title="Extended Backus–Naur Form">EBNF</abbr> used
       here is defined in XML 1.0
