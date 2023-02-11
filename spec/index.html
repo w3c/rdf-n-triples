@@ -60,13 +60,13 @@
 </head>
 <body>
   <section id='abstract'>
-    <p>N-Triples is a line-based, plain text format for encoding an RDF graph.</p>
+    <p>N-Triples is a line-based, plain text format for encoding an <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
   </section>
 
   <section id='sotd'>
     <p>This document is part of the RDF 1.2 document suite.
       The N-Triples format is a line-based RDF syntax
-      based on a subset of [[RDF12-TURTLE]].</p>
+      based on a subset of Turtle [[RDF12-TURTLE]].</p>
 
     <section id="related" data-include="./common/related.html"></section>
   </section>
@@ -89,9 +89,13 @@
     <p>An N-Triples document contains no parsing directives.</p>
 
     <p>N-Triples triples are a sequence of RDF terms representing the
-      subject, predicate and object of an RDF Triple.
+      <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
+      <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
+      <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>
+      of an <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triple</a>.
       These may be separated by white space (spaces <code>U+0020</code> or tabs <code>U+0009</code>).
       This sequence is terminated by a '<code>.</code>'
+      (optionaly proceded by white space),
       and a new line (optional at the end of a document).</p>
 
     <pre class="example ntriples" data-transform="updateExample">
@@ -104,13 +108,16 @@
     </pre>
 
     <p>
-      N-Triples triples are also Turtle <a href="#simple-triples">simple triples</a>, but Turtle includes other representations of RDF terms and <a data-cite="RDF12-TURTLE#predicate-lists">abbreviations of RDF Triples</a>. When parsed by a Turtle parser, data in the N-Triples format will produce exactly the same triples as a parser for the N-triples language.
+      N-Triples triples are also Turtle <a href="#simple-triples">simple triples</a>,
+      but Turtle includes other representations of RDF terms and
+      <a data-cite="RDF12-TURTLE#predicate-lists">abbreviations of RDF Triples</a>.
+      When parsed by a Turtle parser,
+      data in the N-Triples format will produce exactly the same triples as a parser for the N-triples language.
     </p>
 
-    <p>The RDF graph represented by an N-Triples document contains
-      exactly each triple matching the N-Triples
-      <a href="#grammar-production-triple"><code>triple</code></a>
-      production.
+    <p>The <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> represented by an N-Triples document contains
+      exactly each <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triple</a> matching the N-Triples
+      <a href="#grammar-production-triple"><code>triple</code></a> production.
     </p>
   </section>
 
@@ -126,8 +133,11 @@
     <section id="simple-triples">
       <h3>Simple Triples</h3>
 
-      <p>The simplest triple statement is a sequence of (subject, predicate, object) terms,
-        separated by whitespace and terminated by '<code>.</code>' after each triple.
+      <p>The simplest triple statement is a sequence of
+        (<a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
+        <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>,
+        <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>) terms,
+        and terminated by '<code>.</code>' after each triple.
         White space MAY occur beteween elements of this sequence.
         Comments MAY occur after the terminating '<code>.</code>'.</p>
 
@@ -143,8 +153,7 @@
 
       <p>
         <a data-cite="RDF12-CONCEPTS#iri">IRIs</a> may be written only as absolute IRIs.
-        IRIs are enclosed in '<code>&lt;</code>' and '<code>&gt;</code>'
-        and may contain numeric escape sequences (described below).
+        IRIs are enclosed in '&lt;' and '&gt;' and may contain numeric escape sequences (described below).
         For example <code>&lt;http://example.org/#green-goblin&gt;</code>.
       </p>
     </section>
@@ -201,6 +210,10 @@
         _:bob <http://xmlns.com/foaf/0.1/knows> _:alice .
         -->
       </pre>
+      <p class="issue" data-number="2">
+        Note open <a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_30">erratum</a> on aligning the definition and production
+        for blank node lables with Turtle.
+      </p>
     </section>
   </section>
 
@@ -241,6 +254,13 @@
         allowed directly in
         <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>. </li>
     </ul>
+    <div class="issue" data-number="2">
+      Note open errata:
+      <ul>
+        <li><a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_32">32 – Issues with N-Quads/N-Triples canonicalization</a>.</li>
+        <li><a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_33">33 – Ambiguity of canonical N-Triples</a></li>
+      </ul>
+    </div>
   </section>
 
   <section id="conformance">
@@ -477,4 +497,7 @@
   </dl>
 </section>
 <section id="index"></section>
+<section class="appendix" id="issue-summary">
+  <!-- A list of issues will magically appear here -->
+</section>
 </body></html>
