@@ -121,7 +121,7 @@
     </p>
   </section>
 
-  <section id="sec-n-triples-language">
+  <section id="sec-n-triples-language" class="informative">
     <h2>N-Triples Language</h2>
 
     <p>An N-Triples document allows writing down an
@@ -171,17 +171,32 @@
       <h3>RDF Literals</h3>
 
       <p><a data-cite="RDF12-CONCEPTS#literal">Literals</a>
-        are used to identify values such as strings, numbers,
-        dates.</p>
+        are used to identify values such as strings, numbers, dates.</p>
 
-      <p>
-        Literals (Grammar production <a href="#grammar-production-literal">Literal</a>) have a lexical form followed by a language tag, a datatype IRI, or neither.
-        The representation of the lexical form consists of an
-        initial delimiter <code>&quot;</code> (<span class="codepoint">U+0022</span>), a sequence of permitted
-        characters or numeric escape sequence or string escape sequence, and a final delimiter. Literals may not contain the characters <code>&quot;</code>, <code title="LINE FEED"><sub>LF</sub></code>, <code title="CARRIAGE RETURN"><sub>CR</sub></code> except in their escaped forms. In addition '<code>\</code>' (<span class="codepoint">U+005C</span>) may not appear in any quoted literal except as part of an escape sequence.
-        The corresponding <a data-cite="RDF12-CONCEPTS#lexical-form">RDF lexical form</a> is the characters between the delimiters, after processing any escape sequences.
-        If present, the <a data-cite="RDF12-CONCEPTS#language-tag">language tag</a> is preceded by a '<code>@</code>' (<span class="codepoint">U+0040</span>).
-        If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#datatype-iri">datatype IRI</a>, preceded by '<code>^^</code>' (<span class="codepoint">U+005E</span> <span class="codepoint">U+005E</span>). If there is no datatype IRI and no language tag it is a <a data-cite="RDF12-CONCEPTS#simple-literal">simple literal</a> and the datatype is <code>http://www.w3.org/2001/XMLSchema#string</code>.
+      <p>Literals (Grammar production <a href="#grammar-production-literal">Literal</a>)
+        have a lexical form followed by a language tag, a datatype IRI, or neither.</p>
+
+      <p>The representation of the lexical form consists of an
+        initial delimiter <code>&quot;</code> (<span class="codepoint">U+0022</span>),
+        a sequence of permitted characters or numeric escape sequence or string escape sequence,
+        and a final delimiter.</p>
+
+      <p>Literals may not contain the characters <code>&quot;</code>,
+        <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>), or
+        <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>)
+        except in their escaped forms.
+        In addition '<code>\</code>' (<span class="codepoint">U+005C</span>)
+        may not appear in any quoted literal except as part of an escape sequence.</p>
+
+      <p>The corresponding <a data-cite="RDF12-CONCEPTS#lexical-form">RDF lexical form</a>
+        is the characters between the delimiters, after processing any escape sequences.
+        If present, the <a data-cite="RDF12-CONCEPTS#language-tag">language tag</a>
+        is preceded by a '<code>@</code>' (<span class="codepoint">U+0040</span>).
+        If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#datatype-iri">datatype IRI</a>,
+        preceded by '<code>^^</code>' (<span class="codepoint">U+005E</span> <span class="codepoint">U+005E</span>).
+        If there is no datatype IRI and no language tag
+        it is a <a data-cite="RDF12-CONCEPTS#simple-literal">simple literal</a>
+        and the datatype is <code>http://www.w3.org/2001/XMLSchema#string</code>.
       </p>
 
 
@@ -281,13 +296,17 @@
       </li><li>N-Triples parsers
     </li></ul>
 
-    <p>A conforming <dfn class="lint-ignore">N-Triples document</dfn> is a Unicode string that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar">section </a>, starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>. An N-Triples document serializes an RDF graph.</p>
+    <p>A conforming <dfn class="lint-ignore">N-Triples document</dfn> is a Unicode string that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar"></a>, starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>.
+      An N-Triples document serializes an <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
 
     <p>A conforming <dfn>Canonical N-Triples document</dfn> is an 
       <strong>N-Triples document</strong> that follows the 
       <a href="#canonical-ntriples">additional constraints</a> of Canonical N-Triples.</p>
 
-    <p>A conforming <dfn class="export">N-Triples parser</dfn> is a system capable of reading N-Triples documents on behalf of an application. It makes the serialized RDF graph, as defined in <a href="#sec-parsing" class="sectionRef" ></a>,
+    <p>A conforming <dfn class="export">N-Triples parser</dfn> is a system capable of
+      reading N-Triples documents on behalf of an application.
+      It makes the serialized <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>,
+      as defined in <a href="#sec-parsing" class="sectionRef" ></a>,
       available to the application, usually through some form of API.</p>
 
     <p>The IRI that identifies the N-Triples language is: <code>http://www.w3.org/ns/formats/N-Triples</code></p>
@@ -396,7 +415,13 @@
 
     <section id="rdf-triple-construction">
       <h3>RDF Triple Construction</h3>
-      <p>An N-Triples document defines an RDF graphs composed of a set of RDF triples. The <code><a href="#grammar-production-triple">triple</a></code> production produces a triple defined by the terms constructed for <code><a href="#grammar-production-subject">subject</a></code>, <code><a href="#grammar-production-predicate">predicate</a></code> and <code><a href="#grammar-production-object">object</a></code>.</p>
+      <p>An N-Triples document defines an <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>
+        composed of a set of <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triples</a>.
+        The <code><a href="#grammar-production-triple">triple</a></code> production
+        produces a triple defined by the terms constructed for
+        <code><a href="#grammar-production-subject">subject</a></code>,
+        <code><a href="#grammar-production-predicate">predicate</a></code>, and
+        <code><a href="#grammar-production-object">object</a></code>.</p>
     </section>
   </section>
 
