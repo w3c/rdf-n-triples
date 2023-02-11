@@ -117,11 +117,19 @@
   <section id="sec-n-triples-language">
     <h2>N-Triples Language</h2>
 
+    <p>An N-Triples document is composed of a sequence
+      of <a href="#simple-triples">simple triples</a>,
+      one for each line.
+      Lines consisteng entirely of white space  (spaces <code>U+0020</code> or tabs <code>U+0009</code>)
+      and/or comments are permitted before or after each triple.</p>
+
     <section id="simple-triples">
       <h3>Simple Triples</h3>
 
       <p>The simplest triple statement is a sequence of (subject, predicate, object) terms,
-        separated by whitespace and terminated by '<code>.</code>' after each triple.</p>
+        separated by whitespace and terminated by '<code>.</code>' after each triple.
+        White space MAY occur beteween elements of this sequence.
+        Comments MAY occur after the terminating '<code>.</code>'.</p>
 
       <pre class="example ntriples" data-transform="updateExample">
         <!--
@@ -280,7 +288,8 @@
     <h2>Grammar</h2>
     <p>An N-Triples document is a Unicode [[UNICODE]] character string encoded in UTF-8.
     Unicode code points only in the range U+0 to U+10FFFF inclusive are allowed.</p>
-    <p>White space (tab <code>U+0009</code> or space <code>U+0020</code>) is used to separate two terminals which would otherwise be (mis-)recognized as one terminal. White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.</p>
+    <p>White space (tab U+0009 or space U+0020) is allowed but not required between any two terminals.
+      White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.</p>
     <p>Comments in N-Triples take the form of '<code>#</code>', 
       outside an <code>IRIREF</code> or <code>STRING_LITERAL_QUOTE</code>, and continue
       up-to, and excluding, the end of line (<code>EOL</code>), 
@@ -294,6 +303,12 @@
     <p>Escape sequence rules are the same as Turtle [[RDF12-TURTLE]].
       However, as only the <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>
       production is allowed new lines in literals MUST be escaped.</p>
+
+    <p class="ednote">
+      <a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_24">Erratum 24</a>
+      suggests adding a `WS` terminal and making the use of white space explicit in the EBNF.
+      However, this leads to a grammar which is not LL(1) due to first/follow conflicts.
+    </p>
 
     <div data-include="ntriples-bnf.html"></div>
     
@@ -373,7 +388,12 @@
   <h2>Changes between RDF 1.1 and RDF 1.2</h2>
 
   <ul>
-    
+    <li>Clarify the use of white space to separate RDF terms and the trailing `.` in a triple.
+      Lines composed entirely of white space and/or comments are also allowed.</li>
+    <li>Removed language about white space use between terminals that would otherwise
+      be (mis-)recognized, is this can't happen in N-Triples.</li>
+    <li>White space and comments are now explicit in the grammar similar to the
+      situation in early versions of the N-Triples grammar.</li>
   </ul>
 </section>
 
