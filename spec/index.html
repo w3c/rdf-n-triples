@@ -344,7 +344,7 @@
   </section>
 
   <section id="n-triples-grammar">
-    <h2>Grammar</h2>
+    <h2>N-Triples Grammar</h2>
     <p>An N-Triples document is a Unicode [[UNICODE]] character string encoded in UTF-8.
       </p>
 
@@ -382,15 +382,19 @@
         Comments are treated as white space.</p>
     </section>
 
-    <p>The <abbr title="Extended Backus–Naur Form">EBNF</abbr> used
-      here is defined in XML 1.0
-      [[EBNF-NOTATION]].</p>
+    <section id="sec-grammar-grammar">
+      <h3>Grammar</h3>
 
-    <p>Escape sequence rules are the same as Turtle [[RDF12-TURTLE]].
-      However, as only the <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>
-      production is allowed new lines in literals MUST be escaped.</p>
+      <p>The <abbr title="Extended Backus–Naur Form">EBNF</abbr> used
+        here is defined in XML 1.0
+        [[EBNF-NOTATION]].</p>
 
-    <div data-include="ntriples-bnf.html"></div>
+      <p>Escape sequence rules are the same as Turtle [[RDF12-TURTLE]].
+        However, as only the <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>
+        production is allowed new lines in literals MUST be escaped.</p>
+
+      <div data-include="ntriples-bnf.html"></div>
+    </section>
     
   </section>
 
