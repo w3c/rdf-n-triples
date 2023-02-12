@@ -449,6 +449,8 @@
   <section class="informative">
     <h3>Acknowledgments for RDF 1.2</h3>
 
+    <p>The editors of the RDF 1.2 edition acknowledge valuable contributions from Andy Seabourn.</p>
+
     <p>In addition to the editors, the following people have contributed to this specification:
       <span id="gh-contributors"></span>
     </p>
@@ -478,10 +480,17 @@
   <h2>Changes between RDF 1.1 and RDF 1.2</h2>
 
   <ul>
-    <li>Clarify the use of white space to separate RDF terms and the trailing `.` in a triple.
-      Lines composed entirely of white space and/or comments are also allowed.</li>
+    <li>Better align the use of white space and comments with [[RDF12-TURTLE]].</li>
     <li>Removed language about white space use between terminals that would otherwise
       be (mis-)recognized, is this can't happen in N-Triples.</li>
+    <li>Clarify the use of blank lines, including those composed of whitespace
+      and/or comments.
+      Comments can appear at the end of a triple before the newline as
+      was already evident from <a href="#ex-comments"></a>.</li>
+    <li>Create separate subsections of <a href="#n-triples-grammar"></a>
+      for <a href="#sec-grammar-ws">White space</a> and
+      <a href="#sec-grammar-comments">Comments</a>,
+      better mirroring [[RDF12-TURTLE]].</li>
   </ul>
 </section>
 
@@ -520,8 +529,8 @@
     <dd>N-Triples is used to express arbitrary application data; security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP encryption, MD5 sum validation, password-protected compression) may also be used on N-Triples documents. Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information.</dd>
     <dd>N-Triples can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings retrieved from untrusted N-Triples documents must ensure that malignant strings may not be used to mislead the reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide additional guidance around the expression of arbitrary data and markup.</dd>
     <dd>N-Triples uses IRIs as term identifiers. Applications interpreting data expressed in N-Triples should address the security issues of
-<em>Internationalized Resource Identifiers (IRIs)</em> [[RFC3987]] Section 8, as well as
-<em>Uniform Resource Identifier (URI): Generic Syntax</em> [[RFC3986]] Section 7.</dd>
+      <em>Internationalized Resource Identifiers (IRIs)</em> [[RFC3987]] Section 8, as well as
+      <em>Uniform Resource Identifier (URI): Generic Syntax</em> [[RFC3986]] Section 7.</dd>
 
     <dd>Multiple IRIs may have the same appearance. Characters in different scripts may
       look similar (a Cyrillic &quot;о&quot; may appear similar to a Latin &quot;o&quot;). A character followed
