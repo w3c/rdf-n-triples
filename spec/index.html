@@ -98,7 +98,8 @@
       (optionaly proceded by white space and/or a comment),
       and a new line (optional at the end of a document).</p>
 
-    <pre class="example ntriples" data-transform="updateExample">
+    <pre id="ex-comments" class="example ntriples" data-transform="updateExample"
+         title="Use of comments in N-Triples">
       <!--
       <http://one.example/subject1> <http://one.example/predicate1> <http://one.example/object1> . # comments here
       # or on a line by themselves
@@ -150,7 +151,8 @@
       <p>Comments are treated as white space, and may be given after a '<code>#</code>' that is not part of
         another lexical token and continue to the end of the line.</p>
 
-      <pre class="example ntriples" data-transform="updateExample">
+      <pre id="ex-simple-triple" class="example ntriples" data-transform="updateExample"
+           title="Simple Triple">
         <!--
         <http://example.org/#spiderman> <http://www.perceive.net/schemas/relationship/enemyOf> <http://example.org/#green-goblin> .
         -->
@@ -203,7 +205,8 @@
       </p>
 
 
-      <pre class="example ntriples" data-transform="updateExample">
+      <pre id="ex-literals" class="example ntriples" data-transform="updateExample"
+           title="Literals in N-Triples">
         <!--
         <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show"^^<http://www.w3.org/2001/XMLSchema#string> . # literal with XML Schema string datatype
         <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show" . # same as above
@@ -231,7 +234,8 @@
         A fresh RDF blank node is allocated for each unique blank node label in a document.
         Repeated use of the same blank node label identifies the same RDF blank node.
       </p>
-      <pre class="example ntriples" data-transform="updateExample">
+      <pre id="ex-bnodes" class="example ntriples" data-transform="updateExample"
+           title="Blank nodes in N-Triples">
         <!--
         _:alice <http://xmlns.com/foaf/0.1/knows> _:bob .
         _:bob <http://xmlns.com/foaf/0.1/knows> _:alice .
