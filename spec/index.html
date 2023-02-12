@@ -186,7 +186,10 @@
         <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>)
         except in their escaped forms.
         In addition '<code>\</code>' (<span class="codepoint">U+005C</span>)
-        may not appear in any quoted literal except as part of an escape sequence.</p>
+        may not appear in any quoted literal except as part of an escape sequence
+        and a <code>"</code> (<span class="codepoint">U+0022</span>) character
+        can only be included in a quote literal using an escape sequence.
+        </p>
 
       <p>The corresponding <a data-cite="RDF12-CONCEPTS#lexical-form">RDF lexical form</a>
         is the characters between the delimiters, after processing any escape sequences.
@@ -339,19 +342,19 @@
   <section id="n-triples-grammar">
     <h2>Grammar</h2>
     <p>An N-Triples document is a Unicode [[UNICODE]] character string encoded in UTF-8.
-      Unicode code points only in the range U+0 to U+10FFFF inclusive are allowed.</p>
+      </p>
 
     <section id="sec-grammar-ws">
       <h3>White Space</h3>
 
-      <p>White space (tab U+0009 or space U+0020) is allowed, but not required, before or after terminals.
-        Rule names below in capitals indicate where white space is significant;
-        these form a possible choice of terminals for constructing an N-Triples parser.</p>
+      <p>White space (tab U+0009 or space U+0020) is allowed outside of terminals.
+        Rule names below in capitals indicate where white space is significant.
+</p>
 
       <p>White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.</p>
 
-      <p>Blank lines, consisting of only white space and/or comments,
-        MAY appear wherever a <code><a href="#grammar-production-triple">triple</a></code> production is allowed,
+      <p>A blank line, consisting of only white space and/or a comment,
+        may appear wherever a <code><a href="#grammar-production-triple">triple</a></code> production is allowed,
         and are treated as white space.</p>
 
       <p class="note">N-Triples allows only horizontal white space  (tab U+0009 or space U+0020)
@@ -364,7 +367,7 @@
     <section id="sec-grammar-comments">
       <h3>Comments</h3>
 
-      <p>Comments in N-Triples take the form of '<code>#</code>',
+      <p>Comments in N-Triples start at '<code>#</code>'
         outside an <a href="#grammar-production-IRIREF">IRIREF</a> or <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>,
         and continue to the end of line
         (marked by characters
