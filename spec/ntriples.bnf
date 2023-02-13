@@ -32,9 +32,6 @@
                         | [#xF900-#xFDCF] 
                         | [#xFDF0-#xFFFD] 
                         | [#x10000-#xEFFFF] 
-[158s] PN_CHARS_U       ::=  PN_CHARS_BASE 
-                        | '_' 
-                        | ':'
 [160s] PN_CHARS         ::= PN_CHARS_U 
                         | "-" 
                         | [0-9] 
@@ -42,3 +39,5 @@
                         | [#x0300-#x036F] 
                         | [#x203F-#x2040] 
 [162s] HEX              ::= [0-9] | [A-F] | [a-f]
+[164s] PN_CHARS_U       ::=  PN_CHARS_BASE 
+                        | '_' 
