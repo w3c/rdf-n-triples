@@ -60,13 +60,13 @@
 </head>
 <body>
   <section id='abstract'>
-    <p>N-Triples is a line-based, plain text format for encoding an RDF graph.</p>
+    <p>N-Triples is a line-based, plain text format for encoding an <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
   </section>
 
   <section id='sotd'>
     <p>This document is part of the RDF 1.2 document suite.
       The N-Triples format is a line-based RDF syntax
-      based on a subset of [[RDF12-TURTLE]].</p>
+      based on a subset of Turtle [[RDF12-TURTLE]].</p>
 
     <section id="related" data-include="./common/related.html"></section>
   </section>
@@ -89,12 +89,17 @@
     <p>An N-Triples document contains no parsing directives.</p>
 
     <p>N-Triples triples are a sequence of RDF terms representing the
-      subject, predicate and object of an RDF Triple.
+      <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
+      <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
+      <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>
+      of an <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triple</a>.
       These may be separated by white space (spaces <code>U+0020</code> or tabs <code>U+0009</code>).
       This sequence is terminated by a '<code>.</code>'
+      (optionaly proceded by white space and/or a comment),
       and a new line (optional at the end of a document).</p>
 
-    <pre class="example ntriples" data-transform="updateExample">
+    <pre id="ex-comments" class="example ntriples" data-transform="updateExample"
+         title="Use of comments in N-Triples">
       <!--
       <http://one.example/subject1> <http://one.example/predicate1> <http://one.example/object1> . # comments here
       # or on a line by themselves
@@ -104,26 +109,50 @@
     </pre>
 
     <p>
-      N-Triples triples are also Turtle <a href="#simple-triples">simple triples</a>, but Turtle includes other representations of RDF terms and <a data-cite="RDF12-TURTLE#predicate-lists">abbreviations of RDF Triples</a>. When parsed by a Turtle parser, data in the N-Triples format will produce exactly the same triples as a parser for the N-triples language.
+      N-Triples triples are also Turtle <a href="#simple-triples">simple triples</a>,
+      but Turtle includes other representations of RDF terms and
+      <a data-cite="RDF12-TURTLE#predicate-lists">abbreviations of RDF Triples</a>.
+      When parsed by a Turtle parser,
+      data in the N-Triples format will produce exactly the same triples as a parser for the N-triples language.
     </p>
 
-    <p>The RDF graph represented by an N-Triples document contains
-      exactly each triple matching the N-Triples
-      <a href="#grammar-production-triple"><code>triple</code></a>
-      production.
+    <p>The <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> represented by an N-Triples document contains
+      exactly each <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triple</a> matching the N-Triples
+      <a href="#grammar-production-triple"><code>triple</code></a> production.
     </p>
   </section>
 
-  <section id="sec-n-triples-language">
+  <section id="sec-n-triples-language" class="informative">
     <h2>N-Triples Language</h2>
+
+    <p>An N-Triples document allows writing down an
+      <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>
+      in a textual form.
+      An RDF graph is made up of <a href="#simple-triples">simple triples</a>
+      consisting of a
+      <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
+      <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
+      <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>
+      and optional blank lines.
+      Comments may be given after a '<code>#</code>' that is not part of
+      another lexical token and continue to the end of the line.</p>
 
     <section id="simple-triples">
       <h3>Simple Triples</h3>
 
-      <p>The simplest triple statement is a sequence of (subject, predicate, object) terms,
-        separated by whitespace and terminated by '<code>.</code>' after each triple.</p>
+      <p>The simplest triple statement is a sequence of
+        (<a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
+        <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
+        <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>) terms,
+        and terminated by '<code>.</code>'.
+        White space (spaces <code>U+0020</code> or tabs <code>U+0009</code>) may surround terms,
+        except where significant as noted in the <a href="#n-triples-grammar">grammar</a>.</p>
 
-      <pre class="example ntriples" data-transform="updateExample">
+      <p>Comments are treated as white space, and may be given after a '<code>#</code>' that is not part of
+        another lexical token and continue to the end of the line.</p>
+
+      <pre id="ex-simple-triple" class="example ntriples" data-transform="updateExample"
+           title="Simple Triple">
         <!--
         <http://example.org/#spiderman> <http://www.perceive.net/schemas/relationship/enemyOf> <http://example.org/#green-goblin> .
         -->
@@ -135,8 +164,7 @@
 
       <p>
         <a data-cite="RDF12-CONCEPTS#iri">IRIs</a> may be written only as absolute IRIs.
-        IRIs are enclosed in '<code>&lt;</code>' and '<code>&gt;</code>'
-        and may contain numeric escape sequences (described below).
+        IRIs are enclosed in '&lt;' and '&gt;' and may contain numeric escape sequences (described below).
         For example <code>&lt;http://example.org/#green-goblin&gt;</code>.
       </p>
     </section>
@@ -145,21 +173,40 @@
       <h3>RDF Literals</h3>
 
       <p><a data-cite="RDF12-CONCEPTS#literal">Literals</a>
-        are used to identify values such as strings, numbers,
-        dates.</p>
+        are used to identify values such as strings, numbers, dates.</p>
 
-      <p>
-        Literals (Grammar production <a href="#grammar-production-literal">Literal</a>) have a lexical form followed by a language tag, a datatype IRI, or neither.
-        The representation of the lexical form consists of an
-        initial delimiter <code>&quot;</code> (<span class="codepoint">U+0022</span>), a sequence of permitted
-        characters or numeric escape sequence or string escape sequence, and a final delimiter. Literals may not contain the characters <code>&quot;</code>, <code title="LINE FEED"><sub>LF</sub></code>, <code title="CARRIAGE RETURN"><sub>CR</sub></code> except in their escaped forms. In addition '<code>\</code>' (<span class="codepoint">U+005C</span>) may not appear in any quoted literal except as part of an escape sequence.
-        The corresponding <a data-cite="RDF12-CONCEPTS#lexical-form">RDF lexical form</a> is the characters between the delimiters, after processing any escape sequences.
-        If present, the <a data-cite="RDF12-CONCEPTS#language-tag">language tag</a> is preceded by a '<code>@</code>' (<span class="codepoint">U+0040</span>).
-        If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#datatype-iri">datatype IRI</a>, preceded by '<code>^^</code>' (<span class="codepoint">U+005E</span> <span class="codepoint">U+005E</span>). If there is no datatype IRI and no language tag it is a <a data-cite="RDF12-CONCEPTS#simple-literal">simple literal</a> and the datatype is <code>http://www.w3.org/2001/XMLSchema#string</code>.
+      <p>Literals (Grammar production <a href="#grammar-production-literal">Literal</a>)
+        have a lexical form followed by a language tag, a datatype IRI, or neither.</p>
+
+      <p>The representation of the lexical form consists of an
+        initial delimiter <code>&quot;</code> (<span class="codepoint">U+0022</span>),
+        a sequence of permitted characters or numeric escape sequence or string escape sequence,
+        and a final delimiter.</p>
+
+      <p>Literals may not contain the characters <code>&quot;</code>,
+        <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>), or
+        <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>)
+        except in their escaped forms.
+        In addition '<code>\</code>' (<span class="codepoint">U+005C</span>)
+        may not appear in any quoted literal except as part of an escape sequence
+        and a <code>"</code> (<span class="codepoint">U+0022</span>) character
+        can only be included in a quote literal using an escape sequence.
+        </p>
+
+      <p>The corresponding <a data-cite="RDF12-CONCEPTS#lexical-form">RDF lexical form</a>
+        is the characters between the delimiters, after processing any escape sequences.
+        If present, the <a data-cite="RDF12-CONCEPTS#language-tag">language tag</a>
+        is preceded by a '<code>@</code>' (<span class="codepoint">U+0040</span>).
+        If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#datatype-iri">datatype IRI</a>,
+        preceded by '<code>^^</code>' (<span class="codepoint">U+005E</span> <span class="codepoint">U+005E</span>).
+        If there is no datatype IRI and no language tag
+        it is a <a data-cite="RDF12-CONCEPTS#simple-literal">simple literal</a>
+        and the datatype is <code>http://www.w3.org/2001/XMLSchema#string</code>.
       </p>
 
 
-      <pre class="example ntriples" data-transform="updateExample">
+      <pre id="ex-literals" class="example ntriples" data-transform="updateExample"
+           title="Literals in N-Triples">
         <!--
         <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show"^^<http://www.w3.org/2001/XMLSchema#string> . # literal with XML Schema string datatype
         <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show" . # same as above
@@ -187,12 +234,17 @@
         A fresh RDF blank node is allocated for each unique blank node label in a document.
         Repeated use of the same blank node label identifies the same RDF blank node.
       </p>
-      <pre class="example ntriples" data-transform="updateExample">
+      <pre id="ex-bnodes" class="example ntriples" data-transform="updateExample"
+           title="Blank nodes in N-Triples">
         <!--
         _:alice <http://xmlns.com/foaf/0.1/knows> _:bob .
         _:bob <http://xmlns.com/foaf/0.1/knows> _:alice .
         -->
       </pre>
+      <p class="issue" data-number="2">
+        Note open <a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_30">erratum</a> on aligning the definition and production
+        for blank node lables with Turtle.
+      </p>
     </section>
   </section>
 
@@ -212,16 +264,20 @@
 
   <section id="canonical-ntriples">
     <h2>A Canonical form of N-Triples</h2>
-    <p>This section defined a canonical form of N-Triples which has
-      less variability in layout. The grammar for the language is the
-      same.  Implementers are encouraged to produce this form.</p>
+    <p>This section defines a canonical form of N-Triples which has
+      less variability in layout.
+      The grammar for the language is the same.</p>
+
+    <p class="note">Even when not explicitly serializing
+      canonical N-Triples, implementers are encouraged to produce this form.</p>
+
     <p>Canonical N-Triples has the following additional constraints on layout:</p>
     <ul>
-      <li>The whitespace following <code>subject</code>,
+      <li>The white space following <code>subject</code>,
         <code>predicate</code>, 
         and <code>object</code> MUST be a single space, 
         (<code>U+0020</code>).  All other locations that allow 
-        whitespace MUST be empty.</li>
+        white space MUST be empty.</li>
       <li>There MUST be no comments.</li>
       <li><code>HEX</code> MUST use only uppercase letters (<code>[A-F]</code>).</li>
       <li>Characters MUST NOT be represented by <code>UCHAR</code>.</li>
@@ -232,7 +288,16 @@
         <code>ECHAR</code> MUST NOT be used for characters that are
         allowed directly in
         <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>. </li>
+      <li>The token EOL MUST be a single <code>U+000A</code>.</li>
+      <li>The final EOL MUST be provided.</li>
     </ul>
+    <div class="issue" data-number="2">
+      Note open errata:
+      <ul>
+        <li><a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_32">32 – Issues with N-Quads/N-Triples canonicalization</a>.</li>
+        <li><a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_33">33 – Ambiguity of canonical N-Triples</a></li>
+      </ul>
+    </div>
   </section>
 
   <section id="conformance">
@@ -244,13 +309,17 @@
       </li><li>N-Triples parsers
     </li></ul>
 
-    <p>A conforming <dfn class="lint-ignore">N-Triples document</dfn> is a Unicode string that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar">section </a>, starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>. An N-Triples document serializes an RDF graph.</p>
+    <p>A conforming <dfn class="lint-ignore">N-Triples document</dfn> is a Unicode string that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar"></a>, starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>.
+      An N-Triples document serializes an <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
 
     <p>A conforming <dfn>Canonical N-Triples document</dfn> is an 
       <strong>N-Triples document</strong> that follows the 
       <a href="#canonical-ntriples">additional constraints</a> of Canonical N-Triples.</p>
 
-    <p>A conforming <dfn class="export">N-Triples parser</dfn> is a system capable of reading N-Triples documents on behalf of an application. It makes the serialized RDF graph, as defined in <a href="#sec-parsing" class="sectionRef" ></a>,
+    <p>A conforming <dfn class="export">N-Triples parser</dfn> is a system capable of
+      reading N-Triples documents on behalf of an application.
+      It makes the serialized <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>,
+      as defined in <a href="#sec-parsing" class="sectionRef" ></a>,
       available to the application, usually through some form of API.</p>
 
     <p>The IRI that identifies the N-Triples language is: <code>http://www.w3.org/ns/formats/N-Triples</code></p>
@@ -276,26 +345,58 @@
 
   </section>
 
-  <section id="n-triples-grammar">
-    <h2>Grammar</h2>
+  <section id="n-triples-grammar"><span id="sec-grammar"></span>
+    <h2>N-Triples Grammar</h2>
     <p>An N-Triples document is a Unicode [[UNICODE]] character string encoded in UTF-8.
-    Unicode code points only in the range U+0 to U+10FFFF inclusive are allowed.</p>
-    <p>White space (tab <code>U+0009</code> or space <code>U+0020</code>) is used to separate two terminals which would otherwise be (mis-)recognized as one terminal. White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.</p>
-    <p>Comments in N-Triples take the form of '<code>#</code>', 
-      outside an <code>IRIREF</code> or <code>STRING_LITERAL_QUOTE</code>, and continue
-      up-to, and excluding, the end of line (<code>EOL</code>), 
-      or end of file if there is no end of line after the comment
-      marker. Comments are treated as white space.</p>
+      </p>
 
-    <p>The <abbr title="Extended Backus–Naur Form">EBNF</abbr> used
-      here is defined in XML 1.0
-      [[EBNF-NOTATION]].</p>
+    <section id="sec-grammar-ws">
+      <h3>White Space</h3>
 
-    <p>Escape sequence rules are the same as Turtle [[RDF12-TURTLE]].
-      However, as only the <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>
-      production is allowed new lines in literals MUST be escaped.</p>
+      <p>White space (tab U+0009 or space U+0020) is allowed outside of terminals.
+        Rule names below in capitals indicate where white space is significant.
+</p>
 
-    <div data-include="ntriples-bnf.html"></div>
+      <p>White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.</p>
+
+      <p>A blank line, consisting of only white space and/or a comment,
+        may appear wherever a <code><a href="#grammar-production-triple">triple</a></code> production is allowed,
+        and are treated as white space.</p>
+
+      <p class="note">N-Triples allows only horizontal white space  (tab U+0009 or space U+0020)
+        as compared to Turtle [[RDF12-TURTLE]] which also treats
+        <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>)
+        and <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>)
+        as white space.</p>
+    </section>
+
+    <section id="sec-grammar-comments">
+      <h3>Comments</h3>
+
+      <p>Comments in N-Triples start at '<code>#</code>'
+        outside an <a href="#grammar-production-IRIREF">IRIREF</a> or <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>,
+        and continue to the end of line
+        (marked by characters
+        <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span> or
+        <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>))
+        or end of file if there is no end of line after the comment
+        marker.
+        Comments are treated as white space.</p>
+    </section>
+
+    <section id="sec-grammar-grammar">
+      <h3>Grammar</h3>
+
+      <p>The <abbr title="Extended Backus–Naur Form">EBNF</abbr> used
+        here is defined in XML 1.0
+        [[EBNF-NOTATION]].</p>
+
+      <p>Escape sequence rules are the same as Turtle [[RDF12-TURTLE]].
+        However, as only the <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>
+        production is allowed new lines in literals MUST be escaped.</p>
+
+      <div data-include="ntriples-bnf.html"></div>
+    </section>
     
   </section>
 
@@ -325,7 +426,13 @@
 
     <section id="rdf-triple-construction">
       <h3>RDF Triple Construction</h3>
-      <p>An N-Triples document defines an RDF graphs composed of a set of RDF triples. The <code><a href="#grammar-production-triple">triple</a></code> production produces a triple defined by the terms constructed for <code><a href="#grammar-production-subject">subject</a></code>, <code><a href="#grammar-production-predicate">predicate</a></code> and <code><a href="#grammar-production-object">object</a></code>.</p>
+      <p>An N-Triples document defines an <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>
+        composed of a set of <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triples</a>.
+        The <code><a href="#grammar-production-triple">triple</a></code> production
+        produces a triple defined by the terms constructed for
+        <code><a href="#grammar-production-subject">subject</a></code>,
+        <code><a href="#grammar-production-predicate">predicate</a></code>, and
+        <code><a href="#grammar-production-object">object</a></code>.</p>
     </section>
   </section>
 
@@ -343,6 +450,8 @@
 
   <section class="informative">
     <h3>Acknowledgments for RDF 1.2</h3>
+
+    <p>The editors of the RDF 1.2 edition acknowledge valuable contributions from Andy Seabourn.</p>
 
     <p>In addition to the editors, the following people have contributed to this specification:
       <span id="gh-contributors"></span>
@@ -373,7 +482,17 @@
   <h2>Changes between RDF 1.1 and RDF 1.2</h2>
 
   <ul>
-    
+    <li>Better align the use of white space and comments with [[RDF12-TURTLE]].</li>
+    <li>Removed language about white space use between terminals that would otherwise
+      be (mis-)recognized, is this can't happen in N-Triples.</li>
+    <li>Clarify the use of blank lines, including those composed of white space
+      and/or comments.
+      Comments can appear at the end of a triple before the newline as
+      was already evident from <a href="#ex-comments"></a>.</li>
+    <li>Create separate subsections of <a href="#n-triples-grammar"></a>
+      for <a href="#sec-grammar-ws">White space</a> and
+      <a href="#sec-grammar-comments">Comments</a>,
+      better mirroring [[RDF12-TURTLE]].</li>
   </ul>
 </section>
 
@@ -412,8 +531,8 @@
     <dd>N-Triples is used to express arbitrary application data; security considerations will vary by domain of use. Security tools and protocols applicable to text (e.g. PGP encryption, MD5 sum validation, password-protected compression) may also be used on N-Triples documents. Security/privacy protocols must be imposed which reflect the sensitivity of the embedded information.</dd>
     <dd>N-Triples can express data which is presented to the user, for example, RDF Schema labels. Application rendering strings retrieved from untrusted N-Triples documents must ensure that malignant strings may not be used to mislead the reader. The security considerations in the media type registration for XML ([[RFC3023]] section 10) provide additional guidance around the expression of arbitrary data and markup.</dd>
     <dd>N-Triples uses IRIs as term identifiers. Applications interpreting data expressed in N-Triples should address the security issues of
-<em>Internationalized Resource Identifiers (IRIs)</em> [[RFC3987]] Section 8, as well as
-<em>Uniform Resource Identifier (URI): Generic Syntax</em> [[RFC3986]] Section 7.</dd>
+      <em>Internationalized Resource Identifiers (IRIs)</em> [[RFC3987]] Section 8, as well as
+      <em>Uniform Resource Identifier (URI): Generic Syntax</em> [[RFC3986]] Section 7.</dd>
 
     <dd>Multiple IRIs may have the same appearance. Characters in different scripts may
       look similar (a Cyrillic &quot;о&quot; may appear similar to a Latin &quot;o&quot;). A character followed
@@ -457,4 +576,7 @@
   </dl>
 </section>
 <section id="index"></section>
+<section class="appendix" id="issue-summary">
+  <!-- A list of issues will magically appear here -->
+</section>
 </body></html>
