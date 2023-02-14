@@ -85,11 +85,11 @@
       <td>::=</td>
       <td>[<code class='grammar-chars'>A-Z</code>] <code>| </code> [<code class='grammar-chars'>a-z</code>] <code>| </code> [<code class='grammar-chars'>#x00C0-#x00D6</code>] <code>| </code> [<code class='grammar-chars'>#x00D8-#x00F6</code>] <code>| </code> [<code class='grammar-chars'>#x00F8-#x02FF</code>] <code>| </code> [<code class='grammar-chars'>#x0370-#x037D</code>] <code>| </code> [<code class='grammar-chars'>#x037F-#x1FFF</code>] <code>| </code> [<code class='grammar-chars'>#x200C-#x200D</code>] <code>| </code> [<code class='grammar-chars'>#x2070-#x218F</code>] <code>| </code> [<code class='grammar-chars'>#x2C00-#x2FEF</code>] <code>| </code> [<code class='grammar-chars'>#x3001-#xD7FF</code>] <code>| </code> [<code class='grammar-chars'>#xF900-#xFDCF</code>] <code>| </code> [<code class='grammar-chars'>#xFDF0-#xFFFD</code>] <code>| </code> [<code class='grammar-chars'>#x10000-#xEFFFF</code>]</td>
     </tr>
-    <tr id="grammar-production-PN_CHARS_U" data-grammar-original="[158s] PN_CHARS_U       ::=  PN_CHARS_BASE| &#x27;_&#x27;| &#x27;:&#x27;" data-grammar-expression="(&#x27;|&#x27;, [(&#x27;id&#x27;, &#x27;PN_CHARS_BASE&#x27;), (&quot;&#x27;&quot;, &#x27;_&#x27;), (&quot;&#x27;&quot;, &#x27;:&#x27;)])" class='grammar-token'>
-      <td>[158s]</td>
+    <tr id="grammar-production-PN_CHARS_U" data-grammar-original="[164s] PN_CHARS_U       ::=  PN_CHARS_BASE| &#x27;_&#x27;" data-grammar-expression="(&#x27;|&#x27;, [(&#x27;id&#x27;, &#x27;PN_CHARS_BASE&#x27;), (&quot;&#x27;&quot;, &#x27;_&#x27;), (&quot;&#x27;&quot;, &#x27;:&#x27;)])" class='grammar-token'>
+      <td>[164s]</td>
       <td><code>PN_CHARS_U</code></td>
       <td>::=</td>
-      <td><a href='#grammar-production-PN_CHARS_BASE'>PN_CHARS_BASE</a> <code>| </code> '<code class='grammar-literal'>_</code>' <code>| </code> '<code class='grammar-literal'>:</code>'</td>
+      <td><a href='#grammar-production-PN_CHARS_BASE'>PN_CHARS_BASE</a> <code>| </code> '<code class='grammar-literal'>_</code>'</td>
     </tr>
     <tr id="grammar-production-PN_CHARS" data-grammar-original="[160s] PN_CHARS         ::= PN_CHARS_U| &quot;-&quot;| [0-9]| #x00B7| [#x0300-#x036F]| [#x203F-#x2040]" data-grammar-expression="(&#x27;|&#x27;, [(&#x27;id&#x27;, &#x27;PN_CHARS_U&#x27;), (&quot;&#x27;&quot;, &#x27;-&#x27;), (&#x27;[&#x27;, &#x27;0-9&#x27;), (&#x27;#&#x27;, &#x27;#x00B7&#x27;), (&#x27;[&#x27;, &#x27;#x0300-#x036F&#x27;), (&#x27;[&#x27;, &#x27;#x203F-#x2040&#x27;)])" class='grammar-token'>
       <td>[160s]</td>
