@@ -60,7 +60,7 @@
 </head>
 <body>
   <section id='abstract'>
-    <p>N-Triples is a line-based, plain text format for encoding an <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
+    <p>N-Triples is a line-based, plain text format for encoding an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
   </section>
 
   <section id='sotd'>
@@ -95,7 +95,7 @@
       of an <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triple</a>.
       These may be separated by white space (spaces <code>U+0020</code> or tabs <code>U+0009</code>).
       This sequence is terminated by a '<code>.</code>'
-      (optionaly proceded by white space and/or a comment),
+      (optionally proceded by white space and/or a comment),
       and a new line (optional at the end of a document).</p>
 
     <pre id="ex-comments" class="example ntriples" data-transform="updateExample"
@@ -116,7 +116,7 @@
       data in the N-Triples format will produce exactly the same triples as a parser for the N-triples language.
     </p>
 
-    <p>The <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> represented by an N-Triples document contains
+    <p>The <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> represented by an N-Triples document contains
       exactly each <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triple</a> matching the N-Triples
       <a href="#grammar-production-triple"><code>triple</code></a> production.
     </p>
@@ -126,14 +126,14 @@
     <h2>N-Triples Language</h2>
 
     <p>An N-Triples document allows writing down an
-      <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>
+      <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>
       in a textual form.
       An RDF graph is made up of <a href="#simple-triples">simple triples</a>
       consisting of a
       <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
       <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
       <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>
-      and optional blank lines.
+      and optional <a>blank lines</a>.
       Comments may be given after a '<code>#</code>' that is not part of
       another lexical token and continue to the end of the line.</p>
 
@@ -163,7 +163,7 @@
       <h3>IRIs</h3>
 
       <p>
-        <a data-cite="RDF12-CONCEPTS#iri">IRIs</a> may be written only as absolute IRIs.
+        <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> may be written only as absolute IRIs.
         IRIs are enclosed in '&lt;' and '&gt;' and may contain numeric escape sequences (described below).
         For example <code>&lt;http://example.org/#green-goblin&gt;</code>.
       </p>
@@ -193,14 +193,14 @@
         can only be included in a quote literal using an escape sequence.
         </p>
 
-      <p>The corresponding <a data-cite="RDF12-CONCEPTS#lexical-form">RDF lexical form</a>
+      <p>The corresponding <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">RDF lexical form</a>
         is the characters between the delimiters, after processing any escape sequences.
         If present, the <a data-cite="RDF12-CONCEPTS#language-tag">language tag</a>
         is preceded by a '<code>@</code>' (<span class="codepoint">U+0040</span>).
-        If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#datatype-iri">datatype IRI</a>,
+        If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
         preceded by '<code>^^</code>' (<span class="codepoint">U+005E</span> <span class="codepoint">U+005E</span>).
         If there is no datatype IRI and no language tag
-        it is a <a data-cite="RDF12-CONCEPTS#simple-literal">simple literal</a>
+        it is a <a data-cite="RDF12-CONCEPTS#dfn-simple-literal">simple literal</a>
         and the datatype is <code>http://www.w3.org/2001/XMLSchema#string</code>.
       </p>
 
@@ -222,7 +222,7 @@
     <section id="BNodes">
       <h3>RDF Blank Nodes</h3>
       <p>
-        <a data-cite="RDF12-CONCEPTS#blank-node">RDF blank nodes</a> in N-Triples are expressed as <code>_:</code> followed by a blank node label which is a series of name characters.
+        <a data-cite="RDF12-CONCEPTS#dfn-blank-node">RDF blank nodes</a> in N-Triples are expressed as <code>_:</code> followed by a blank node label which is a series of name characters.
         The characters in the label are built upon <a href="#grammar-production-PN_CHARS_BASE">PN_CHARS_BASE</a>, liberalized as follows:
       </p>
       <ul>
@@ -310,7 +310,7 @@
     </li></ul>
 
     <p>A conforming <dfn class="lint-ignore">N-Triples document</dfn> is a Unicode string that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar"></a>, starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>.
-      An N-Triples document serializes an <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
+      An N-Triples document serializes an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
 
     <p>A conforming <dfn>Canonical N-Triples document</dfn> is an 
       <strong>N-Triples document</strong> that follows the 
@@ -318,7 +318,7 @@
 
     <p>A conforming <dfn class="export">N-Triples parser</dfn> is a system capable of
       reading N-Triples documents on behalf of an application.
-      It makes the serialized <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>,
+      It makes the serialized <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>,
       as defined in <a href="#sec-parsing" class="sectionRef" ></a>,
       available to the application, usually through some form of API.</p>
 
@@ -404,7 +404,7 @@
     <h2>Parsing</h2>
     <p>Parsing N-Triples requires a state of one item:</p>
     <ul>
-      <li id="bnodeLabels">Map[string -&gt; <a data-cite="RDF12-CONCEPTS#blank-node">blank node</a>] <code class="dfn">bnodeLabels</code> — A mapping from string to blank node.</li>
+      <li id="bnodeLabels">Map[string -&gt; <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a>] <code class="dfn">bnodeLabels</code> — A mapping from string to blank node.</li>
     </ul>
 
     <section id="sec-parsing-terms">
@@ -415,18 +415,18 @@
           <tr><th>production</th><th>type</th><th>procedure</th></tr>
         </thead>
         <tbody>
-          <tr id="handle-IRIREF"><td style="text-align:left;"><a href="#grammar-production-IRIREF" class="type IRI">IRIREF</a></td><td><a data-cite="RDF12-CONCEPTS#iri">IRI</a></td><td>The characters between &quot;&lt;&quot; and &quot;&gt;&quot; are taken, with escape sequences unescaped, to form the unicode string of the IRI.</td></tr>
-          <tr id="handle-STRING_LITERAL_QUOTE"><td style="text-align:left;"><a href="#grammar-production-STRING_LITERAL_QUOTE" class="type lexicalForm">STRING_LITERAL_QUOTE</a></td><td><a data-cite="RDF12-CONCEPTS#lexical-form">lexical form</a></td><td>The characters between the outermost '&quot;'s   are taken, with escape sequences unescaped, to form the unicode string of a lexical form.</td></tr>
-          <tr id="handle-LANGTAG"><td style="text-align:left;"><a href="#grammar-production-LANGTAG" class="type langTag">LANGTAG</a></td><td><a data-cite="RDF12-CONCEPTS#language-tag">language tag</a></td><td>The characters following the <code>@</code> form the unicode string of the language tag.</td></tr>
-          <tr id="handle-literal"><td style="text-align:left;"><a href="#grammar-production-literal" class="type literal">literal</a></td><td><a data-cite="RDF12-CONCEPTS#literal">literal</a></td><td>The literal has a lexical form of the first rule argument, <code>   STRING_LITERAL_QUOTE</code>, and either a language tag of <code>LANGTAG</code> or a datatype IRI of <code>iri</code>, depending on which rule matched the input.  If the <code>LANGTAG</code> rule matched, the datatype is <code>rdf:langString</code> and the language tag is <code>LANGTAG</code>. If neither a language tag nor a datatype IRI is provided, the literal has a datatype of <code>xsd:string</code>.</td></tr>
-          <tr id="handle-BLANK_NODE_LABEL"><td style="text-align:left;"><a href="#grammar-production-BLANK_NODE_LABEL" class="type bNode">BLANK_NODE_LABEL</a></td><td><a data-cite="RDF12-CONCEPTS#blank-node">blank node</a></td><td>The string after '<code>_:</code>', is a key in <a href="#bnodeLabels">bnodeLabels</a>. If there is no corresponding blank node in the map, one is allocated.</td></tr>
+          <tr id="handle-IRIREF"><td style="text-align:left;"><a href="#grammar-production-IRIREF" class="type IRI">IRIREF</a></td><td><a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a></td><td>The characters between &quot;&lt;&quot; and &quot;&gt;&quot; are taken, with escape sequences unescaped, to form the unicode string of the IRI.</td></tr>
+          <tr id="handle-STRING_LITERAL_QUOTE"><td style="text-align:left;"><a href="#grammar-production-STRING_LITERAL_QUOTE" class="type lexicalForm">STRING_LITERAL_QUOTE</a></td><td><a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a></td><td>The characters between the outermost '&quot;'s   are taken, with escape sequences unescaped, to form the unicode string of a lexical form.</td></tr>
+          <tr id="handle-LANGTAG"><td style="text-align:left;"><a href="#grammar-production-LANGTAG" class="type langTag">LANGTAG</a></td><td><a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a></td><td>The characters following the <code>@</code> form the unicode string of the language tag.</td></tr>
+          <tr id="handle-literal"><td style="text-align:left;"><a href="#grammar-production-literal" class="type literal">literal</a></td><td><a data-cite="RDF12-CONCEPTS#dfn-literal">literal</a></td><td>The literal has a lexical form of the first rule argument, <code>   STRING_LITERAL_QUOTE</code>, and either a language tag of <code>LANGTAG</code> or a datatype IRI of <code>iri</code>, depending on which rule matched the input.  If the <code>LANGTAG</code> rule matched, the datatype is <code>rdf:langString</code> and the language tag is <code>LANGTAG</code>. If neither a language tag nor a datatype IRI is provided, the literal has a datatype of <code>xsd:string</code>.</td></tr>
+          <tr id="handle-BLANK_NODE_LABEL"><td style="text-align:left;"><a href="#grammar-production-BLANK_NODE_LABEL" class="type bNode">BLANK_NODE_LABEL</a></td><td><a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a></td><td>The string after '<code>_:</code>', is a key in <a href="#bnodeLabels">bnodeLabels</a>. If there is no corresponding blank node in the map, one is allocated.</td></tr>
         </tbody>
       </table>
     </section>
 
     <section id="rdf-triple-construction">
       <h3>RDF Triple Construction</h3>
-      <p>An N-Triples document defines an <a href="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>
+      <p>An N-Triples document defines an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>
         composed of a set of <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triples</a>.
         The <code><a href="#grammar-production-triple">triple</a></code> production
         produces a triple defined by the terms constructed for
