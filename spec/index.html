@@ -241,10 +241,6 @@
         _:bob <http://xmlns.com/foaf/0.1/knows> _:alice .
         -->
       </pre>
-      <p class="issue" data-number="2">
-        Note open <a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_30">erratum</a> on aligning the definition and production
-        for blank node lables with Turtle.
-      </p>
     </section>
   </section>
 
@@ -268,36 +264,41 @@
       less variability in layout.
       The grammar for the language is the same.</p>
 
-    <p class="note">Even when not explicitly serializing
-      canonical N-Triples, implementers are encouraged to produce this form.</p>
+    <p class="note">A canonical form of N-Triples can be used to ensure
+      that variations in the syntactic representation of terms
+      within that triple are determined; each code point
+      can be represented by only one of
+      <code><a href="#grammar-production-UCHAR">UCHAR</a></code>,
+      <code><a href="#grammar-production-ECHAR">ECHAR</a></code>,
+      or unencoded character,
+      where the relevant production allows for a choice in representation.</p>
 
     <p>Canonical N-Triples has the following additional constraints on layout:</p>
     <ul>
-      <li>The white space following <code>subject</code>,
-        <code>predicate</code>, 
-        and <code>object</code> MUST be a single space, 
-        (<code>U+0020</code>).  All other locations that allow 
-        white space MUST be empty.</li>
-      <li>There MUST be no comments.</li>
+      <li>White space MUST NOT be used except after
+        <code>subject</code>,
+        <code>predicate</code>,  and
+        <code>object</code>,
+        any of which MUST be a single space (<code>U+0020</code>).</li>
+      <li><a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> with the
+        datatype <code>http://www.w3.org/2001/XMLSchema#string</code>
+        MUST NOT use the datatype IRI part of the <a href="#grammar-production-literal">literal</a>,
+        and are represented using only <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.
+      </li>
       <li><code>HEX</code> MUST use only uppercase letters (<code>[A-F]</code>).</li>
-      <li>Characters MUST NOT be represented by <code>UCHAR</code>.</li>
       <li>Within <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>,
-        only the characters 
+        the characters 
         <code>U+0022</code>, <code>U+005C</code>, <code>U+000A</code>, <code>U+000D</code>
-         are encoded using <code>ECHAR</code>.
-        <code>ECHAR</code> MUST NOT be used for characters that are
-        allowed directly in
-        <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>. </li>
-      <li>The token EOL MUST be a single <code>U+000A</code>.</li>
-      <li>The final EOL MUST be provided.</li>
+        MUST be encoded using <code><a href="#grammar-production-ECHAR">ECHAR</a></code>.
+        Characters in the range from <code>U+0000</code> to <code>U+001F</code> and <code>U+007F</code>
+        not represented using <code><a href="#grammar-production-ECHAR">ECHAR</a></code>
+        MUST be represented by <code><a href="#grammar-production-UCHAR">UCHAR</a></code>.
+        All other characters MUST be represented by their native [[UNICODE]] representation..</li>
+        <li>The token <code><a href="#grammar-production-EOL">EOL</a></code> MUST be a single <code>U+000A</code>.</li>
+        <li>The final <code><a href="#grammar-production-EOL">EOL</a></code> MUST be provided.</li>
+      <li>The token <code><a href="#grammar-production-EOL">EOL</a></code> MUST be a single <code>U+000A</code>.</li>
+      <li>The final <code><a href="#grammar-production-EOL">EOL</a></code> MUST be provided.</li>
     </ul>
-    <div class="issue" data-number="2">
-      Note open errata:
-      <ul>
-        <li><a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_32">32 – Issues with N-Quads/N-Triples canonicalization</a>.</li>
-        <li><a href="https://www.w3.org/2001/sw/wiki/RDF1.1_Errata#erratum_33">33 – Ambiguity of canonical N-Triples</a></li>
-      </ul>
-    </div>
   </section>
 
   <section id="conformance">
@@ -495,6 +496,9 @@
       better mirroring [[RDF12-TURTLE]].</li>
     <li>Updated the <a href="#grammar-production-PN_CHARS_U">PN_CHARS_U</a>
       grammar production to be consisten with with Turtle.</li>
+    <li>Changes <a href="#canonical-ntriples"></a> to clarify
+      use of datatype IRIs and expand the use of escapes
+      in literals.</li>
   </ul>
 </section>
 
