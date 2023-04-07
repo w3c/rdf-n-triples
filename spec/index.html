@@ -248,20 +248,6 @@
     </section>
   </section>
 
-  <section class="informative" id="n-triples-changes">
-    <h2>Changes from RDF Test Cases format</h2><p><em>This section is non-normative.</em></p>
-    <ul>
-      <li>Encoding is UTF-8 rather than US-ASCII
-      </li><li>Uses IRIs rather than RDF URI References
-      </li><li>Defines a unique media type <code>application/n-triples</code>
-      </li><li>Subset of Turtle rather than Notation 3
-      </li><li>Comments may occur after a triple production
-      </li><li>Allows <code>\b</code> and <code>\f</code> for backspace and form feed
-      </li><li>More than one way to represent a single character
-      </li><li>Blank node labels may start with a digit
-    </li></ul>
-  </section>
-
   <section id="canonical-ntriples">
     <h2>A Canonical form of N-Triples</h2>
     <p>This section defines a canonical form of N-Triples which has
@@ -303,15 +289,15 @@
   <section id="conformance">
     <p>This specification defines conformance criteria for:</p>
     <ul>
-      <li>N-Triples documents
-      </li><li>Canonical N-Triples documents
-      </li><li>N-Triples parsers
-    </li></ul>
+      <li>N-Triples documents</li>
+      <li>Canonical N-Triples documents</li>
+      <li>N-Triples parsers</li>
+    </ul>
 
     <p>A conforming <dfn class="lint-ignore">N-Triples document</dfn> is a Unicode string that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar"></a>, starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>.
       An N-Triples document serializes an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
 
-    <p>A conforming <dfn>Canonical N-Triples document</dfn> is an 
+    <p>A conforming <dfn class="lint-ignore">Canonical N-Triples document</dfn> is an 
       <strong>N-Triples document</strong> that follows the 
       <a href="#canonical-ntriples">additional constraints</a> of Canonical N-Triples.</p>
 
