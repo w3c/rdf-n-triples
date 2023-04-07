@@ -86,7 +86,7 @@
       Its original intent was for writing test cases,
       but it has proven to be popular as an exchange format for RDF data.</p>
 
-    <p>An N-Triples document contains no parsing directives.</p>
+    <p>An <a>N-Triples document</a> contains no parsing directives.</p>
 
     <p>N-Triples triples are a sequence of RDF terms representing the
       <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
@@ -125,7 +125,7 @@
   <section id="sec-n-triples-language" class="informative">
     <h2>N-Triples Language</h2>
 
-    <p>An N-Triples document allows writing down an
+    <p>An <a>N-Triples document</a> allows writing down an
       <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>
       in a textual form.
       An RDF graph is made up of <a href="#simple-triples">simple triples</a>
@@ -289,20 +289,20 @@
   <section id="conformance">
     <p>This specification defines conformance criteria for:</p>
     <ul>
-      <li>N-Triples documents</li>
-      <li>Canonical N-Triples documents</li>
-      <li>N-Triples parsers</li>
+      <li><a>N-Triples documents</a></li>
+      <li><a>Canonical N-Triples documents</a></li>
+      <li><a>N-Triples parsers</a></li>
     </ul>
 
-    <p>A conforming <dfn class="lint-ignore">N-Triples document</dfn> is a Unicode string that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar"></a>, starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>.
+    <p>A conforming <dfn>N-Triples document</dfn> is a Unicode string that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar"></a>, starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>.
       An N-Triples document serializes an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
 
-    <p>A conforming <dfn class="lint-ignore">Canonical N-Triples document</dfn> is an 
-      <strong>N-Triples document</strong> that follows the 
+    <p>A conforming <dfn>Canonical N-Triples document</dfn> is an 
+      <a>N-Triples document</a> that follows the 
       <a href="#canonical-ntriples">additional constraints</a> of Canonical N-Triples.</p>
 
-    <p>A conforming <dfn class="export">N-Triples parser</dfn> is a system capable of
-      reading N-Triples documents on behalf of an application.
+    <p>A conforming <dfn>N-Triples parser</dfn> is a system capable of
+      reading <a>N-Triples documents</a> on behalf of an application.
       It makes the serialized <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>,
       as defined in <a href="#sec-parsing" class="sectionRef" ></a>,
       available to the application, usually through some form of API.</p>
@@ -323,7 +323,7 @@
       <p>N-Triples has been historically provided with other media types.
         N-Triples may also be provided as <code>text/plain</code>.
         When used in this way N-Triples MUST> use the escaped form of any character outside US-ASCII.
-        As N-Triples is a subset of Turtle an N-Triples document MAY also be provided as <code>text/turtle</code>.
+        As N-Triples is a subset of Turtle an <a>N-Triples document</a> MAY also be provided as <code>text/turtle</code>.
         In both of these cases the document is not an N-Triples document as an N-Triples document is only provided as <code>application/n-triples</code>.</p>
     </section>
 
@@ -332,7 +332,7 @@
 
   <section id="n-triples-grammar"><span id="sec-grammar"></span>
     <h2>N-Triples Grammar</h2>
-    <p>An N-Triples document is a Unicode [[UNICODE]] character string encoded in UTF-8.
+    <p>An <a>N-Triples document</a> is a Unicode [[UNICODE]] character string encoded in UTF-8.
       </p>
 
     <section id="sec-grammar-ws">
@@ -411,7 +411,7 @@
 
     <section id="rdf-triple-construction">
       <h3>RDF Triple Construction</h3>
-      <p>An N-Triples document defines an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>
+      <p>An <a>N-Triples document</a> defines an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>
         composed of a set of <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triples</a>.
         The <code><a href="#grammar-production-triple">triple</a></code> production
         produces a triple defined by the terms constructed for
