@@ -260,18 +260,19 @@
 
   <section id="canonical-ntriples">
     <h2>A Canonical form of N-Triples</h2>
-    <p>This section defines a canonical form of N-Triples which has
-      less variability in layout.
+    <p>This section defines a canonical form of N-Triples  which has
+      a completely specified layout.
       The grammar for the language is the same.</p>
 
-    <p class="note">A canonical form of N-Triples can be used to ensure
-      that variations in the syntactic representation of terms
-      within that triple are determined; each code point
+    <p>While the N-Triples syntax allows choices for the representation and layout of RDF data,
+      the canonical form of N-Triples provides a unique syntactic representation of any triple.
+      Each code point
       can be represented by only one of
       <code><a href="#grammar-production-UCHAR">UCHAR</a></code>,
       <code><a href="#grammar-production-ECHAR">ECHAR</a></code>,
       or unencoded character,
-      where the relevant production allows for a choice in representation.</p>
+      where the relevant production allows for a choice in representation.
+      Each triple is represented entirely on a single line with specified white space.</p>
 
     <p>Canonical N-Triples has the following additional constraints on layout:</p>
     <ul>
@@ -285,17 +286,15 @@
         MUST NOT use the datatype IRI part of the <a href="#grammar-production-literal">literal</a>,
         and are represented using only <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.
       </li>
-      <li><code>HEX</code> MUST use only uppercase letters (<code>[A-F]</code>).</li>
+      <li><code><a href="#grammar-production-HEX">HEX</a></code> MUST use only uppercase letters (<code>[A-F]</code>).</li>
       <li>Within <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>,
         the characters 
         <code>U+0022</code>, <code>U+005C</code>, <code>U+000A</code>, <code>U+000D</code>
         MUST be encoded using <code><a href="#grammar-production-ECHAR">ECHAR</a></code>.
         Characters in the range from <code>U+0000</code> to <code>U+001F</code> and <code>U+007F</code>
-        not represented using <code><a href="#grammar-production-ECHAR">ECHAR</a></code>
+        that are not represented using <code><a href="#grammar-production-ECHAR">ECHAR</a></code>
         MUST be represented by <code><a href="#grammar-production-UCHAR">UCHAR</a></code>.
-        All other characters MUST be represented by their native [[UNICODE]] representation..</li>
-        <li>The token <code><a href="#grammar-production-EOL">EOL</a></code> MUST be a single <code>U+000A</code>.</li>
-        <li>The final <code><a href="#grammar-production-EOL">EOL</a></code> MUST be provided.</li>
+        All other characters MUST be represented by their native [[UNICODE]] representation.</li>
       <li>The token <code><a href="#grammar-production-EOL">EOL</a></code> MUST be a single <code>U+000A</code>.</li>
       <li>The final <code><a href="#grammar-production-EOL">EOL</a></code> MUST be provided.</li>
     </ul>
