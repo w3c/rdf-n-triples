@@ -240,17 +240,29 @@
       </p>
 
 
-      <pre id="ex-literals" class="example ntriples" data-transform="updateExample"
+      <pre id="ex-literals" class="example ntriples"
            title="Literals in N-Triples">
-        <!--
-        <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show"^^<http://www.w3.org/2001/XMLSchema#string> . # literal with XML Schema string datatype
-        <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show" . # same as above
-        <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en . # literal with a language tag
-        <http://example.org/show/218> <http://example.org/show/localName> "Cette Série des Années Septante"@fr-be .  # literal outside of ASCII range with a region subtag
-        <http://example.org/#spiderman> <http://example.org/text> "This is a multi-linenliteral with many quotes (""""")nand two apostrophes ('')." .
-        <http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/atomicNumber> "2"^^<http://www.w3.org/2001/XMLSchema#integer> . # xsd:integer
-        <http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/specificGravity> "1.663E-4"^^<http://www.w3.org/2001/XMLSchema#double> .     # xsd:double
-        -->
+        &lt;http://example.org/show/218&gt;
+          &lt;http://www.w3.org/2000/01/rdf-schema#label&gt;
+            &quot;That Seventies Show&quot;^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; . # literal with XML Schema string datatype&#x2424;
+        &lt;http://example.org/show/218&gt;
+          &lt;http://www.w3.org/2000/01/rdf-schema#label&gt;
+            &quot;That Seventies Show&quot; . # same as above&#x2424;
+        &lt;http://example.org/show/218&gt;
+          &lt;http://example.org/show/localName&gt;
+            &quot;That Seventies Show&quot;@en . # literal with a language tag&#x2424;
+        &lt;http://example.org/show/218&gt;
+          &lt;http://example.org/show/localName&gt;
+            &quot;Cette S&eacute;rie des Ann&eacute;es Septante&quot;@fr-be .  # literal outside of ASCII range with a region subtag&#x2424;
+        &lt;http://example.org/#spiderman&gt;
+          &lt;http://example.org/text&gt;
+            &quot;This is a multi-linenliteral with many quotes (&quot;&quot;&quot;&quot;&quot;)nand two apostrophes (&#x27;&#x27;).&quot; .&#x2424;
+        &lt;http://en.wikipedia.org/wiki/Helium&gt;
+          &lt;http://example.org/elements/atomicNumber&gt;
+            &quot;2&quot;^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; . # xsd:integer&#x2424;
+        &lt;http://en.wikipedia.org/wiki/Helium&gt;
+          &lt;http://example.org/elements/specificGravity&gt;
+            &quot;1.663E-4&quot;^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; .     # xsd:double&#x2424;
       </pre>
     </section>
 
@@ -269,12 +281,10 @@
         A fresh RDF blank node is allocated for each unique blank node label in a document.
         Repeated use of the same blank node label identifies the same RDF blank node.
       </p>
-      <pre id="ex-bnodes" class="example ntriples" data-transform="updateExample"
+      <pre id="ex-bnodes" class="example ntriples"
            title="Blank nodes in N-Triples">
-        <!--
-        _:alice <http://xmlns.com/foaf/0.1/knows> _:bob .
-        _:bob <http://xmlns.com/foaf/0.1/knows> _:alice .
-        -->
+        _:alice &lt;http://xmlns.com/foaf/0.1/knows&gt; _:bob .&#x2424;
+        _:bob &lt;http://xmlns.com/foaf/0.1/knows&gt; _:alice .&#x2424;
       </pre>
     </section>
   </section>
