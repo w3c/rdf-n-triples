@@ -159,7 +159,7 @@
       <p>Comments are treated as white space, and may be given after a '<code>#</code>' that is not part of
         another lexical token and continue to the end of the line.</p>
 
-      <pre id="ex-simple-triple" class="example N-Triples" data-transform="updateExample"
+      <pre id="ex-simple-triple" class="example ntriples" data-transform="updateExample"
            title="Simple Triple">
         <!--
         <http://example.org/#spiderman> <http://www.perceive.net/schemas/relationship/enemyOf> <http://example.org/#green-goblin> .
@@ -172,7 +172,8 @@
 
       <p>A <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triple</a>
         may be the <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a> or
-        <a data-cite="RDF12-CONCEPTS#dfn-object">object</a> of a triple.</p>
+        <a data-cite="RDF12-CONCEPTS#dfn-object">object</a> of an
+        <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF triple</a>.</p>
 
       <p>A <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triple</a>
         is represented as a <code><a href="#grammar-production-quotedTriple">quotedTriple</a></code> with
@@ -180,16 +181,15 @@
         <code><a href="#grammar-production-predicate">predicate</a></code>, and
         <code><a href="#grammar-production-object">object</a></code>
         proceeded by `&lt;&lt;` and followed by `>>`.
-        Note that <a data-cite="RDF12-CONCEPTS#dfn-complex-triple">complex triples</a>
+        Note that <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triples</a>
         may be recursive.
        </p>
 
-      <pre id="ex-quoted-triple" class="example quoted triple" data-transform="updateExample"
+      <pre id="ex-quoted-triple" class="example ntriples" data-transform="updateExample"
            title="Quoted Triple">
         <!--
-        <http://example.org/employee38> <http://example.org/familyName> "Smith" .
-        << <http://example.org/jobTitle> <http://example.org/jobTitle> "Assistant Designer" >>
-           <http://example.org/accordingTo> <http://example.org/employee22> .
+        _:e38 <ex:familyName> "Smith" .
+        << _:e38 <http://example.com/jobTitle> "Designer" >> <http://example.com/accordingTo> _:e22 .
         -->
       </pre>
     </section>
@@ -240,29 +240,17 @@
       </p>
 
 
-      <pre id="ex-literals" class="example ntriples"
+      <pre id="ex-literals" class="example ntriples" data-transform="updateExample"
            title="Literals in N-Triples">
-        &lt;http://example.org/show/218&gt;
-          &lt;http://www.w3.org/2000/01/rdf-schema#label&gt;
-            &quot;That Seventies Show&quot;^^&lt;http://www.w3.org/2001/XMLSchema#string&gt; . # literal with XML Schema string datatype&#x2424;
-        &lt;http://example.org/show/218&gt;
-          &lt;http://www.w3.org/2000/01/rdf-schema#label&gt;
-            &quot;That Seventies Show&quot; . # same as above&#x2424;
-        &lt;http://example.org/show/218&gt;
-          &lt;http://example.org/show/localName&gt;
-            &quot;That Seventies Show&quot;@en . # literal with a language tag&#x2424;
-        &lt;http://example.org/show/218&gt;
-          &lt;http://example.org/show/localName&gt;
-            &quot;Cette S&eacute;rie des Ann&eacute;es Septante&quot;@fr-be .  # literal outside of ASCII range with a region subtag&#x2424;
-        &lt;http://example.org/#spiderman&gt;
-          &lt;http://example.org/text&gt;
-            &quot;This is a multi-linenliteral with many quotes (&quot;&quot;&quot;&quot;&quot;)nand two apostrophes (&#x27;&#x27;).&quot; .&#x2424;
-        &lt;http://en.wikipedia.org/wiki/Helium&gt;
-          &lt;http://example.org/elements/atomicNumber&gt;
-            &quot;2&quot;^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; . # xsd:integer&#x2424;
-        &lt;http://en.wikipedia.org/wiki/Helium&gt;
-          &lt;http://example.org/elements/specificGravity&gt;
-            &quot;1.663E-4&quot;^^&lt;http://www.w3.org/2001/XMLSchema#double&gt; .     # xsd:double&#x2424;
+        <!--
+        <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show"^^<http://www.w3.org/2001/XMLSchema#string> . # literal with XML Schema string datatype
+        <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show" . # same as above
+        <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en . # literal with a language tag
+        <http://example.org/show/218> <http://example.org/show/localName> "Cette Série des Années Septante"@fr-be .  # literal outside of ASCII range with a region subtag
+        <http://example.org/#spiderman> <http://example.org/text> "This is a multi-linenliteral with many quotes (""""")nand two apostrophes ('')." .
+        <http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/atomicNumber> "2"^^<http://www.w3.org/2001/XMLSchema#integer> . # xsd:integer
+        <http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/specificGravity> "1.663E-4"^^<http://www.w3.org/2001/XMLSchema#double> .     # xsd:double
+        -->
       </pre>
     </section>
 
@@ -281,10 +269,12 @@
         A fresh RDF blank node is allocated for each unique blank node label in a document.
         Repeated use of the same blank node label identifies the same RDF blank node.
       </p>
-      <pre id="ex-bnodes" class="example ntriples"
+      <pre id="ex-bnodes" class="example ntriples" data-transform="updateExample"
            title="Blank nodes in N-Triples">
-        _:alice &lt;http://xmlns.com/foaf/0.1/knows&gt; _:bob .&#x2424;
-        _:bob &lt;http://xmlns.com/foaf/0.1/knows&gt; _:alice .&#x2424;
+        <!--
+        _:alice <http://xmlns.com/foaf/0.1/knows> _:bob .
+        _:bob <http://xmlns.com/foaf/0.1/knows> _:alice .
+        -->
       </pre>
     </section>
   </section>
