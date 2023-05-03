@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 34.1.0">
+<meta name="generator" content="ReSpec 34.1.1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -1198,7 +1198,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   <section id="abstract" class="introductory"><h2>Abstract</h2>
     <p>N-Triples is a line-based, plain text format for encoding an <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-rdf-graph" id="ref-for-index-term-rdf-graph-1">RDF graph</a>.</p>
 
-    <p>RDF 1.2 N-Triples introduces <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triples" id="ref-for-index-term-quoted-triples-1">quoted triples</a>
+    <p>RDF 1.2 N-Triples introduces <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triples-1">quoted triples</a>
       as a fourth kind of <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-rdf-term" id="ref-for-index-term-rdf-term-1">RDF term</a>
       which can be used as the
       <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-subject" id="ref-for-index-term-subject-1">subject</a> or
@@ -1375,18 +1375,18 @@ _:subject2 &lt;http://an.example/predicate2&gt; "object2" .
     <section id="quoted-triples"><div class="header-wrapper"><h3 id="x2-2-quoted-triples"><bdi class="secno">2.2 </bdi>Quoted Triples</h3><a class="self-link" href="#quoted-triples" aria-label="Permalink for Section 2.2"></a></div>
       
 
-      <p>A <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triple-1">quoted triple</a>
+      <p>A <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triples-2">quoted triple</a>
         may be the <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-subject" id="ref-for-index-term-subject-5">subject</a> or
         <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-object" id="ref-for-index-term-object-type-5">object</a> of an
         <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-rdf-triple" id="ref-for-index-term-triple-4">RDF triple</a>.</p>
 
-      <p>A <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triple-2">quoted triple</a>
+      <p>A <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triples-3">quoted triple</a>
         is represented as a <code><a href="#grammar-production-quotedTriple">quotedTriple</a></code> with
         <code><a href="#grammar-production-subject">subject</a></code>,
         <code><a href="#grammar-production-predicate">predicate</a></code>, and
         <code><a href="#grammar-production-object">object</a></code>
         preceded by <code>&lt;&lt;</code> and followed by <code>&gt;&gt;</code>.
-        Note that <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triple-3">quoted triples</a>
+        Note that <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triples-4">quoted triples</a>
         may be recursive.
        </p>
 
@@ -1915,10 +1915,10 @@ _:bob   &lt;http://xmlns.com/foaf/0.1/knows&gt; _:alice .
               <a href="#grammar-production-quotedTriple" class="type quotedTriple">quotedTriple</a>
             </td>
             <td>
-              <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triple-4">quoted triple</a>
+              <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triples-5">quoted triple</a>
             </td>
             <td>
-              The <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triple-5">quoted triple</a>
+              The <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triples-6">quoted triple</a>
               is composed of the terms constructed from
               the <code><a href="#grammar-production-subject">subject</a></code>,
               <code><a href="#grammar-production-predicate">predicate</a></code>, and
@@ -2105,7 +2105,7 @@ _:bob   &lt;http://xmlns.com/foaf/0.1/knows&gt; _:alice .
       better mirroring [<cite><a class="bibref" data-link-type="biblio" href="#bib-rdf12-turtle" title="RDF 1.2 Turtle">RDF12-TURTLE</a></cite>].</li>
     <li>Updated the <a href="#grammar-production-PN_CHARS_U">PN_CHARS_U</a>
       grammar production to be consisten with with Turtle.</li>
-   <li>Adds support for <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triple-6">quoted triples</a>
+   <li>Adds support for <a href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="ref-for-index-term-quoted-triples-7">quoted triples</a>
       as described in <a href="#quoted-triples" class="sectionRef sec-ref"><bdi class="secno">2.2 </bdi>Quoted Triples</a>
       with updates to <a href="#sec-parsing-terms" class="sectionRef sec-ref"><bdi class="secno">6.1 </bdi>RDF Term Constructors</a>.</li>
     <li>Separated <a href="#security" class="sec-ref"><bdi class="secno">B. </bdi>Security Considerations</a> from <a href="#sec-mediaReg-n-triples" class="sec-ref"><bdi class="secno">C. </bdi>N-Triples Internet Media Type, File Extension and Macintosh File Type</a>
@@ -2148,9 +2148,7 @@ _:bob   &lt;http://xmlns.com/foaf/0.1/knows&gt; _:alice .
   </li><li>
     <span class="index-term" data-href="https://w3c.github.io/rdf-concepts/spec/#dfn-predicate" id="index-term-predicate" tabindex="0" aria-haspopup="dialog">predicate</span>
   </li><li>
-    <span class="index-term" data-href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="index-term-quoted-triple" tabindex="0" aria-haspopup="dialog">quoted triple</span>
-  </li><li>
-    <span class="index-term" data-href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triples" id="index-term-quoted-triples" tabindex="0" aria-haspopup="dialog">quoted triples</span>
+    <span class="index-term" data-href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" id="index-term-quoted-triples" tabindex="0" aria-haspopup="dialog">quoted triples</span>
   </li><li>
     <span class="index-term" data-href="https://w3c.github.io/rdf-concepts/spec/#dfn-blank-node" id="index-term-rdf-blank-nodes" tabindex="0" aria-haspopup="dialog">RDF blank nodes</span>
   </li><li>
@@ -2406,32 +2404,22 @@ _:bob   &lt;http://xmlns.com/foaf/0.1/knows&gt; _:alice .
     <a href="#ref-for-index-term-predicate-3" title="§ 2.1 Simple Triples">§ 2.1 Simple Triples</a> 
   </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-quoted-triple" aria-label="Links in this document to definition: quoted triple">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" aria-label="Permalink for definition: quoted triple. Activate to close this dialog.">Permalink</a>
-         
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-    <a href="#ref-for-index-term-quoted-triple-1" title="§ 2.2 Quoted Triples">§ 2.2 Quoted Triples</a> <a href="#ref-for-index-term-quoted-triple-2" title="Reference 2">(2)</a> <a href="#ref-for-index-term-quoted-triple-3" title="Reference 3">(3)</a> 
-  </li><li>
-    <a href="#ref-for-index-term-quoted-triple-4" title="§ 6.1 RDF Term Constructors">§ 6.1 RDF Term Constructors</a> <a href="#ref-for-index-term-quoted-triple-5" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-index-term-quoted-triple-6" title="§ E. Changes between RDF 1.1 and RDF 1.2">§ E. Changes between RDF 1.1 and RDF 1.2</a> 
-  </li>
-  </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-quoted-triples" aria-label="Links in this document to definition: quoted triples">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triples" aria-label="Permalink for definition: quoted triples. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="https://w3c.github.io/rdf-concepts/spec/#dfn-quoted-triple" aria-label="Permalink for definition: quoted triples. Activate to close this dialog.">Permalink</a>
          
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
     <a href="#ref-for-index-term-quoted-triples-1" title="§ Abstract">§ Abstract</a> 
+  </li><li>
+    <a href="#ref-for-index-term-quoted-triples-2" title="§ 2.2 Quoted Triples">§ 2.2 Quoted Triples</a> <a href="#ref-for-index-term-quoted-triples-3" title="Reference 2">(2)</a> <a href="#ref-for-index-term-quoted-triples-4" title="Reference 3">(3)</a> 
+  </li><li>
+    <a href="#ref-for-index-term-quoted-triples-5" title="§ 6.1 RDF Term Constructors">§ 6.1 RDF Term Constructors</a> <a href="#ref-for-index-term-quoted-triples-6" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-index-term-quoted-triples-7" title="§ E. Changes between RDF 1.1 and RDF 1.2">§ E. Changes between RDF 1.1 and RDF 1.2</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-rdf-blank-nodes" aria-label="Links in this document to definition: RDF blank nodes">
