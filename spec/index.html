@@ -54,8 +54,11 @@
   .grammar_comment { color: #A52A2A; font-style: italic; }
   .hl-bold { font-weight: bold; color: #0a3; }
   code { color: #ff4500; }  /* Old W3C Style */
+  @media (max-width: 850px) {
+        .simple th, .simple td { font-size: 13px; padding: 3px 5px;}
+    } 
   @media (max-width: 767px) {
-      table { word-break: break-all; max-width: 80vw; }
+      table { word-break: normal; overflow-wrap: anywhere; max-width: 80vw; }
       .separated thead tr th { border:1px solid black; padding: .2em; min-width: 10vw }
       .separated tbody tr td { border:1px solid black; text-align: center; min-width: 10vw }
   }
