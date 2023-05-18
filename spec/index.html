@@ -44,18 +44,24 @@
   </script>
   <style>
   /* Style Turtle script blocks to be visable */
-  pre.example script {
-      display:block;
-  }
-  .separated { border-collapse:collapse; }
-  .separated thead tr th { border:1px solid black; padding: .2em; }
-  .separated tbody tr td { border:1px solid black; text-align: center; }
+  pre.example script { display:block; }
+  .separated { border-collapse: collapse; }
+  .separated thead tr th { border: 1px solid black; padding: .2em; }
+  .separated tbody tr td { border: 1px solid black; text-align: center; }
   .separated tbody tr td.r { text-align: right; padding: .5em; }
   .grammar td { font-family: monospace; vertical-align: top; }
   .grammar-literal { color: gray;}
   .grammar_comment { color: #A52A2A; font-style: italic; }
   .hl-bold { font-weight: bold; color: #0a3; }
-  code {color: #ff4500;}  /* Old W3C Style */
+  code { color: #ff4500; }  /* Old W3C Style */
+  @media (max-width: 850px) {
+        .simple th, .simple td { font-size: 13px; padding: 3px 5px;}
+    } 
+  @media (max-width: 767px) {
+      table { word-break: normal; overflow-wrap: anywhere; }
+      .separated thead tr th { border:1px solid black; padding: .2em; min-width: 10vw }
+      .separated tbody tr td { border:1px solid black; text-align: center; min-width: 10vw }
+  }
   </style>
 </head>
 <body>
