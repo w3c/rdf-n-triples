@@ -233,10 +233,10 @@
         are used to identify values such as strings, numbers, dates.</p>
 
       <p>Literals (Grammar production <a href="#grammar-production-literal">Literal</a>)
-        have a lexical form followed by a
+        have a lexical form followed by either a
         <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
         (possibly including <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>),
-        a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
+        or a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
         or neither.</p>
 
       <p>The representation of the lexical form consists of an
@@ -260,7 +260,7 @@
         terminal matches the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
         and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>.
         The <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-        is preceded by a '<code>@</code>' (<span class="codepoint">U+0040</span>),
+        is preceded by an at sign ('<code>@</code>', <span class="codepoint">U+0040</span>),
         and, if present, the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
         is separated from the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> by '<code>--</code>'.
         If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
@@ -281,7 +281,7 @@
         <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en . # literal with a language tag
         <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en-ltr . # literal with a language tag and base direction
         <http://example.org/show/218> <http://example.org/show/localName> "Cette Série des Années Septante"@fr-be .  # literal outside of ASCII range with a region subtag
-        <http://example.org/#spiderman> <http://example.org/text> "This is a multi-linenliteral with many quotes (""""") and two apostrophes ('')." .
+        <http://example.org/#spiderman> <http://example.org/text> "This is a multi-line literal with many quotation marks (""""") and two apostrophes ('')." .
         <http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/atomicNumber> "2"^^<http://www.w3.org/2001/XMLSchema#integer> . # xsd:integer
         <http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/specificGravity> "1.663E-4"^^<http://www.w3.org/2001/XMLSchema#double> .     # xsd:double
         -->
@@ -511,7 +511,7 @@
               <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
             </td>
             <td>
-              The characters following the <code>@</code> form the unicode string of the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
+              The characters following the <code>@</code> form the Unicode string of the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
               if the matched characters include '<code>--</code>'.
             </td>
@@ -543,7 +543,7 @@
               from <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code>
               or a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> of <code>iri</code>,
               depending on which rule matched the input.
-              If the <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code> rule matched,
+              If the <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code> rule matches,
               it is split into <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               and <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
               on '<code>--</code>'.
@@ -553,11 +553,11 @@
               If there is a <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
               the datatype is <code>rdf:dirLangString</code>,
               the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> is
-              taken from the portion of the matched <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code> proceding '<code>--</code>'
+              taken from the portion of the matched <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code> preceding '<code>--</code>'
               and the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
               is taken from the portion of the matched <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code> following '<code>--</code>'.
               If neither a <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-              nor a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> is provided,
+              nor a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> is present,
               the literal has a datatype of <code>xsd:string</code>.
             </td>
           </tr>
