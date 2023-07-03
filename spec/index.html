@@ -256,7 +256,7 @@
 
       <p>The corresponding <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">RDF lexical form</a>
         is the characters between the delimiters, after processing any escape sequences.
-        If present, the <a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a>
+        If present, the <a href="#grammar-production-LANGDIR" class="type langDir">LANGDIR</a>
         terminal matches the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
         and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>.
         The <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
@@ -264,7 +264,6 @@
         and, if present, the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
         is separated from the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> by '<code>--</code>'.
         If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
-        there may be a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
         preceded by two concatenated <code>^</code> characters,
         each having the code point <span class="codepoint">U+005E</span>.
         If there is no datatype IRI and no language tag
@@ -505,7 +504,7 @@
           </tr>
           <tr id="handle-LANGDIR">
             <td style="text-align:left;">
-              <a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a>
+              <a href="#grammar-production-LANGDIR" class="type langDir">LANGDIR</a>
             </td>
             <td>
               <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
@@ -541,22 +540,22 @@
               <code>STRING_LITERAL_QUOTE</code>,
               and either a <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               with optional <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
-              from <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code>
+              from <code><a href="#grammar-production-LANGDIR" class="type langDir">LANGDIR</a></code>
               or a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> of <code>iri</code>,
               depending on which rule matched the input.
-              If the <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code> rule matches,
+              If the <code><a href="#grammar-production-LANGDIR" class="type langDir">LANGDIR</a></code> rule matches,
               it is split into <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               and <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
               on '<code>--</code>'.
               If there is no <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
               the datatype is <code>rdf:langString</code>
-              and the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> is <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code>.
+              and the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> is <code><a href="#grammar-production-LANGDIR" class="type langDir">LANGDIR</a></code>.
               If there is a <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
               the datatype is <code>rdf:dirLangString</code>,
               the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> is
-              taken from the portion of the matched <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code> preceding '<code>--</code>'
+              taken from the portion of the matched <code><a href="#grammar-production-LANGDIR" class="type langDir">LANGDIR</a></code> preceding '<code>--</code>'
               and the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
-              is taken from the portion of the matched <code><a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a></code> following '<code>--</code>'.
+              is taken from the portion of the matched <code><a href="#grammar-production-LANGDIR" class="type langDir">LANGDIR</a></code> following '<code>--</code>'.
               If neither a <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               nor a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> is present,
               the literal has a datatype of <code>xsd:string</code>.
@@ -775,7 +774,7 @@
       use of <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRIs</a> and expand the use of escapes
       in literals.</li>
     <li>Changes the `LANGTAG` terminal production to
-      <a href="#grammar-production-LANGDIR" class="type langTag">LANGDIR</a> to include
+      <a href="#grammar-production-LANGDIR" class="type langDir">LANGDIR</a> to include
       an optional <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>.</li>
 </ul>
 </section>
