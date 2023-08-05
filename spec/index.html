@@ -324,9 +324,19 @@
         <code>object</code>,
         any of which MUST be a single space (<code>U+0020</code>).</li>
       <li><a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> with the
-        datatype <code>http://www.w3.org/2001/XMLSchema#string</code>
+        datatypes <code>http://www.w3.org/2001/XMLSchema#string</code> and
+        <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#langString</code>
         MUST NOT use the datatype IRI part of the <a href="#grammar-production-literal">literal</a>,
-        and are represented using only <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.
+        and are represented using only <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>
+        and <a href="#grammar-production-LANGTAG">LANGTAG</a>,
+        as appropriate.
+        <div class="issue" data-number="41">
+          [[RDF12-CONCEPTS]] allows implementations to convert
+          <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tags</a> to lower case.
+          This represents a potential interoperability issue if language tags
+          are not converted to lower case uniformly, as different implementations
+          may end up using different canonical representations of such language tags.
+        </div>
       </li>
       <li><code><a href="#grammar-production-HEX">HEX</a></code> MUST use only uppercase letters (<code>[A-F]</code>).</li>
       <li>Within <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>,
