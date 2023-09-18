@@ -240,17 +240,17 @@
         or neither.</p>
 
       <p>The representation of the lexical form consists of an
-        initial delimiter <code>&quot;</code> (<span class="codepoint">U+0022</span>),
+        initial delimiter <code>&quot;</code> (<code class="codepoint">U+0022</code>),
         a sequence of permitted characters or numeric escape sequence or string escape sequence,
         and a final delimiter.</p>
 
       <p>Literals may not contain the characters <code>&quot;</code>,
-        <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>), or
-        <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>)
+        <code title="LINE FEED"><sub>LF</sub></code> (<code class="codepoint">U+000A</code>), or
+        <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<code class="codepoint">U+000D</code>)
         except in their escaped forms.
-        In addition '<code>\</code>' (<span class="codepoint">U+005C</span>)
+        In addition '<code>\</code>' (<code class="codepoint">U+005C</code>)
         may not appear in any quoted literal except as part of an escape sequence
-        and a <code>"</code> (<span class="codepoint">U+0022</span>) character
+        and a <code>"</code> (<code class="codepoint">U+0022</code>) character
         can only be included in a quote literal using an escape sequence.
         </p>
 
@@ -260,12 +260,12 @@
         terminal matches the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
         and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>.
         The <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-        is preceded by an at sign ('<code>@</code>', <span class="codepoint">U+0040</span>),
+        is preceded by an at sign ('<code>@</code>', <code class="codepoint">U+0040</code>),
         and, if present, the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
         is separated from the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> by '<code>--</code>'.
         If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
         preceded by two concatenated <code>^</code> characters,
-        each having the code point <span class="codepoint">U+005E</span>.
+        each having the code point <code class="codepoint">U+005E</code>.
         If there is no datatype IRI and no language tag, then
         it is a <a data-cite="RDF12-CONCEPTS#dfn-simple-literal">simple literal</a>
         and the datatype is <code>http://www.w3.org/2001/XMLSchema#string</code>.
@@ -425,8 +425,8 @@
 
       <p class="note">N-Triples allows only horizontal white space  (tab U+0009 or space U+0020)
         as compared to Turtle [[RDF12-TURTLE]] which also treats
-        <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>)
-        and <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span>)
+        <code title="LINE FEED"><sub>LF</sub></code> (<code class="codepoint">U+000A</code>)
+        and <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<code class="codepoint">U+000D</code>)
         as white space.</p>
     </section>
 
@@ -437,8 +437,8 @@
         outside an <a href="#grammar-production-IRIREF">IRIREF</a> or <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>,
         and continue to the end of line
         (marked by characters
-        <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<span class="codepoint">U+000D</span> or
-        <code title="LINE FEED"><sub>LF</sub></code> (<span class="codepoint">U+000A</span>))
+        <code title="CARRIAGE RETURN"><sub>CR</sub></code> (<code class="codepoint">U+000D</code> or
+        <code title="LINE FEED"><sub>LF</sub></code> (<code class="codepoint">U+000A</code>))
         or end of file if there is no end of line after the comment
         marker.
         Comments are treated as white space.</p>
@@ -513,7 +513,9 @@
               The characters following the at sign (<code>@</code>) form the Unicode
               string of the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
-              if the matched characters include '<code>--</code>'.
+              if the matched characters
+              include two concatenated <code>-</code> characters,
+              each having the code point <code class="codepoint">U+002D</code>.
             </td>
           </tr>
           <tr id="handle-STRING_LITERAL_QUOTE">
@@ -546,16 +548,19 @@
               If the <code><a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a></code> rule matches,
               it is split into <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               and <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
-              on '<code>--</code>'.
+              on '<code>--</code>' (two concatenated <span class="unicode">U+002D</span> code points).
               If there is no <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
               the datatype is <code>rdf:langString</code>
               and the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> is <code><a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a></code>.
               If there is a <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
               the datatype is <code>rdf:dirLangString</code>,
               the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a> is
-              taken from the portion of the matched <code><a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a></code> preceding '<code>--</code>'
+              taken from the portion of the matched
+              <code><a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a></code>
+              preceding '<code>--</code>' (two concatenated <span class="unicode">U+002D</span> code points)
               and the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
-              is taken from the portion of the matched <code><a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a></code> following '<code>--</code>'.
+              is taken from the portion of the matched <code><a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a></code>
+              following '<code>--</code>' (two concatenated <span class="unicode">U+002D</span> code points).
               If neither a <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               nor a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> is present,
               the literal has a datatype of <code>xsd:string</code>.
