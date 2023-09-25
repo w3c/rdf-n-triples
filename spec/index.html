@@ -500,7 +500,7 @@
               <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a>
             </td>
             <td>
-              The string matching the second argument, <a href="#grammar-production-PN_LOCAL" class="type bNode">PN_LOCAL</a>,
+              The string after '<code>_:</code>',
               is a key in <a href="#bnodeLabels">bnodeLabels</a>.
               If there is no corresponding <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> in the map,
               one is allocated.
@@ -515,7 +515,7 @@
             </td>
             <td>
               The characters between <code>&lt;</code> and <code>&gt;</code> are taken,
-              with the <a href="#numeric">numeric escape sequences</a> unescaped,
+              with escape sequences unescaped,
               to form the IRI.
             </td>
           </tr>
@@ -543,7 +543,7 @@
             </td>
             <td>
               The characters between the outermost <code>"</code>s are taken,
-              with <a href="#numeric">numeric</a> and <a href="#string">string</a> escape sequences unescaped,
+              with escape sequences unescaped,
               to form the <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">RDF string</a> of a lexical form.
             </td>
           </tr>
