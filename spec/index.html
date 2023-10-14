@@ -73,6 +73,13 @@
       .separated thead tr th { border:1px solid black; padding: .2em; min-width: 10vw }
       .separated tbody tr td { border:1px solid black; text-align: center; min-width: 10vw }
   }
+
+  table.cp-definitions { border-collapse:collapse; background-color: #DDDDFF}
+
+  table.cp-definitions,
+  table.cp-definitions th,
+  table.cp-definitions td { border:1px solid black; padding:0.2em; }
+  table.cp-definitions td:nth-child(2) { text-align: center; }
   </style>
 </head>
 <body>
@@ -120,9 +127,8 @@
       <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
       <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>
       of an <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triple</a>.
-      These may be separated by white space
-      (spaces, code point <code class="codepoint">U+0020</code>, and/or tabs, code point <code class="codepoint">U+0009</code>).
-      This sequence is terminated <code>.</code> after the object
+      These may be separated by white space (<a href="#cp-space"><code title="space">spaces</code></a>, and/or <a href="#cp-tab"><code title="horizontal tab">tabs</code></a>).
+      This sequence is terminated by a <a href="#cp-full-stop"><code title="full stop">.</code></a>
       (optionally followed by white space and/or a comment),
       and a new line (optional at the end of a document).</p>
 
@@ -162,8 +168,7 @@
       <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
       <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>
       and optional <a>blank lines</a>.
-      Comments may be given after a <code>#</code> (number sign, <code class="codepoint">U+0023</code>)
-      that is not part of
+      Comments may be given after a <a href="#cp-number-sign"><code title="number sign">#</code></a> that is not part of
       another lexical token and continue to the end of the line.</p>
 
     <section id="simple-triples">
@@ -173,11 +178,11 @@
         (<a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
         <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
         <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>) terms,
-        and terminated by <code>.</code>.
+        and terminated by <a href="#cp-full-stop"><code title="full stop">.</code></a>.
         White space (spaces <code class="codepoint">U+0020</code> or tabs <code class="codepoint">U+0009</code>) may surround terms,
         except where significant as noted in the <a href="#n-triples-grammar">grammar</a>.</p>
 
-      <p>Comments are treated as white space, and may be given after a <code>#</code> (number sign, <code class="codepoint">U+0023</code>)
+      <p>Comments are treated as white space, and may be given after a <a href="#cp-number-sign"><code title="number sign">#</code></a>
         that is not part of
         another lexical token and continue to the end of the line.</p>
 
@@ -198,12 +203,12 @@
         <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF triple</a>.</p>
 
       <p>A <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triple</a>
-        is represented as a <code><a href="#grammar-production-quotedTriple">quotedTriple</a></code> with
-        <code><a href="#grammar-production-subject">subject</a></code>,
-        <code><a href="#grammar-production-predicate">predicate</a></code>, and
-        <code><a href="#grammar-production-object">object</a></code>
-        preceded by <code>&lt;&lt;</code> (two concatenated less-than sign characters, each having the code point <code class="codepoint">U+003C</code>), and
-        followed by <code>&gt;&gt;</code> (two concatenated greater-than sign characters, each having the code point <code class="codepoint">U+003E</code>).
+        is represented as a <a href="#grammar-production-quotedTriple"><code>quotedTriple</code></a> with
+        <a href="#grammar-production-subject"><code>subject</code></a>,
+        <a href="#grammar-production-predicate"><code>predicate</code></a>, and
+        <a href="#grammar-production-object"><code>object</code></a>
+        preceded by <a href="#cp-double-lt"><code>&lt;&lt;</code></a>, and
+        followed by <a href="#cp-double-gt"><code>&gt;&gt;</code></a>.
         Note that <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triples</a>
         may be nested.
        </p>
@@ -222,8 +227,8 @@
 
       <p>
         <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> may be written only as <a data-cite="RFC3986#section-5">resolved</a> IRIs.
-        IRIs are preceded by <code>&lt;</code> (code point <code class="codepoint">U+003C</code>) and
-        followed by <code>&gt;</code> (code point <code class="codepoint">U+003E</code>),
+        IRIs are preceded by <a href="#cp-less-than"><code title="less-than sign">&lt;</code></a> and
+        followed by <a href="#cp-greater-than"><code title="greater-than sign">&gt;</code></a>,
         and may contain numeric escape sequences (described below).
         For example <code>&lt;http://example.org/#green-goblin&gt;</code>.
       </p>
@@ -235,41 +240,39 @@
       <p><a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a>
         are used to identify values such as strings, numbers, dates.</p>
 
-      <p>Literals (Grammar production <a href="#grammar-production-literal">Literal</a>)
+      <p>Literals (Grammar production <a href="#grammar-production-literal"><code>Literal</code></a>)
         have a lexical form followed by either a
         <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
         (possibly including <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>),
         a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
         or neither.</p>
 
-      <p>The representation of the lexical form consists of an
-        initial delimiter <code>&quot;</code> (<code class="codepoint">U+0022</code>),
+      <p>The representation of the <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> consists of an
+        initial delimiter <a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a>,
         a sequence of permitted characters or numeric escape sequence or string escape sequence,
         and a final delimiter.</p>
 
-      <p>Literals may not contain the characters <code>&quot;</code>,
-        <code>LF</code> (line feed, code point <code class="codepoint">U+000A</code>), or
-        <code>CR</code> (carriage return, code point <code class="codepoint">U+000D</code>)
+      <p>Literals may not contain the characters <a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a>,
+        <a href="#cp-line-feed"><code title="line feed">LF</code></a>, or
+        <a href="#cp-carriage-return"><code title="carriage return">CR</code></a>
         except in their escaped forms.
-        In addition <code>\</code> (backslash, code point <code class="codepoint">U+005C</code>)
+        In addition <a href="#cp-backslash"><code title="backslash">\</code></a>
         may not appear in any quoted literal except as part of an escape sequence
-        and a <code>&quot;</code> (quotation mark, <code class="codepoint">U+0022</code>) character
-        can only be included in a quote literal using an escape sequence.
-        </p>
+        and a <a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a> character
+        can only be included in a quoted literal using an escape sequence.</p>
 
-      <p>The corresponding <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">RDF lexical form</a>
+      <p>The corresponding <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a>
         is the characters between the delimiters, after processing any escape sequences.
-        If present, the <a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a>
+        If present, the <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a>
         terminal matches the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
         and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>.
         The <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-        is preceded by an <code>@</code> (at sign, <code class="codepoint">U+0040</code>),
+        is preceded by an <a href="#cp-at-sign"><code title="at sign">@</code></a>,
         and, if present, the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
         is separated from the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-        by <code>--</code> (two concatenated hyphen characters, each having the code point <code class="codepoint">U+002D</code>).
+        by <a href="#cp-hyphen-hyphen"><code>--</code></a>.
         If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
-        preceded by <code>^^</code>
-        (two concatenated circumflex accent characters, each having the code point <code class="codepoint">U+005E</code>).
+        preceded by <a href="#cp-double-circumflex"><code>^^</code></a>.
         If there is no datatype IRI and no language tag, then
         it is a <a data-cite="RDF12-CONCEPTS#dfn-simple-literal">simple literal</a>
         and the datatype is <code>http://www.w3.org/2001/XMLSchema#string</code>.
@@ -293,25 +296,22 @@
     <section id="BNodes">
       <h3>RDF Blank Nodes</h3>
       <p>
-        <a data-cite="RDF12-CONCEPTS#dfn-blank-node">RDF blank nodes</a> in N-Triples are expressed
-        as <code>_:</code> followed by a <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> which is a series of characters.
-        The characters in the identifier are built upon
-        <a href="#grammar-production-PN_CHARS_BASE">PN_CHARS_BASE</a>,
+        As in N-Triples,
+        <a data-cite="RDF12-CONCEPTS#dfn-blank-node">RDF blank nodes</a> are expressed as <a href="#cp-underscore-colon"><code>_:</code></a>
+        followed by a blank node label which is a series of name characters.
+        The characters in the label are built upon <a href="#grammar-production-PN_CHARS_BASE"><code>PN_CHARS_BASE</code></a>,
         liberalized as follows:
       </p>
       <ul>
-        <li>The character <code>_</code> (underscore, <code class="codepoint">U+005F</code>) and
-          the digit characters <code>0</code>–<code>9</code> (zero through nine, 
-          <code class="codepoint">U+0030</code> 
-          through <code class="codepoint">U+0039</code>, inclusive)
-          may appear anywhere in a
-          <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>.</li>
-        <li>The character <code>.</code> (full stop, <code class="codepoint">U+002E</code>) may appear anywhere except the first or last character.</li>
+        <li>The characters <a href="#cp-underscore"><code title="underscore">_</code></a> and
+          the digit characters <a href="#cp-zero"><code title="digit zero">0</code></a>–<a href="#cp-nine"><code title="digit nine">9</code></a>, inclusive
+          may appear anywhere in a blank node label.</li>
+        <li>The character <a href="#cp-full-stop"><code title="full stop">.</code></a> may appear anywhere except the first or last character.</li>
         <li>The characters
-          <code>-</code> (hyphen, <code class="codepoint">U+2010</code>),
-          <code>.</code> (full stop, <code class="codepoint">U+002E</code >),
-          &#x203F;&nbsp; (undertie, <code class="codepoint">U+203F</code>),
-          &#x2040;&nbsp; (character tie, <code class="codepoint">U+2040</code>),
+          <a href="#cp-hyphen"><code title="hyphen">-</code></a>,
+          <a href="#cp-middle-dot"><code title="middle dot">·</code></a>,
+          <a href="#cp-undertie"><code title="undertie">&#x203F;</code></a>,
+          <a href="#cp-character-tie"><code title="character tie">&#x2040;</code></a>,
           and
           the combining diacritical marks (<code class="codepoint">U+0300</code>
                                         to <code class="codepoint">U+036F</code>)
@@ -341,8 +341,8 @@
       the canonical form of N-Triples provides a unique syntactic representation of any triple.
       Each code point
       can be represented by only one of
-      <code><a href="#grammar-production-UCHAR">UCHAR</a></code>,
-      <code><a href="#grammar-production-ECHAR">ECHAR</a></code>,
+      <a href="#grammar-production-UCHAR"><code>UCHAR</code></a>,
+      <a href="#grammar-production-ECHAR"><code>ECHAR</code></a>,
       or unencoded character,
       where the relevant production allows for a choice in representation.
       Each triple is represented entirely on a single line with specified white space.</p>
@@ -353,30 +353,41 @@
         <code>subject</code>,
         <code>predicate</code>,  and
         <code>object</code>,
-        any of which MUST be a single space (<code class="codepoint">U+0020</code>).</li>
+        any of which MUST be a single <a href="#cp-space"><code title="space">space</code></a>.</li>
       <li><a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> with the
         datatype <code>http://www.w3.org/2001/XMLSchema#string</code>
-        MUST NOT use the <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> part of the <a href="#grammar-production-literal">literal</a>,
-        and are represented using only <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.
+        MUST NOT use the <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> part of the <a href="#grammar-production-literal"><code>literal</code></a>,
+        and are represented using only <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>.
       </li>
-      <li><code><a href="#grammar-production-HEX">HEX</a></code> MUST use only uppercase letters (<code>[A-F]</code>).</li>
-      <li>Within <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>,
-        the characters
-        <code>U+0008</code> (<code title="BACKSPACE"><sub>BS</sub></code>),
-        <code>U+0009</code> (<code title="HORIZONTAL TAB"><sub>HT</sub></code>),
-        <code>U+000A</code> (<code title="LINE FEED"><sub>LF</sub></code>),
-        <code>U+000C</code> (<code title="FORM FEED"><sub>FF</sub></code>),
-        <code>U+000D</code> (<code title="CARRIAGE RETURN"><sub>CR</sub></code>),
-        <code>U+0022</code> (<code title="DOUBLE QUOTE">&quot;</code>), and
-        <code>U+005C</code> (<code title="BACKSLASH">\</code>)
-        MUST be encoded using <code><a href="#grammar-production-ECHAR">ECHAR</a></code>.
-        Characters in the range from <code>U+0000</code> to <code>U+001F</code>
-        and <code>U+007F</code>  (<code title="delete"><sub>DEL</sub></code>)
-        that are not represented using <code><a href="#grammar-production-ECHAR">ECHAR</a></code>
-        MUST be represented by <code><a href="#grammar-production-UCHAR">UCHAR</a></code>.
-        All other characters MUST be represented by their native [[UNICODE]] representation.</li>
-      <li>The token <code><a href="#grammar-production-EOL">EOL</a></code> MUST be a single <code>U+000A</code>.</li>
-      <li>The final <code><a href="#grammar-production-EOL">EOL</a></code> MUST be provided.</li>
+      <li><a href="#grammar-production-HEX"><code>HEX</code></a> MUST use only digits
+        (<code>[</code><a href="#cp-zero"><code title="digit zero">0</code></a>–<a href="#cp-nine"><code title="digit nine">9</code></a><code>]</code>)
+        and uppercase letters (<code>[</code><a href="#cp-uppercase-a"><code title="latin capital letter A">A</code></a>–<a href="#cp-uppercase-f"><code title="latin capital letter F">F</code></a><code>]</code>).</li>
+      <li>Within <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>:
+        <ul>
+          <li>Characters
+            <a href="#cp-backspace"><code title="backspace">BS</code></a>,
+            <a href="#cp-tab"><code title="horizontal tab">HT</code></a>,
+            <a href="#cp-line-feed"><code title="line feed">LF</code></a>,
+            <a href="#cp-form-feed"><code title="form feed">FF</code></a>,
+            <a href="#cp-carriage-return"><code title="carriage return">CR</code></a>,
+            <a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a>, and
+            <a href="#cp-backslash"><code title="backslash">\</code></a>
+            MUST be encoded using <a href="#grammar-production-ECHAR"><code>ECHAR</code></a>.</li>
+          <li>Characters in the range from <code class="codepoint">U+0000</code> to <code class="codepoint">U+0007</code>,
+            <a href="#cp-vertical-tab"><code title="vertical tab">VT</code></a>,
+            characters in the range from <code class="codepoint">U+000E</code> to <code class="codepoint">U+001F</code>,
+            <a href="#cp-delete"><code title="delete">DEL</code></a>,
+            and characters not matching the <a data-cite="XML11#charsets">Char</a> production from [[XML11]]
+            MUST be represented by <a href="#grammar-production-UCHAR"><code>UCHAR</code></a>
+            using a lowercase <code>\u</code> with 4 <a href="#grammar-production-HEX"><code>HEX</code></a>es.</li>
+          <li>All characters not required to be represented by
+            <a href="#grammar-production-ECHAR"><code>ECHAR</code></a> or
+            <a href="#grammar-production-UCHAR"><code>UCHAR</code></a>
+            MUST be represented by their native [[UNICODE]] representation.</li>
+        </ul>
+      </li>
+      <li>The token <a href="#grammar-production-EOL"><code>EOL</code></a> MUST be a single <a href="#cp-line-feed"><code title="line feed">LF</code></a>.</li>
+      <li>The final <a href="#grammar-production-EOL"><code>EOL</code></a> MUST be provided.</li>
     </ul>
   </section>
 
@@ -388,7 +399,9 @@
       <li><a>N-Triples parsers</a></li>
     </ul>
 
-    <p>A conforming <dfn>N-Triples document</dfn> is a Unicode string that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar"></a>, starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>.
+    <p>A conforming <dfn>N-Triples document</dfn> is an <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">RDF string</a>
+      that conforms to the grammar and additional constraints defined in <a class="sectionRef sec-ref" href="#n-triples-grammar"></a>,
+      starting with the <a href="#grammar-production-ntriplesDoc"><code>ntriplesDoc</code> production</a>.
       An N-Triples document serializes an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
 
     <p>A conforming <dfn>Canonical N-Triples document</dfn> is an 
@@ -398,7 +411,7 @@
     <p>A conforming <dfn>N-Triples parser</dfn> is a system capable of
       reading <a>N-Triples documents</a> on behalf of an application.
       It makes the serialized <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>,
-      as defined in <a href="#sec-parsing" class="sectionRef" ></a>,
+      as defined in <a href="#sec-parsing" class="sectionRef"></a>,
       available to the application, usually through some form of API.</p>
 
     <p>The IRI that identifies the N-Triples language is: <code>http://www.w3.org/ns/formats/N-Triples</code></p>
@@ -416,7 +429,7 @@
       <h3>Other Media Types</h3>
       <p>N-Triples has been historically provided with other media types.
         N-Triples may also be provided as <code>text/plain</code>.
-        When used in this way N-Triples MUST> use the escaped form of any character outside US-ASCII.
+        When used in this way N-Triples MUST use the escaped form of any character outside US-ASCII.
         As N-Triples is a subset of Turtle an <a>N-Triples document</a> MAY also be provided as <code>text/turtle</code>.
         In both of these cases the document is not an N-Triples document as an N-Triples document is only provided as <code>application/n-triples</code>.</p>
     </section>
@@ -426,38 +439,37 @@
 
   <section id="n-triples-grammar"><span id="sec-grammar"></span>
     <h2>N-Triples Grammar</h2>
-    <p>An <a>N-Triples document</a> is a Unicode [[UNICODE]] character string encoded in UTF-8.
-      </p>
+    <p>An <a>N-Triples document</a> is an <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">RDF string</a> encoded in UTF-8 [[!RFC3629]].</p>
 
     <section id="sec-grammar-ws">
       <h3>White Space</h3>
 
-      <p>White space (spaces <code class="codepoint">U+0020</code> or tabs <code class="codepoint">U+0009</code>) is allowed outside of terminals.
+      <p>White space (<a href="#cp-space"><code title="space">spaces</code></a>, and/or <a href="#cp-tab"><code title="horizontal tab">tabs</code></a>) is allowed outside of terminals.
         Rule names below in capitals indicate where white space is significant.</p>
 
-      <p>White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>.</p>
+      <p>White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>.</p>
 
       <p>A <dfn class="no=export">blank line</dfn>, consisting of only white space and/or a comment,
-        may appear wherever a <code><a href="#grammar-production-triple">triple</a></code> production is allowed,
+        may appear wherever a <a href="#grammar-production-triple"><code>triple</code></a> production is allowed,
         and are treated as white space.</p>
 
-      <p class="note">N-Triples allows only horizontal white space (spaces <code class="codepoint">U+0020</code> or tabs <code class="codepoint">U+0009</code>)
+      <p class="note">N-Triples allows only horizontal white space (<a href="#cp-space"><code title="space">spaces</code></a> or <a href="#cp-tab"><code title="horizontal tab">tabs</code></a>)
         as compared to Turtle [[RDF12-TURTLE]] which also treats
-        <code>LF</code> (line feed, code point <code class="codepoint">U+000A</code>)
-        and <code>CR</code> (carriage return, code point <code class="codepoint">U+000D</code>)
+        <a href="#cp-line-feed"><code title="line feed">LF</code></a>
+        and <a href="#cp-carriage-return"><code title="carriage return">CR</code></a>
         as white space.</p>
     </section>
 
     <section id="sec-grammar-comments">
       <h3>Comments</h3>
 
-      <p>Comments in N-Triples start at <code>#</code> (number sign, <code class="codepoint">U+0023</code>)
-        outside an <a href="#grammar-production-IRIREF">IRIREF</a> or <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>,
+      <p>Comments in N-Triples start at <a href="#cp-number-sign"><code title="number sign">#</code></a>
+        outside an <a href="#grammar-production-IRIREF"><code>IRIREF</code></a> or <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>,
         and continue to the end of line
-        (marked by characters
-        <code>CR</code> (carriage return, code point <code class="codepoint">U+000D</code>) or
-        <code>LF</code> (line feed, code point <code class="codepoint">U+000A</code>))
-        or end of file if there is no end of line after the comment marker.
+        — marked by character
+        <a href="#cp-carriage-return"><code title="carriage return">CR</code></a> or
+        <a href="#cp-line-feed"><code title="line feed">LF</code></a> —
+        or to the end of file, if there is no end of line after the comment marker.
         Comments are treated as white space.</p>
     </section>
 
@@ -465,8 +477,7 @@
       <h3>Grammar</h3>
 
       <p>The <abbr title="Extended Backus–Naur Form">EBNF</abbr> used
-        here is defined in XML 1.0
-        [[EBNF-NOTATION]].</p>
+        here is defined in XML 1.0 [[EBNF-NOTATION]].</p>
 
       <p>Escape sequence rules are the same as Turtle [[RDF12-TURTLE]].
         However, as only the <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>
@@ -475,6 +486,159 @@
       <div data-include="ntriples-bnf.html"></div>
     </section>
     
+
+  <section>
+    <h2>Selected Terminal Literal Strings</h2>
+    <p>This document uses some specific terminal literal strings [[EBNF-NOTATION]].
+      To clarify the Unicode code points used for these terminal literal strings, the following
+      table describes specific characters and sequences used throughout this document.</p>
+
+    <!-- Selected unicode character descriptions, taken from https://en.wikipedia.org/wiki/List_of_Unicode_characters -->
+    <table class="cp-definitions">
+      <thead>
+        <tr><th>Code</th><th>Glyph</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr id="cp-backspace">
+          <td><code class="codepoint">U+0008</code></td>
+          <td><code title="backspace">BS</code></td>
+          <td>Backspace</td>
+        </tr>
+        <tr id="cp-tab">
+          <td><code class="codepoint">U+0009</code></td>
+          <td><code title="horizontal tab">HT</code></td>
+          <td>Horizontal tab</td>
+        </tr>
+        <tr id="cp-line-feed">
+          <td><code class="codepoint">U+000A</code></td>
+          <td><code title="line feed">LF</code></td>
+          <td>Line feed</td>
+        </tr>
+        <tr id="cp-vertical-tab">
+          <td><code class="codepoint">U+000B</code></td>
+          <td><code title="vertical tab">VT</code></td>
+          <td>Vertical tab</td>
+        </tr>
+        <tr id="cp-form-feed">
+          <td><code class="codepoint">U+000C</code></td>
+          <td><code title="form feed">FF</code></td>
+          <td>Form feed</td>
+        </tr>
+        <tr id="cp-carriage-return">
+          <td><code class="codepoint">U+000D</code></td>
+          <td><code title="carriage return">CR</code></td>
+          <td>Carriage return</td>
+        </tr>
+        <tr id="cp-quotation-mark">
+          <td><code class="codepoint">U+0022</code></td>
+          <td><code title="quotation mark">&quot;</code></td>
+          <td>Quotation mark</td>
+        </tr>
+        <tr id="cp-number-sign">
+          <td><code class="codepoint">U+0023</code></td>
+          <td><code title="number sign">#</code></td>
+          <td>Number sign</td>
+        </tr>
+        <tr id="cp-hyphen">
+          <td><code class="codepoint">U+002D</code></td>
+          <td><code title="hyphen">-</code></td>
+          <td>Hyphen</td>
+        </tr>
+        <tr id="cp-full-stop">
+          <td><code class="codepoint">U+002E</code></td>
+          <td><code title="full stop">.</code></td>
+          <td>Full stop</td>
+        </tr>
+        <tr id="cp-zero">
+          <td><code class="codepoint">U+0030</code></td>
+          <td><code title="digit zero">0</code></td>
+          <td>Digit zero</td>
+        </tr>
+        <tr id="cp-nine">
+          <td><code class="codepoint">U+0039</code></td>
+          <td><code title="digit nine">9</code></td>
+          <td>Digit nine</td>
+        </tr>
+        <tr id="cp-colon">
+          <td><code class="codepoint">U+003B</code></td>
+          <td><code title="colon">:</code></td>
+          <td>Colon</td>
+        </tr>
+        <tr id="cp-less-than">
+          <td><code class="codepoint">U+003C</code></td>
+          <td><code title="less than sign">&lt;</code></td>
+          <td>Less-than sign</td>
+        </tr>
+        <tr id="cp-greater-than">
+          <td><code class="codepoint">U+003E</code></td>
+          <td><code title="greater-than sign">&gt;</code></td>
+          <td>Greater-than sign</td>
+        </tr>
+        <tr id="cp-at-sign">
+          <td><code class="codepoint">U+0040</code></td>
+          <td><code title="at sign">@</code></td>
+          <td>At sign</td>
+        </tr>
+        <tr id="cp-uppercase-a">
+          <td><code class="codepoint">U+0041</code></td>
+          <td><code title="latin capital letter A">A</code></td>
+          <td>Latin capital letter E</td>
+        </tr>
+        <tr id="cp-uppercase-f">
+          <td><code class="codepoint">U+0046</code></td>
+          <td><code title="latin capital letter F">F</code></td>
+          <td>Latin capital letter F</td>
+        </tr>
+        <tr id="cp-backslash">
+          <td><code class="codepoint">U+005C</code></td>
+          <td><code title="backslash">\</code></td>
+          <td>Backslash</td>
+        </tr>
+        <tr id="cp-underscore">
+          <td><code class="codepoint">U+005F</code></td>
+          <td><code title="underscore">_</code></td>
+          <td>Underscore</td>
+        </tr>
+        <tr id="cp-delete">
+          <td><code class="codepoint">U+007F</code></td>
+          <td><code title="delete">DEL</code></td>
+          <td>Delete</td>
+        </tr>
+        <tr id="cp-middle-dot">
+          <td><code class="codepoint">U+00B7</code></td>
+          <td><code title="middle dot">·</code></td>
+          <td>Middle dot</td>
+        </tr>
+        <tr id="cp-undertie">
+          <td><code class="codepoint">U+203F</code></td>
+          <td><code title="undertie">&#x203F;</code></td>
+          <td>Undertie</td>
+        </tr>
+        <tr id="cp-character-tie">
+          <td><code class="codepoint">U+2040</code></td>
+          <td><code title="character tie">&#x2040;</code></td>
+          <td>Character tie</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Other short terminal literal strings are composed of specific sequences of Unicode characters:</p>
+  
+    <dl>
+      <dt id="cp-space"><code title="space">space</code></dt>
+      <dd><code class="codepoint">U+0020</code></dd>
+      <dt id="cp-double-lt"><code>&lt;&lt;</code></dt>
+      <dd>two concatenated less-than sign characters, each having the code point <code class="codepoint">U+003C</code></dd>
+      <dt id="cp-double-gt"><code>&gt;&gt;</code></dt>
+      <dd>two concatenated greater-than sign characters, each having the code point <code class="codepoint">U+003E</code></dd>
+      <dt id="cp-double-circumflex"><code>^^</code></dt>
+      <dd>two concatenated circumflex accent characters, each having the code point <code class="codepoint">U+005E</code></dd>
+      <dt id="cp-underscore-colon"><code>_:</code></dt>
+      <dd><a href="#cp-underscore"><code title="underscore">_</code></a> followed by <a href="#cp-colon"><code title="colon">:</code></a></dd>
+      <dt id="cp-hyphen-hyphen"><code>--</code></dt>
+      <dd>two concatenated <a href="#cp-hyphen"><code title="hyphen">-</code></a> characters</dd>
+    </dl>
+  </section>
   </section>
 
   <section id="sec-parsing">
@@ -500,7 +664,7 @@
               <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a>
             </td>
             <td>
-              The string after '<code>_:</code>',
+              The string after <a href="#cp-underscore-colon"><code>_:</code></a>,
               is a key in <a href="#bnodeLabels">bnodeLabels</a>.
               If there is no corresponding <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> in the map,
               one is allocated.
@@ -514,7 +678,8 @@
               <a data-cite="RDF12-CONCEPTS#dfn-iri">IRI</a>
             </td>
             <td>
-              The characters between <code>&lt;</code> and <code>&gt;</code> are taken,
+              The characters between <a href="#cp-less-than"><code title="less-than sign">&lt;</code></a>
+              and <a href="#cp-greater-than"><code title="greater-than sign">&gt;</code></a> are taken,
               with escape sequences unescaped,
               to form the IRI.
             </td>
@@ -527,11 +692,11 @@
               <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
             </td>
             <td>
-              The characters following the <code>@</code> (at sign, <code class="codepoint">U+0040</code>)
+              The characters following the <a href="#cp-at-sign"><code title="at sign">@</code></a>
               form the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
               if the matched characters include
-              <code>--</code> (two concatenated hyphen characters, each having the code point <code class="codepoint">U+002D</code>).
+              <a href="#cp-hyphen-hyphen"><code>--</code></a>.
             </td>
           </tr>
           <tr id="handle-STRING_LITERAL_QUOTE">
@@ -542,9 +707,9 @@
               <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a>
             </td>
             <td>
-              The characters between the outermost <code>"</code>s are taken,
+              The characters between the outermost quotation marks (<a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a>) are taken,
               with escape sequences unescaped,
-              to form the <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">RDF string</a> of a lexical form.
+              to form the <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">string</a> of a <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a>.
             </td>
           </tr>
           <tr id="handle-literal">
@@ -554,20 +719,22 @@
             <td><a data-cite="RDF12-CONCEPTS#dfn-literal">literal</a>
             </td>
             <td>
-              The literal has a lexical form of the first rule argument,
-              <code>STRING_LITERAL_QUOTE</code>,
+              The literal has a <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> of the first rule argument,
+              <a href="#grammar-production-STRING_LITERAL_QUOTE" class="type lexicalForm"><code>STRING_LITERAL_QUOTE</code></a>,
               and either a <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               with optional <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
-              from <code><a href="#handle-LANG_DIR" class="type langDir">LANG_DIR</a></code>
+              from <a href="#handle-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a>
               or a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> of <code>iri</code>,
               depending on which rule matched the input.
-              If the <code><a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a></code> rule matches,
-              the language tag and base direction are taken from <a href=#handle-LANG_DIR class="type langDir">LANG_DIR</a>.
+              If the <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a> rule matched,
+              the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
+              and <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
+              are taken from <a href=#handle-LANG_DIR class="type langDir">LANG_DIR</a>.
               If there is no <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
               the datatype is <code>rdf:langString</code>.
               If there is a <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
               the datatype is <code>rdf:dirLangString</code>.
-              If neither <code><a href="#handle-LANG_DIR" class="type langDir">LANG_DIR</a></code>
+              If neither <a href="#handle-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a>
               nor <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> match,
               the literal has a datatype of <code>xsd:string</code>.
             </td>
@@ -582,9 +749,9 @@
             <td>
               The <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triple</a>
               is composed of the terms constructed from
-              the <code><a href="#grammar-production-subject">subject</a></code>,
-              <code><a href="#grammar-production-predicate">predicate</a></code>, and
-              <code><a href="#grammar-production-object">object</a></code> productions.
+              the <a href="#grammar-production-subject"><code>subject</code></a>,
+              <a href="#grammar-production-predicate"><code>predicate</code></a>, and
+              <a href="#grammar-production-object"><code>object</code></a> productions.
             </td>
           </tr>
         </tbody>
@@ -595,11 +762,11 @@
       <h3>RDF Triple Construction</h3>
       <p>An <a>N-Triples document</a> defines an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>
         composed of a set of <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triples</a>.
-        The <code><a href="#grammar-production-triple">triple</a></code> production
+        The <a href="#grammar-production-triple"><code>triple</code></a> production
         produces a triple defined by the terms constructed for
-        <code><a href="#grammar-production-subject">subject</a></code>,
-        <code><a href="#grammar-production-predicate">predicate</a></code>, and
-        <code><a href="#grammar-production-object">object</a></code>.</p>
+        <a href="#grammar-production-subject"><code>subject</code></a>,
+        <a href="#grammar-production-predicate"><code>predicate</code></a>, and
+        <a href="#grammar-production-object"><code>object</code></a>.</p>
     </section>
   </section>
 
@@ -621,7 +788,7 @@
 <section id="security"  class="appendix informative">
   <h2>Security Considerations</h2>
 
-  <p>The <a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a>
+  <p>The <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>
     production allows the use of unescaped control characters.
     Although this specification does not directly expose this content to an end user,
     it might be presented through a user agent, which may cause the presented text to 
@@ -774,7 +941,7 @@
       for <a href="#sec-grammar-ws">White space</a> and
       <a href="#sec-grammar-comments">Comments</a>,
       better mirroring [[RDF12-TURTLE]].</li>
-    <li>Updated the <a href="#grammar-production-PN_CHARS_U">PN_CHARS_U</a>
+    <li>Updated the <a href="#grammar-production-PN_CHARS_U"><code>PN_CHARS_U</code></a>
       grammar production to be consisten with with Turtle.</li>
    <li>Adds support for <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triples</a>
       as described in <a href="#quoted-triples" class="sectionRef"></a>
@@ -785,7 +952,7 @@
       use of <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRIs</a> and expand the use of escapes
       in literals.</li>
     <li>Changes the `LANGTAG` terminal production to
-      <a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a> to include
+      <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a> to include
       an optional <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>.</li>
 </ul>
 </section>
