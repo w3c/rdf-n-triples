@@ -362,6 +362,9 @@
       <li><a href="#grammar-production-HEX"><code>HEX</code></a> MUST use only digits
         (<code>[</code><a href="#cp-zero"><code title="digit zero">0</code></a>–<a href="#cp-nine"><code title="digit nine">9</code></a><code>]</code>)
         and uppercase letters (<code>[</code><a href="#cp-uppercase-a"><code title="latin capital letter A">A</code></a>–<a href="#cp-uppercase-f"><code title="latin capital letter F">F</code></a><code>]</code>).</li>
+      <li>Alphabetic characters in <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a> MUST use only
+        the lowercase letters (<code>[</code><a href="#cp-lowercase-a"><code title="latin small letter A">a</code></a>–<a href="#cp-lowercase-z"><code title="latin small letter Z">z</code></a><code>]</code>)
+        with any uppercase letters <a data-cite="I18N-GLOSSARY#def_case_mapping">case mapped</a> to lowercase.</li>
       <li>Within <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>:
         <ul>
           <li>Characters
@@ -582,7 +585,7 @@
         <tr id="cp-uppercase-a">
           <td><code class="codepoint">U+0041</code></td>
           <td><code title="latin capital letter A">A</code></td>
-          <td>Latin capital letter E</td>
+          <td>Latin capital letter A</td>
         </tr>
         <tr id="cp-uppercase-f">
           <td><code class="codepoint">U+0046</code></td>
@@ -598,6 +601,16 @@
           <td><code class="codepoint">U+005F</code></td>
           <td><code title="underscore">_</code></td>
           <td>Underscore</td>
+        </tr>
+        <tr id="cp-lowercase-a">
+          <td><code class="codepoint">U+0061</code></td>
+          <td><code title="latin small letter A">a</code></td>
+          <td>Latin small letter A</td>
+        </tr>
+        <tr id="cp-lowercase-z">
+          <td><code class="codepoint">U+007A</code></td>
+          <td><code title="latin small letter Z">F</code></td>
+          <td>Latin small letter Z</td>
         </tr>
         <tr id="cp-delete">
           <td><code class="codepoint">U+007F</code></td>
@@ -948,12 +961,15 @@
       with updates to <a href="#sec-parsing-terms" class="sectionRef"></a>.</li>
     <li>Separated <a href="#security"></a> from <a href="#sec-mediaReg-n-triples"></a>
       and updated language.</li>
-    <li>Changes <a href="#canonical-ntriples"></a> to clarify
-      use of <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRIs</a> and expand the use of escapes
-      in literals.</li>
     <li>Changes the `LANGTAG` terminal production to
       <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a> to include
       an optional <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>.</li>
+    <li>Changes <a href="#canonical-ntriples"></a> to clarify
+      use of <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRIs</a> and expand the use of escapes
+      in literals
+      and to require that the characters in
+      <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a>
+      be in lowercase.</li>
 </ul>
 </section>
 
