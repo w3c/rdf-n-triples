@@ -17,7 +17,7 @@
       <td>[3]</td>
       <td><code>subject</code></td>
       <td>::=</td>
-      <td><a href="#grammar-production-IRIREF">IRIREF</a> <code class="grammar-alt">|</code> <a href="#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code class="grammar-alt">|</code> <a href="#grammar-production-quotedTriple">quotedTriple</a></td>
+      <td><a href="#grammar-production-IRIREF">IRIREF</a> <code class="grammar-alt">|</code> <a href="#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code class="grammar-alt"></td>
     </tr>
     <tr id="grammar-production-predicate">
       <td>[4]</td>
@@ -29,7 +29,7 @@
       <td>[5]</td>
       <td><code>object</code></td>
       <td>::=</td>
-      <td><a href="#grammar-production-IRIREF">IRIREF</a> <code class="grammar-alt">|</code> <a href="#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code class="grammar-alt">|</code> <a href="#grammar-production-literal">literal</a> <code class="grammar-alt">|</code> <a href="#grammar-production-quotedTriple">quotedTriple</a></td>
+      <td><a href="#grammar-production-IRIREF">IRIREF</a> <code class="grammar-alt">|</code> <a href="#grammar-production-BLANK_NODE_LABEL">BLANK_NODE_LABEL</a> <code class="grammar-alt">|</code> <a href="#grammar-production-literal">literal</a> <code class="grammar-alt">|</code> <a href="#grammar-production-tripleTerm">tripleTerm</a></td>
     </tr>
     <tr id="grammar-production-literal">
       <td>[6]</td>
@@ -37,9 +37,9 @@
       <td>::=</td>
       <td><a href="#grammar-production-STRING_LITERAL_QUOTE">STRING_LITERAL_QUOTE</a> <code class="grammar-paren">(</code><code class="grammar-paren">(</code>'<code class="grammar-literal">^^</code>' <a href="#grammar-production-IRIREF">IRIREF</a><code class="grammar-paren">)</code> <code class="grammar-alt">|</code> <a href="#grammar-production-LANG_DIR">LANG_DIR</a><code class="grammar-paren">)</code><code class="grammar-opt">?</code></td>
     </tr>
-    <tr id="grammar-production-quotedTriple">
+    <tr id="grammar-production-tripleTerm">
       <td>[7]</td>
-      <td><code>quotedTriple</code></td>
+      <td><code>tripleTerm</code></td>
       <td>::=</td>
       <td>'<code class="grammar-literal">&lt;&lt;</code>' <a href="#grammar-production-subject">subject</a> <a href="#grammar-production-predicate">predicate</a> <a href="#grammar-production-object">object</a> '<code class="grammar-literal">&gt;&gt;</code>'</td>
     </tr>

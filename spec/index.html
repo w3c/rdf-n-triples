@@ -86,7 +86,7 @@
   <section id='abstract'>
     <p>N-Triples is a line-based, plain text format for encoding an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>.</p>
 
-    <p>RDF 1.2 N-Triples introduces <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triples</a>
+    <p>RDF 1.2 N-Triples introduces <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>
       as a fourth kind of <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF term</a>
       which can be used as the
       <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a> or
@@ -194,32 +194,35 @@
       </pre>
     </section>
 
-    <section id="quoted-triples">
-      <h3>Quoted Triples</h3>
+    <section id="triple-terms">
+      <h3>Triple Terms</h3>
 
-      <p>A <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triple</a>
-        may be the <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a> or
-        <a data-cite="RDF12-CONCEPTS#dfn-object">object</a> of an
+      <p>A <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a>
+        may be the <a data-cite="RDF12-CONCEPTS#dfn-object">object</a> of an
         <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF triple</a>.</p>
 
-      <p>A <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triple</a>
-        is represented as a <a href="#grammar-production-quotedTriple"><code>quotedTriple</code></a> with
+      <p>A <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a>
+        is represented as a <a href="#grammar-production-tripleTerm"><code>tripleTerm</code></a> with
         <a href="#grammar-production-subject"><code>subject</code></a>,
         <a href="#grammar-production-predicate"><code>predicate</code></a>, and
         <a href="#grammar-production-object"><code>object</code></a>
         preceded by <a href="#cp-double-lt"><code>&lt;&lt;</code></a>, and
         followed by <a href="#cp-double-gt"><code>&gt;&gt;</code></a>.
-        Note that <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triples</a>
+        Note that <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>
         may be nested.
        </p>
 
-      <pre id="ex-quoted-triple" class="example ntriples" data-transform="updateExample"
-           title="Quoted Triple">
+      <pre id="ex-triple-term" class="example ntriples" data-transform="updateExample"
+           title="Triple Term">
         <!--
-        _:e38                                                <ex:familyName>                  "Smith" .
-        << _:e38 <http://example.com/jobTitle> "Designer" >> <http://example.com/accordingTo> _:e22 .
+        _:e38  <ex:familyName>                                      "Smith" .
+        _:anno <http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies> <<( _:e38 <http://example.com/jobTitle> "Designer" )>> .
+        _:anno <http://example.com/accordingTo>                     _:e22 .
         -->
       </pre>
+
+      <p class="note">To be considered well formed, a triple containing a <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a>
+        must use the predicate <code>rdf:reifies</code>. <span class="ednote">Revisit when the "well formed" terminology has been defined.</span></p>
     </section>
 
     <section id="sec-iri">
@@ -752,15 +755,15 @@
               the literal has a datatype of <code>xsd:string</code>.
             </td>
           </tr>
-          <tr id="handle-quotedTriple">
+          <tr id="handle-tripleTerm">
             <td style="text-align:left;">
-              <a href="#grammar-production-quotedTriple" class="type quotedTriple">quotedTriple</a>
+              <a href="#grammar-production-tripleTerm" class="type tripleTerm">tripleTerm</a>
             </td>
             <td>
-              <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triple</a>
+              <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a>
             </td>
             <td>
-              The <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triple</a>
+              The <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple term</a>
               is composed of the terms constructed from
               the <a href="#grammar-production-subject"><code>subject</code></a>,
               <a href="#grammar-production-predicate"><code>predicate</code></a>, and
@@ -956,8 +959,8 @@
       better mirroring [[RDF12-TURTLE]].</li>
     <li>Updated the <a href="#grammar-production-PN_CHARS_U"><code>PN_CHARS_U</code></a>
       grammar production to be consisten with with Turtle.</li>
-   <li>Adds support for <a data-cite="RDF12-CONCEPTS#dfn-quoted-triple">quoted triples</a>
-      as described in <a href="#quoted-triples" class="sectionRef"></a>
+   <li>Adds support for <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>
+      as described in <a href="#triple-terms" class="sectionRef"></a>
       with updates to <a href="#sec-parsing-terms" class="sectionRef"></a>.</li>
     <li>Separated <a href="#security"></a> from <a href="#sec-mediaReg-n-triples"></a>
       and updated language.</li>
