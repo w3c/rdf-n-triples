@@ -4,7 +4,7 @@ subject           ::= IRIREF | BLANK_NODE_LABEL
 predicate         ::= IRIREF
 object            ::= IRIREF | BLANK_NODE_LABEL | literal | tripleTerm
 literal           ::= STRING_LITERAL_QUOTE ('^^' IRIREF | LANG_DIR )?
-tripleTerm        ::= '<<' subject predicate object '>>'
+tripleTerm        ::= '<<(' subject predicate object ')>>'
 
 @terminals
 
