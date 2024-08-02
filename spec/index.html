@@ -206,8 +206,8 @@
         <a href="#grammar-production-subject"><code>subject</code></a>,
         <a href="#grammar-production-predicate"><code>predicate</code></a>, and
         <a href="#grammar-production-object"><code>object</code></a>
-        preceded by <a href="#cp-double-lt"><code>&lt;&lt;</code></a>, and
-        followed by <a href="#cp-double-gt"><code>&gt;&gt;</code></a>.
+        preceded by <a href="#cp-double-lt-paren"><code>&lt;&lt;(</code></a>, and
+        followed by <a href="#cp-paren-double-gt"><code>)&gt;&gt;</code></a>.
         Note that <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>
         may be nested.
        </p>
@@ -640,10 +640,12 @@
     <dl>
       <dt id="cp-space"><code title="space">space</code></dt>
       <dd><code class="codepoint">U+0020</code></dd>
-      <dt id="cp-double-lt"><code>&lt;&lt;</code></dt>
-      <dd>two concatenated less-than sign characters, each having the code point <code class="codepoint">U+003C</code></dd>
-      <dt id="cp-double-gt"><code>&gt;&gt;</code></dt>
-      <dd>two concatenated greater-than sign characters, each having the code point <code class="codepoint">U+003E</code></dd>
+      <dt id="cp-double-lt-paren"><code>&lt;&lt;(</code></dt>
+      <dd>two concatenated less-than sign characters, each having the code point <code class="codepoint">U+003C</code>,
+        followed by a left parenthesis character, having the code point <code class="codepoint">U+0028</code></dd>
+      <dt id="cp-paren-double-gt"><code>)&gt;&gt;</code></dt>
+      <dd>a left parenthesis character, having the code point <code class="codepoint">U+0029</code>
+        followed by two concatenated greater-than sign characters, each having the code point <code class="codepoint">U+003E</code></dd>
       <dt id="cp-double-circumflex"><code>^^</code></dt>
       <dd>two concatenated circumflex accent characters, each having the code point <code class="codepoint">U+005E</code></dd>
       <dt id="cp-underscore-colon"><code>_:</code></dt>
