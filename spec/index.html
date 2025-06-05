@@ -217,10 +217,10 @@
 
       <p>The N-Triples language has evolved since its origin, and RDF 1.2
         adds new syntax.
-        RDF 1.2 N-Triple introduces the
+        RDF 1.2 N-Triples introduces the
         <a href="#grammar-production-versionDirective"><code>VERSION</code></a> directive
         along with an optional `version` <a href="#n-triples-mediatype">Media Type parameter</a>.
-        When serializing N-Triple with new features such as
+        When serializing N-Triples with new features such as
         <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>
         or <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>,
         authors can announce the use of the new syntax forms using these directives.
@@ -304,7 +304,7 @@
       <p>Literals (Grammar production <a href="#grammar-production-literal"><code>Literal</code></a>)
         have a lexical form followed by either a
         <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-        (possibly including <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>),
+        (possibly including an <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>),
         a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
         or neither.</p>
 
@@ -348,7 +348,7 @@
         <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show"^^<http://www.w3.org/2001/XMLSchema#string> . # literal with XML Schema string datatype
         <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show" . # same as above
         <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en . # literal with a language tag
-        <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en-ltr . # literal with a language tag and initial text direction
+        <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en-ltr . # literal with a language tag and an initial text direction
         <http://example.org/show/218> <http://example.org/show/localName> "Cette Série des Années Septante"@fr-be .  # literal outside of ASCII range with a region subtag
         <http://example.org/#spiderman> <http://example.org/text> "This is a multi-line literal with many quotation marks (""""") and two apostrophes ('')." .
         <http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/atomicNumber> "2"^^<http://www.w3.org/2001/XMLSchema#integer> . # xsd:integer
@@ -883,7 +883,7 @@
               are taken from <a href=#handle-LANG_DIR class="type langDir">LANG_DIR</a>.
               If there is no <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
               the datatype is <code>rdf:langString</code>.
-              If there is a <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
+              If there is an <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
               the datatype is <code>rdf:dirLangString</code>.
               If neither <a href="#handle-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a>
               nor <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> match,
@@ -993,7 +993,7 @@
 
 <section class="appendix" id="sec-mediaReg-n-triples">
   <h2>Internet Media Type, File Extension and Macintosh File Type</h2>
- <p>The Internet Media Type (formerly known as MIME Type) for N-Triples is &quot;application/n-triples&quot;.</p>
+ <p>The Internet Media Type (formerly known as MIME Type) for N-Triples is &quot;`application/n-triples`&quot;.</p>
   <p>The information that follows has been submitted to the Internet Engineering Steering Group (IESG) for review, approval, and registration with IANA.</p>
   <dl>
     <dt>Type name:</dt>
