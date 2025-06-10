@@ -8,6 +8,16 @@
   <script src="./common/local-biblio.js" class="remove"></script>
   <script src="./common/fixup.js" class="remove"></script>
   <script class='remove'>
+    // Use fragment identifier of test as name.
+    function data_test_display() {
+        const test_references = document.querySelectorAll('details.respec-tests-details a');
+        for( const a of test_references ) {
+            const href = a.href;
+            const test_reference = href.split('#')[1];
+            a.textContent = test_reference;
+        }
+    }
+
     var respecConfig = {
       localBiblio:          localBibliography,
       specStatus:           "ED",
@@ -36,6 +46,8 @@
       ],
 
       xref: ["RDF12-CONCEPTS"],
+      postProcess: [data_test_display],
+
       github: "https://github.com/w3c/rdf-n-triples/",
       group:           "rdf-star",
       doJsonLd:     true,
@@ -49,7 +61,11 @@
   .separated thead tr th { border: 1px solid black; padding: .2em; }
   .separated tbody tr td { border: 1px solid black; text-align: center; }
   .separated tbody tr td.r { text-align: right; padding: .5em; }
-  .grammar td { font-family: monospace; vertical-align: top; }
+  .grammar td {
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", Monaco, monospace;
+    font-size: .9em;
+    vertical-align: top;
+  }
   .grammar-opt,
   .grammar-alt,
   .grammar-paren,
@@ -229,7 +245,7 @@
         <a data-cite="RDF12-CONCEPTS#dfn-iri">IRIs</a> may be written only as <a data-cite="RFC3986#section-5">resolved</a> IRIs.
         IRIs are preceded by <a href="#cp-less-than"><code title="less-than sign">&lt;</code></a> and
         followed by <a href="#cp-greater-than"><code title="greater-than sign">&gt;</code></a>,
-        and may contain numeric escape sequences (described below).
+        and may contain <a data-cite="RDF12-TURTLE#dfn-numeric-escape-sequence">numeric escape sequences</a> (described below).
         For example <code>&lt;http://example.org/#green-goblin&gt;</code>.
       </p>
     </section>
@@ -249,7 +265,9 @@
 
       <p>The representation of the <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> consists of an
         initial delimiter <a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a>,
-        a sequence of permitted characters or numeric escape sequence or string escape sequence,
+        a sequence of permitted characters or
+        <a data-cite="RDF12-TURTLE#dfn-numeric-escape-sequence">numeric escape sequences</a> or
+        <a data-cite="RDF12-TURTLE#dfn-string-esape-sequence">string escape sequences</a>,
         and a final delimiter.</p>
 
       <p>Literals may not contain the characters <a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a>,
@@ -304,7 +322,7 @@
       </p>
       <ul>
         <li>The characters <a href="#cp-underscore"><code title="underscore">_</code></a> and
-          the digit characters <a href="#cp-zero"><code title="digit zero">0</code></a>–<a href="#cp-nine"><code title="digit nine">9</code></a>, inclusive
+          the digit characters <a href="#cp-zero"><code title="digit zero">0</code></a>–<a href="#cp-nine"><code title="digit nine">9</code></a>
           may appear anywhere in a blank node label.</li>
         <li>The character <a href="#cp-full-stop"><code title="full stop">.</code></a> may appear anywhere except the first or last character.</li>
         <li>The characters
@@ -455,7 +473,13 @@
 
   <section id="n-triples-grammar"><span id="sec-grammar"></span>
     <h2>N-Triples Grammar</h2>
-    <p>An <a>N-Triples document</a> is an <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">RDF string</a> encoded in UTF-8 [[!RFC3629]].</p>
+    <p>An <a>N-Triples document</a> is an <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">RDF string</a> encoded in UTF-8 [[!RFC3629]].
+    Only <a data-cite="I18N-GLOSSARY#dfn-scalar-value" class="lint-ignore">Unicode scalar values</a>,
+    in the ranges <code class="codepoint">U+0000</code> to <code class="codepoint">U+D7FF</code> 
+    and <code class="codepoint">U+E000</code> to <code class="codepoint">U+10FFFF</code>,
+    are allowed. This excludes 
+    <a data-cite="I18N-GLOSSARY#dfn-surrogate" class="lint-ignore">surrogate code points</a>,
+    range <code class="codepoint">U+D800</code> to <code class="codepoint">U+DFFF</code>.</p>
 
     <section id="sec-grammar-ws">
       <h3>White Space</h3>
@@ -977,7 +1001,10 @@
       and to require that the characters in
       <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a>
       be in lowercase.</li>
-</ul>
+    <li>Clarify that 
+      <a data-cite="I18N-GLOSSARY#dfn-surrogate" class="lint-ignore">Unicode surrogates</a> 
+      are not legal in N-Triples documents, nor as the value of a Unicode escape sequence.</li>
+  </ul>
 </section>
 
 <section id="index" class="appendix informative"></section>
