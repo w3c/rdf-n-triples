@@ -384,21 +384,35 @@
         <code>object</code>,
         and the terminal <a href="#cp-double-lt-paren"><code>&lt;&lt;(</code></a>,
         any of which MUST be a single <a href="#cp-space"><code title="space">space</code></a>.</li>
-      <li id="c14n-dt-tests" data-tests="c14n/index.html#literal_all_controls">
+      <li id="c14n-dt-tests" data-tests="c14n/index.html#literal_with_string_dt">
         <a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> with the
         datatype <code>http://www.w3.org/2001/XMLSchema#string</code>
         MUST NOT use the <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> part of the <a href="#grammar-production-literal"><code>literal</code></a>,
         and are represented using only <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>.
       </li>
-      <li id="c14n-hex-tests" data-tests=""><a href="#grammar-production-HEX"><code>HEX</code></a> MUST use only digits
+      <li id="c14n-hex-tests" data-tests="
+        c14n/index.html#literal_with_numeric_escape4,
+        c14n/index.html#literal_with_numeric_escape8">
+        <a href="#grammar-production-HEX"><code>HEX</code></a> MUST use only digits
         (<code>[</code><a href="#cp-zero"><code title="digit zero">0</code></a>–<a href="#cp-nine"><code title="digit nine">9</code></a><code>]</code>)
         and uppercase letters (<code>[</code><a href="#cp-uppercase-a"><code title="latin capital letter A">A</code></a>–<a href="#cp-uppercase-f"><code title="latin capital letter F">F</code></a><code>]</code>).</li>
-      <li id="c14n-langdir-tests" data-tests="">Alphabetic characters in <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a> MUST use only
+      <li id="c14n-langdir-tests" data-tests="
+        c4n/index.html#langtagged_string,
+        c4n/index.html#dirlangtagged_string">
+        Alphabetic characters in <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a> MUST use only
         the lowercase letters (<code>[</code><a href="#cp-lowercase-a"><code title="latin small letter A">a</code></a>–<a href="#cp-lowercase-z"><code title="latin small letter Z">z</code></a><code>]</code>)
         with any uppercase letters <a data-cite="I18N-GLOSSARY#def_case_mapping">case mapped</a> to lowercase.</li>
       <li>Within <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>:
         <ul>
-          <li id="c14n-echar-tests" data-tests="">Characters
+          <li id="c14n-echar-tests" data-tests="
+            c4n/index.html#literal_with_BACKSPACE,
+            c4n/index.html#literal_with_CARRIAGE_RETURN,
+            c4n/index.html#literal_with_CHARACTER_TABULATION,
+            c4n/index.html#literal_with_dquote,
+            c4n/index.html#literal_with_FORM_FEED,
+            c4n/index.html#literal_with_LINE_FEED,
+            c4n/index.html#literal_with_REVERSE_SOLIDUS">
+            Characters
             <a href="#cp-backspace"><code title="backspace">BS</code></a>,
             <a href="#cp-tab"><code title="horizontal tab">HT</code></a>,
             <a href="#cp-line-feed"><code title="line feed">LF</code></a>,
@@ -407,21 +421,26 @@
             <a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a>, and
             <a href="#cp-backslash"><code title="backslash">\</code></a>
             MUST be encoded using <a href="#grammar-production-ECHAR"><code>ECHAR</code></a>.</li>
-          <li id="c14n-uchar-tests" data-tests="">Characters in the range from <code class="codepoint">U+0000</code> to <code class="codepoint">U+0007</code>,
+          <li id="c14n-uchar-tests" data-tests="c4n/index.html#literal_with_UTF8_boundaries">
+            Characters in the range from <code class="codepoint">U+0000</code> to <code class="codepoint">U+0007</code>,
             <a href="#cp-vertical-tab"><code title="vertical tab">VT</code></a>,
             characters in the range from <code class="codepoint">U+000E</code> to <code class="codepoint">U+001F</code>,
             <a href="#cp-delete"><code title="delete">DEL</code></a>,
             and characters not matching the <a data-cite="XML11#charsets">Char</a> production from [[XML11]]
             MUST be represented by <a href="#grammar-production-UCHAR"><code>UCHAR</code></a>
             using a lowercase <code>\u</code> with 4 <a href="#grammar-production-HEX"><code>HEX</code></a>es.</li>
-          <li id="c14n-uni-tests" data-tests="">All characters not required to be represented by
+          <li id="c14n-uni-tests" data-tests="
+            c4n/index.html#literal_all_controls,
+            c4n/index.html#literal_all_punctuation,
+            c4n/index.html#literal_ascii_boundaries">
+            All characters not required to be represented by
             <a href="#grammar-production-ECHAR"><code>ECHAR</code></a> or
             <a href="#grammar-production-UCHAR"><code>UCHAR</code></a>
             MUST be represented by their native [[UNICODE]] representation.</li>
         </ul>
       </li>
-      <li id="c14n-eol-tests" data-tests="">The token <a href="#grammar-production-EOL"><code>EOL</code></a> MUST be a single <a href="#cp-line-feed"><code title="line feed">LF</code></a>.</li>
-      <li id="c14n-final-eol-tests" data-tests="">The final <a href="#grammar-production-EOL"><code>EOL</code></a> MUST be provided.</li>
+      <li id="c14n-eol-tests">The token <a href="#grammar-production-EOL"><code>EOL</code></a> MUST be a single <a href="#cp-line-feed"><code title="line feed">LF</code></a>.</li>
+      <li id="c14n-final-eol-tests">The final <a href="#grammar-production-EOL"><code>EOL</code></a> MUST be provided.</li>
     </ul>
   </section>
 
@@ -484,12 +503,21 @@
     <section id="sec-grammar-ws">
       <h3>White Space</h3>
 
-      <p>White space (<a href="#cp-space"><code title="space">spaces</code></a>, and/or <a href="#cp-tab"><code title="horizontal tab">tabs</code></a>) is allowed outside of terminals.
+      <p id="ws-tests1" data-tests="
+        c14n/index.html#extra_whitespace-01,
+        c14n/index.html#extra_whitespace-02,
+        c14n/index.html#extra_whitespace-03,
+        c14n/index.html#extra_whitespace-04">
+        White space (<a href="#cp-space"><code title="space">spaces</code></a>, and/or <a href="#cp-tab"><code title="horizontal tab">tabs</code></a>) is allowed outside of terminals.
         Rule names below in capitals indicate where white space is significant.</p>
 
-      <p>White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>.</p>
+      <p id="ws-tests2" data-tests="c14n/index.html#literal_with_extra_whitespace">
+        White space is significant in the production <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>.</p>
 
-      <p>A <dfn class="no=export">blank line</dfn>, consisting of only white space and/or a comment,
+      <p id="ws-tests3" data-tests="
+        ../../rdf11/rdf-n-triples/index.html#nt-syntax-file-02,
+        ../../rdf11/rdf-n-triples/index.html#nt-syntax-file-03">
+        A <dfn class="no=export">blank line</dfn>, consisting of only white space and/or a comment,
         may appear wherever a <a href="#grammar-production-triple"><code>triple</code></a> production is allowed,
         and are treated as white space.</p>
 
@@ -503,7 +531,8 @@
     <section id="sec-grammar-comments">
       <h3>Comments</h3>
 
-      <p>Comments in N-Triples start at <a href="#cp-number-sign"><code title="number sign">#</code></a>
+      <p id="comments-tests" data-tests="../../rdf11/rdf-n-triples/index.html#comment_following_triple">
+        Comments in N-Triples start at <a href="#cp-number-sign"><code title="number sign">#</code></a>
         outside an <a href="#grammar-production-IRIREF"><code>IRIREF</code></a> or <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>,
         and continue to the end of line
         — marked by character
