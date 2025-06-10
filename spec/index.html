@@ -397,21 +397,21 @@
         (<code>[</code><a href="#cp-zero"><code title="digit zero">0</code></a>–<a href="#cp-nine"><code title="digit nine">9</code></a><code>]</code>)
         and uppercase letters (<code>[</code><a href="#cp-uppercase-a"><code title="latin capital letter A">A</code></a>–<a href="#cp-uppercase-f"><code title="latin capital letter F">F</code></a><code>]</code>).</li>
       <li id="c14n-langdir-tests" data-tests="
-        c4n/index.html#langtagged_string,
-        c4n/index.html#dirlangtagged_string">
+        c14n/index.html#langtagged_string,
+        c14n/index.html#dirlangtagged_string">
         Alphabetic characters in <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a> MUST use only
         the lowercase letters (<code>[</code><a href="#cp-lowercase-a"><code title="latin small letter A">a</code></a>–<a href="#cp-lowercase-z"><code title="latin small letter Z">z</code></a><code>]</code>)
         with any uppercase letters <a data-cite="I18N-GLOSSARY#def_case_mapping">case mapped</a> to lowercase.</li>
       <li>Within <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>:
         <ul>
           <li id="c14n-echar-tests" data-tests="
-            c4n/index.html#literal_with_BACKSPACE,
-            c4n/index.html#literal_with_CARRIAGE_RETURN,
-            c4n/index.html#literal_with_CHARACTER_TABULATION,
-            c4n/index.html#literal_with_dquote,
-            c4n/index.html#literal_with_FORM_FEED,
-            c4n/index.html#literal_with_LINE_FEED,
-            c4n/index.html#literal_with_REVERSE_SOLIDUS">
+            c14n/index.html#literal_with_BACKSPACE,
+            c14n/index.html#literal_with_CARRIAGE_RETURN,
+            c14n/index.html#literal_with_CHARACTER_TABULATION,
+            c14n/index.html#literal_with_dquote,
+            c14n/index.html#literal_with_FORM_FEED,
+            c14n/index.html#literal_with_LINE_FEED,
+            c14n/index.html#literal_with_REVERSE_SOLIDUS">
             Characters
             <a href="#cp-backspace"><code title="backspace">BS</code></a>,
             <a href="#cp-tab"><code title="horizontal tab">HT</code></a>,
@@ -421,7 +421,7 @@
             <a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a>, and
             <a href="#cp-backslash"><code title="backslash">\</code></a>
             MUST be encoded using <a href="#grammar-production-ECHAR"><code>ECHAR</code></a>.</li>
-          <li id="c14n-uchar-tests" data-tests="c4n/index.html#literal_with_UTF8_boundaries">
+          <li id="c14n-uchar-tests" data-tests="c14n/index.html#literal_with_UTF8_boundaries">
             Characters in the range from <code class="codepoint">U+0000</code> to <code class="codepoint">U+0007</code>,
             <a href="#cp-vertical-tab"><code title="vertical tab">VT</code></a>,
             characters in the range from <code class="codepoint">U+000E</code> to <code class="codepoint">U+001F</code>,
@@ -430,9 +430,9 @@
             MUST be represented by <a href="#grammar-production-UCHAR"><code>UCHAR</code></a>
             using a lowercase <code>\u</code> with 4 <a href="#grammar-production-HEX"><code>HEX</code></a>es.</li>
           <li id="c14n-uni-tests" data-tests="
-            c4n/index.html#literal_all_controls,
-            c4n/index.html#literal_all_punctuation,
-            c4n/index.html#literal_ascii_boundaries">
+            c14n/index.html#literal_all_controls,
+            c14n/index.html#literal_all_punctuation,
+            c14n/index.html#literal_ascii_boundaries">
             All characters not required to be represented by
             <a href="#grammar-production-ECHAR"><code>ECHAR</code></a> or
             <a href="#grammar-production-UCHAR"><code>UCHAR</code></a>
