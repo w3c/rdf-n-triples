@@ -14,7 +14,7 @@ LANG_DIR          ::= '@' [a-zA-Z]+ ( '-' [a-zA-Z0-9]+ )* ( '--' [a-zA-Z]+ )?
 STRING_LITERAL_QUOTE ::= '"' ( [^#x22#x5C#xA#xD] | ECHAR | UCHAR )* '"'
 UCHAR             ::= ( '\u' HEX HEX HEX HEX )
                     | ( '\U' HEX HEX HEX HEX HEX HEX HEX HEX )
-ECHAR             ::= ('\' [tbnrf"'])
+ECHAR             ::= ('\' [tbnrf\"'])
 PN_CHARS_BASE     ::= ([A-Z]
                     | [a-z]
                     | [#x00C0-#x00D6]
