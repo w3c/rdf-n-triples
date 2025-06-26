@@ -212,7 +212,7 @@
       </pre>
     </section>
 
-    <section id="sec-version">
+    <section id="sec-version" class="atrisk">
       <h3>Version Announcement</h3>
 
       <p>The N-Triples language has evolved since its origin, and RDF 1.2
@@ -226,6 +226,8 @@
         authors can announce the use of the new syntax forms using these directives, or
        servers can use the `version` <a href="#n-triples-mediatype">Media Type parameter</a>. 
       </p>
+
+      <p class="issue atrisk" data-number="66"></p>
 
       <p>As compared with Turtle, the version declaration is case-sensitive.</p>
 
@@ -431,7 +433,7 @@
         <code>object</code>,
         and the terminal <a href="#cp-double-lt-paren"><code>&lt;&lt;(</code></a>,
         any of which MUST be a single <a href="#cp-space"><code title="space">space</code></a>.</li>
-      <li>A Canonical N-Triples document MUST NOT include a
+       <li>A Canonical N-Triples document MUST NOT include a
         <a href="#grammar-production-versionDirective"><code>VERSION</code></a> announcement directive.</li>
       <li id="c14n-dt-tests" data-tests="c14n/index.html#literal_with_string_dt">
         <a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> with the
@@ -605,6 +607,7 @@
         The '<code class="grammar-literal">VERSION</code>' is in single quotes
         to indicate that it is case-sensitive.
       </p>
+      <p class="issue atrisk" data-number="66"></p>
 
       <div data-include="ntriples-bnf.html"></div>
       <p>A text version of this grammar is available <a href="ntriples.bnf">here</a>.</p>
@@ -785,7 +788,7 @@
       <li id="curVersion">`xsd:string` |curVersion| –
         The RDF version used for parsing the document into <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">Triples</a>.
         If specified as part of a <a href="#sec-mediaReg-n-triples">Media Type</a>, the default value for |curVersion| is taken from the `version` parameter.
-        Acceptable values for `version` are defined in <a data-cite="RDF12-CONCEPTSE#defined-version-labels">2.1 Version Lables</a> in [[RDF12-CONCEPTS]].
+        Acceptable values for `version` are defined in <a data-cite="RDF12-CONCEPTS#defined-version-labels">2.1 Version Lables</a> in [[RDF12-CONCEPTS]].
         Parser behavior for version values is undefined and MAY be used
         to signal errors or warnings.
       </li>
