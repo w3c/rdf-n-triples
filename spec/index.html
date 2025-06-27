@@ -136,7 +136,7 @@
       Its original intent was for writing test cases,
       but it has proven to be popular as an exchange format for RDF data.</p>
 
-    <p>An <a>N-Triples document</a> can contain a single parsing directive
+    <p>An <a>N-Triples document</a> can contain a single kind of parsing directive
       for announcing the RDF version of the content.
       See <a href="#sec-version" class="sectionRef"></a>.</p>
 
@@ -789,8 +789,10 @@
         The RDF version used for parsing the document into <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">Triples</a>.
         If specified as part of a <a href="#sec-mediaReg-n-triples">Media Type</a>, the default value for |curVersion| is taken from the `version` parameter.
         Acceptable values for `version` are defined in <a data-cite="RDF12-CONCEPTS#defined-version-labels">2.1 Version Lables</a> in [[RDF12-CONCEPTS]].
-        Parser behavior for version values is undefined and MAY be used
-        to signal errors or warnings.
+        The version announcement is only a hint;
+        this specification does not mandate any parser behavior based on |curVersion|,
+        but a parser MAY signal an error or a warning
+        when it encounters a feature that does not match the value of |curVersion|.
       </li>
     </ul>
 
