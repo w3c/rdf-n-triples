@@ -224,7 +224,7 @@
         <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>
         or <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>,
         authors can announce the use of the new syntax forms using these directives, or
-       servers can use the `version` <a href="#n-triples-mediatype">Media Type parameter</a>. 
+        servers can use the `version` <a href="#n-triples-mediatype">Media Type parameter</a>. 
       </p>
 
       <p class="issue atrisk" data-number="66"></p>
@@ -247,7 +247,7 @@
            class="example http" data-transform="updateExample"
            title="HTTP version announcement">
         <!--
-        GET /document.ttl HTTP/1.1
+        GET /document.nt HTTP/1.1
         Host: example.com
         Accept: application/n-triples; version=1.2
         -->
@@ -604,7 +604,7 @@
         production is allowed new lines in literals MUST be escaped.</p>
 
       <p>
-        The '<code class="grammar-literal">VERSION</code>' is in single quotes
+        The '<code class="grammar-literal">VERSION</code>' terminal is in single quotes
         to indicate that it is case-sensitive.
       </p>
       <p class="issue atrisk" data-number="66"></p>
