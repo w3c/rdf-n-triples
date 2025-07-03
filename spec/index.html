@@ -196,7 +196,7 @@
         (<a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
         <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
         <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>) terms,
-        and terminated by (<a href="#cp-full-stop"><code title="full stop">.</code></a>).
+        and terminated by a period (<a href="#cp-full-stop"><code title="full stop">.</code></a>).
         White space (spaces <code class="codepoint">U+0020</code> or tabs <code class="codepoint">U+0009</code>) may surround terms,
         except where significant as noted in the <a href="#n-triples-grammar">grammar</a>.</p>
 
@@ -220,11 +220,11 @@
         RDF 1.2 N-Triples introduces the
         <a href="#grammar-production-versionDirective"><code>VERSION</code></a> directive
         along with an optional `version` <a href="#n-triples-mediatype">Media Type parameter</a>.
-        When serializing N-Triples with new features such as
-        <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>
+        When respectively serializing and parsing N-Triples with new features such as
+        <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text directions</a>
         or <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>,
-        authors can announce the use of the new syntax forms using these directives, or
-        servers can use the `version` <a href="#n-triples-mediatype">Media Type parameter</a>. 
+        authors and parsers can announce and detect the use of the new syntax forms using these directives; similarly,
+        HTTP clients and servers can use the `version` <a href="#n-triples-mediatype">Media Type parameter</a>.
       </p>
 
       <p class="issue atrisk" data-number="66"></p>
@@ -240,7 +240,7 @@
         -->
       </pre>
 
-      <p>When providing content over HTTP, servers can announce the version
+      <p>When transferring content over HTTP, senders and receivers can announce or request the version
         using the optional `version` <a href="#n-triples-mediatype">Media Type parameter</a>:</p>
 
       <pre id="ex-http-version-decl"
