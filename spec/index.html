@@ -90,11 +90,14 @@
       .separated tbody tr td { border:1px solid black; text-align: center; min-width: 10vw }
   }
 
+  table.simple { border-collapse:collapse;}
+  table.simple th, table.simple td  { border:1px solid black; padding:0.2em; }
+
   table.cp-definitions { border-collapse:collapse; background-color: #DDDDFF}
 
   table.cp-definitions,
   table.cp-definitions th,
-  table.cp-definitions td { border:1px solid black; padding:0.2em; }
+  table.cp-definitions td { border:0px solid black; padding:0.2em; }
   table.cp-definitions td:nth-child(2) { text-align: center; }
   </style>
 </head>
@@ -838,6 +841,10 @@
               and <a href="#cp-greater-than"><code title="greater-than sign">&gt;</code></a> are taken,
               with escape sequences unescaped,
               to form the IRI.
+              The resulting IRI be a valid URI under the
+              <a data-cite="RFC3987#section-2.2">syntactic restrictions</a> of generic IRI syntax and any narrower
+              restrictions imposed by the corresponding IRI scheme specification;
+              otherwise, the IRI MUST NOT be used to create a triple.
             </td>
           </tr>
           <tr id="handle-LANG_DIR">
@@ -852,7 +859,15 @@
               form the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
               if the matched characters include
-              <a href="#cp-hyphen-hyphen"><code>--</code></a>.
+              <a href="#cp-hyphen-hyphen"><code>--</code></a>.<br/>
+              The <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
+              MUST be well-formed according to
+              <a data-cite="bcp47#section-2.2.9">section 2.2.9</a>
+              of [[!BCP47]].<br/>
+              If present, the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>
+              MUST be either `ltr` or `rtl`.<br/>
+              If either of these values is ill-formed, a parser MUST signal an error, and not
+              use the corresponding term to form a triple.
             </td>
           </tr>
           <tr id="handle-STRING_LITERAL_QUOTE">
