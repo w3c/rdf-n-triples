@@ -135,7 +135,9 @@
       Its original intent was for writing test cases,
       but it has proven to be popular as an exchange format for RDF data.</p>
 
-    <p>An <a>N-Triples document</a> contains no parsing directives.</p>
+    <p>An <a>N-Triples document</a> can contain a single kind of parsing directive
+      for announcing the RDF version of the content.
+      See <a href="#sec-version" class="sectionRef"></a>.</p>
 
     <p>N-Triples triples are a sequence of RDF terms representing the
       <a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
@@ -193,7 +195,7 @@
         (<a data-cite="RDF12-CONCEPTS#dfn-subject">subject</a>,
         <a data-cite="RDF12-CONCEPTS#dfn-predicate">predicate</a>, and
         <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>) terms,
-        and terminated by <a href="#cp-full-stop"><code title="full stop">.</code></a>.
+        and terminated by a period (<a href="#cp-full-stop"><code title="full stop">.</code></a>).
         White space (spaces <code class="codepoint">U+0020</code> or tabs <code class="codepoint">U+0009</code>) may surround terms,
         except where significant as noted in the <a href="#n-triples-grammar">grammar</a>.</p>
 
@@ -207,6 +209,51 @@
         <http://example.org/#spiderman> <http://www.perceive.net/schemas/relationship/enemyOf> <http://example.org/#green-goblin> .
         -->
       </pre>
+    </section>
+
+    <section id="sec-version" class="atrisk">
+      <h3>Version Announcement</h3>
+
+      <p>The N-Triples language has evolved since its origin, and RDF 1.2
+        adds new syntax.
+        RDF 1.2 N-Triples introduces the
+        <a href="#grammar-production-versionDirective"><code>VERSION</code></a> directive
+        along with an optional `version` <a href="#n-triples-mediatype">Media Type parameter</a>.
+        When respectively serializing and parsing N-Triples with new features such as
+        <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text directions</a>
+        or <a data-cite="RDF12-CONCEPTS#dfn-triple-term">triple terms</a>,
+        authors and parsers can announce and detect the use of the new syntax forms using these directives; similarly,
+        HTTP clients and servers can use the `version` <a href="#n-triples-mediatype">Media Type parameter</a>.
+      </p>
+
+      <p class="issue atrisk" data-number="66"></p>
+
+      <p>In contrast to Turtle, the version declaration is case-sensitive.</p>
+
+      <pre id="ex-sparql-version-decl"
+           class="example n-triples" data-transform="updateExample"
+           title="Version announcement">
+        <!--
+        VERSION "1.2"
+        <http://example.org/#spiderman> <http://www.perceive.net/schemas/relationship/enemyOf> <http://example.org/#green-goblin> .
+        -->
+      </pre>
+
+      <p>When transferring content over HTTP, senders and receivers can announce or request the version
+        using the optional `version` <a href="#n-triples-mediatype">Media Type parameter</a>:</p>
+
+      <pre id="ex-http-version-decl"
+           class="example http" data-transform="updateExample"
+           title="HTTP version announcement">
+        <!--
+        GET /document.nt HTTP/1.1
+        Host: example.com
+        Accept: application/n-triples; version=1.2
+        -->
+      </pre>
+
+      <p>See <a data-cite="RDF12-TURTLE#sec-version">Version Announcement</a> in [[RDF12-TURTLE]]
+        for more considerations on using the version declaration.</p>
     </section>
 
     <section id="triple-terms">
@@ -230,6 +277,7 @@
       <pre id="ex-triple-term" class="example ntriples" data-transform="updateExample"
            title="Triple Term">
         <!--
+        VERSION                                                     "1.2"
         _:e38  <ex:familyName>                                      "Smith" .
         _:anno <http://www.w3.org/1999/02/22-rdf-syntax-ns#reifies> <<( _:e38 <http://example.com/jobTitle> "Designer" )>> .
         _:anno <http://example.com/accordingTo>                     _:e22 .
@@ -258,7 +306,7 @@
       <p>Literals (Grammar production <a href="#grammar-production-literal"><code>Literal</code></a>)
         have a lexical form followed by either a
         <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-        (possibly including <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>),
+        (possibly including an <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>),
         a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
         or neither.</p>
 
@@ -282,10 +330,10 @@
         is the characters between the delimiters, after processing any escape sequences.
         If present, the <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a>
         terminal matches the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-        and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>.
+        and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>.
         The <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
         is preceded by an <a href="#cp-at-sign"><code title="at sign">@</code></a>,
-        and, if present, the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
+        and, if present, the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>
         is separated from the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
         by <a href="#cp-hyphen-hyphen"><code>--</code></a>.
         If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
@@ -298,10 +346,11 @@
       <pre id="ex-literals" class="example ntriples" data-transform="updateExample"
            title="Literals in N-Triples">
         <!--
+        VERSION     "1.2"
         <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show"^^<http://www.w3.org/2001/XMLSchema#string> . # literal with XML Schema string datatype
         <http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> "That Seventies Show" . # same as above
         <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en . # literal with a language tag
-        <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en-ltr . # literal with a language tag and base direction
+        <http://example.org/show/218> <http://example.org/show/localName> "That Seventies Show"@en-ltr . # literal with a language tag and an initial text direction
         <http://example.org/show/218> <http://example.org/show/localName> "Cette Série des Années Septante"@fr-be .  # literal outside of ASCII range with a region subtag
         <http://example.org/#spiderman> <http://example.org/text> "This is a multi-line literal with many quotation marks (""""") and two apostrophes ('')." .
         <http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/atomicNumber> "2"^^<http://www.w3.org/2001/XMLSchema#integer> . # xsd:integer
@@ -382,6 +431,8 @@
         <code>object</code>,
         and the terminal <a href="#cp-double-lt-paren"><code>&lt;&lt;(</code></a>,
         any of which MUST be a single <a href="#cp-space"><code title="space">space</code></a>.</li>
+       <li>A Canonical N-Triples document MUST NOT include a
+        <a href="#grammar-production-versionDirective"><code>VERSION</code></a> directive.</li>
       <li id="c14n-dt-tests" data-tests="c14n/index.html#literal_with_string_dt">
         <a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> with the
         datatype <code>http://www.w3.org/2001/XMLSchema#string</code>
@@ -471,7 +522,7 @@
     <h2>Media Type and Content Encoding</h2>
 
     <p>The media type of N-Triples is <code>application/n-triples</code>.
-      The content encoding of N-Triples is always UTF-8.
+      The content encoding of N-Triples is always UTF-8 [[!RFC3629]].
       See <a href="#sec-mediaReg-n-triples">N-Triples Media Type</a> for the media type
       registration form.
     </p>
@@ -549,6 +600,12 @@
       <p>Escape sequence rules are the same as Turtle [[RDF12-TURTLE]].
         However, as only the <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>
         production is allowed new lines in literals MUST be escaped.</p>
+
+      <p>
+        The '<code class="grammar-literal">VERSION</code>' terminal is in single quotes
+        to indicate that it is case-sensitive.
+      </p>
+      <p class="issue atrisk" data-number="66"></p>
 
       <div data-include="ntriples-bnf.html"></div>
       <p>A text version of this grammar is available <a href="ntriples.bnf">here</a>.</p>
@@ -723,9 +780,18 @@
 
   <section id="sec-parsing">
     <h2>Parsing</h2>
-    <p>Parsing N-Triples requires a state of one item:</p>
+    <p>Parsing N-Triples requires a state of two items:</p>
     <ul>
       <li id="bnodeLabels">Map[string -&gt; <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a>] <code class="dfn">bnodeLabels</code> — A mapping from string to blank node.</li>
+      <li id="curVersion">`xsd:string` |curVersion| –
+        The RDF version used for parsing the document into <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">Triples</a>.
+        If specified as part of a <a href="#sec-mediaReg-n-triples">Media Type</a>, the default value for |curVersion| is taken from the `version` parameter.
+        Acceptable values for `version` are defined in <a data-cite="RDF12-CONCEPTS#defined-version-labels">2.1 Version Lables</a> in [[RDF12-CONCEPTS]].
+        The version announcement is only a hint;
+        this specification does not mandate any parser behavior based on |curVersion|,
+        but a parser MAY signal an error or a warning
+        when it encounters a feature that does not match the value of |curVersion|.
+      </li>
     </ul>
 
     <section id="sec-parsing-terms">
@@ -736,6 +802,16 @@
           <tr><th>production</th><th>type</th><th>procedure</th></tr>
         </thead>
         <tbody>
+          <tr id="handle-versionSpecifier">
+            <td style="text-align:left;">
+              <a class="type literal" href="#grammar-production-versionSpecifier">versionSpecifier</a>
+            </td>
+            <td><a data-cite="RDF12-CONCEPTS#dfn-literal">literal</a></td>
+            <td>The |curVersion| is taken from a literal
+              using the matched <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">RDF string</a>
+              lexical form and `xsd:string` datatype.
+            </td>
+          </tr>
           <tr id="handle-BLANK_NODE_LABEL">
             <td style="text-align:left;">
               <a href="#grammar-production-BLANK_NODE_LABEL" class="type bNode">BLANK_NODE_LABEL</a>
@@ -774,7 +850,7 @@
             <td>
               The characters following the <a href="#cp-at-sign"><code title="at sign">@</code></a>
               form the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-              and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
+              and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
               if the matched characters include
               <a href="#cp-hyphen-hyphen"><code>--</code></a>.
             </td>
@@ -802,17 +878,17 @@
               The literal has a <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> of the first rule argument,
               <a href="#grammar-production-STRING_LITERAL_QUOTE" class="type lexicalForm"><code>STRING_LITERAL_QUOTE</code></a>,
               and either a <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-              with optional <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
+              with optional <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>
               from <a href="#handle-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a>
               or a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> of <code>iri</code>,
               depending on which rule matched the input.
               If the <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a> rule matched,
               the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-              and <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>
+              and <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>
               are taken from <a href=#handle-LANG_DIR class="type langDir">LANG_DIR</a>.
-              If there is no <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
+              If there is no <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
               the datatype is <code>rdf:langString</code>.
-              If there is a <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>,
+              If there is an <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
               the datatype is <code>rdf:dirLangString</code>.
               If neither <a href="#handle-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a>
               nor <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> match,
@@ -922,7 +998,7 @@
 
 <section class="appendix" id="sec-mediaReg-n-triples">
   <h2>Internet Media Type, File Extension and Macintosh File Type</h2>
- <p>The Internet Media Type (formerly known as MIME Type) for N-Triples is &quot;application/n-triples&quot;.</p>
+ <p>The Internet Media Type (formerly known as MIME Type) for N-Triples is &quot;`application/n-triples`&quot;.</p>
   <p>The information that follows has been submitted to the Internet Engineering Steering Group (IESG) for review, approval, and registration with IANA.</p>
   <dl>
     <dt>Type name:</dt>
@@ -933,7 +1009,9 @@
     <dt>Required parameters:</dt>
     <dd>None</dd>
     <dt>Optional parameters:</dt>
-    <dd>None</dd>
+    <dd><code>version</code> — this parameter is optional but SHOULD be present when using RDF 1.2-specific features.
+      If present, acceptable values of <code>version</code> are
+      defined in <a data-cite="RDF12-CONCEPTS#defined-version-labels">2.1 Version Lables</a> in [[RDF12-CONCEPTS]].</dd>
 
     <dt>Encoding considerations:</dt>
     <dd>The syntax of N-Triples is expressed over code points in Unicode [[UNICODE]]. The encoding is always UTF-8 [[UTF-8]].</dd>
@@ -1021,7 +1099,7 @@
       and updated language.</li>
     <li>Changes the `LANGTAG` terminal production to
       <a href="#grammar-production-LANG_DIR" class="type langDir"><code>LANG_DIR</code></a> to include
-      an optional <a data-cite="RDF12-CONCEPTS#dfn-base-direction">base direction</a>.</li>
+      an optional <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>.</li>
     <li>Changes <a href="#canonical-ntriples"></a> to clarify
       use of <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRIs</a> and expand the use of escapes
       in literals
@@ -1031,6 +1109,10 @@
     <li>Clarify that 
       <a data-cite="I18N-GLOSSARY#dfn-surrogate" class="lint-ignore">Unicode surrogates</a> 
       are not legal in N-Triples documents, nor as the value of a Unicode escape sequence.</li>
+    <li>Added <a href="#sec-version"></a> and parser
+      state and productions to announce the RDF version
+      associated with the input document. Note that this feature is at risk.
+    </li>
   </ul>
 </section>
 
