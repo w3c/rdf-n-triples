@@ -841,10 +841,10 @@
               and <a href="#cp-greater-than"><code title="greater-than sign">&gt;</code></a> are taken,
               with escape sequences unescaped,
               to form the IRI.
-              The resulting IRI be a valid IRI under the
-              <a data-cite="RFC3987#section-2.2">syntactic restrictions</a> of generic IRI syntax and any narrower
-              restrictions imposed by the corresponding IRI scheme specification;
-              otherwise, the IRI MUST NOT be used to create a triple.
+              The resulting IRI be MUST comply with the
+              <a data-cite="RFC3987#section-2.2">syntactic restrictions</a> of generic IRI syntax,
+              and SHOULD comply with any narrower restrictions imposed by the corresponding IRI scheme specification.
+              If the IRI is deemed ill-formed, a parser MUST signal an error, and not use the IRI to form a triple.
             </td>
           </tr>
           <tr id="handle-LANG_DIR">
