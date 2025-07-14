@@ -470,7 +470,10 @@
             <a href="#cp-quotation-mark"><code title="quotation mark">&quot;</code></a>, and
             <a href="#cp-backslash"><code title="backslash">\</code></a>
             MUST be encoded using <a href="#grammar-production-ECHAR"><code>ECHAR</code></a>.</li>
-          <li id="c14n-uchar-tests" data-tests="c14n/index.html#literal_with_UTF8_boundaries">
+          <li id="c14n-uchar-tests" data-tests="
+            c14n/index.html#literal_with_UTF8_boundaries,
+            c14n/index.html#literal_needing_uchar_escaping-01,
+            c14n/index.html#literal_needing_uchar_escaping-02">
             Characters in the range from <code class="codepoint">U+0000</code> to <code class="codepoint">U+0007</code>,
             <a href="#cp-vertical-tab"><code title="vertical tab">VT</code></a>,
             characters in the range from <code class="codepoint">U+000E</code> to <code class="codepoint">U+001F</code>,
