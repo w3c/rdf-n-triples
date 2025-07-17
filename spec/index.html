@@ -90,11 +90,14 @@
       .separated tbody tr td { border:1px solid black; text-align: center; min-width: 10vw }
   }
 
+  table.simple { border-collapse:collapse;}
+  table.simple th, table.simple td  { border:1px solid black; padding:0.2em; }
+
   table.cp-definitions { border-collapse:collapse; background-color: #DDDDFF}
 
   table.cp-definitions,
   table.cp-definitions th,
-  table.cp-definitions td { border:1px solid black; padding:0.2em; }
+  table.cp-definitions td { border:0px solid black; padding:0.2em; }
   table.cp-definitions td:nth-child(2) { text-align: center; }
   </style>
 </head>
@@ -840,6 +843,9 @@
               and <a href="#cp-greater-than"><code title="greater-than sign">&gt;</code></a> are taken,
               with escape sequences unescaped,
               to form the IRI.
+              The resulting IRI be MUST comply with the
+              <a data-cite="RFC3987#section-2.2">syntactic restrictions</a> of generic IRI syntax,
+              and SHOULD comply with any narrower restrictions imposed by the corresponding IRI scheme specification.
             </td>
           </tr>
           <tr id="handle-LANG_DIR">
@@ -854,7 +860,13 @@
               form the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
               and optionally the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>,
               if the matched characters include
-              <a href="#cp-hyphen-hyphen"><code>--</code></a>.
+              <a href="#cp-hyphen-hyphen"><code>--</code></a>.<br/>
+              The <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
+              MUST be well-formed according to
+              <a data-cite="bcp47#section-2.2.9">section 2.2.9</a>
+              of [[!BCP47]].<br/>
+              If present, the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>
+              MUST be either `ltr` or `rtl`.<br/>
             </td>
           </tr>
           <tr id="handle-STRING_LITERAL_QUOTE">
@@ -914,6 +926,15 @@
           </tr>
         </tbody>
       </table>
+
+      <p class="note">As processors which detect errors on input can result in
+        graphs which contain fewer triples than are described in the input
+        (including no triples whatsoever),
+        consumers should consider information of any errors signaled
+        when using the resulting graph,
+        which may be incomplete and/or include
+        <a data-cite="RDF12-CONCEPTS#dfn-ill-typed">ill-typed</a>
+        or ill-formed terms.</p>
     </section>
 
     <section id="rdf-triple-construction">
