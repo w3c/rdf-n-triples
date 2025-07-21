@@ -148,8 +148,8 @@
       <a data-cite="RDF12-CONCEPTS#dfn-object">object</a>
       of an <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triple</a>.
       These may be separated by white space (<a href="#cp-space"><code title="space">spaces</code></a>, and/or <a href="#cp-tab"><code title="horizontal tab">tabs</code></a>).
-      This sequence is terminated by a <a href="#cp-full-stop"><code title="full stop">.</code></a>
-      (optionally followed by white space and/or a comment),
+      This sequence is terminated by a period (<a href="#cp-full-stop"><code title="full stop">.</code></a>),
+      optionally followed by white space and/or a comment,
       and a new line (optional at the end of a document).</p>
 
     <pre id="ex-comments" class="example ntriples" data-transform="updateExample"
@@ -303,7 +303,7 @@
     <section id="sec-literals">
       <h3>RDF Literals</h3>
 
-      <p><a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a>
+      <p><a data-cite="RDF12-CONCEPTS#dfn-rdf-literal">Literals</a>
         are used to identify values such as strings, numbers, dates.</p>
 
       <p>Literals (Grammar production <a href="#grammar-production-literal"><code>Literal</code></a>)
@@ -437,7 +437,7 @@
        <li>A Canonical N-Triples document MUST NOT include a
         <a href="#grammar-production-versionDirective"><code>VERSION</code></a> directive.</li>
       <li id="c14n-dt-tests" data-tests="c14n/index.html#literal_with_string_dt">
-        <a data-cite="RDF12-CONCEPTS#dfn-literal">Literals</a> with the
+        <a data-cite="RDF12-CONCEPTS#dfn-rdf-literal">Literals</a> with the
         datatype <code>http://www.w3.org/2001/XMLSchema#string</code>
         MUST NOT use the <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a> part of the <a href="#grammar-production-literal"><code>literal</code></a>,
         and are represented using only <a href="#grammar-production-STRING_LITERAL_QUOTE"><code>STRING_LITERAL_QUOTE</code></a>.
@@ -577,8 +577,8 @@
 
       <p class="note">N-Triples allows only horizontal white space (<a href="#cp-space"><code title="space">spaces</code></a> or <a href="#cp-tab"><code title="horizontal tab">tabs</code></a>)
         as compared to Turtle [[RDF12-TURTLE]] which also treats
-        <a href="#cp-line-feed"><code title="line feed">LF</code></a>
-        and <a href="#cp-carriage-return"><code title="carriage return">CR</code></a>
+        <a href="#cp-line-feed"><code title="line feed">LFs</code></a>
+        and <a href="#cp-carriage-return"><code title="carriage return">CRs</code></a>
         as white space.</p>
     </section>
 
@@ -811,7 +811,7 @@
             <td style="text-align:left;">
               <a class="type literal" href="#grammar-production-versionSpecifier">versionSpecifier</a>
             </td>
-            <td><a data-cite="RDF12-CONCEPTS#dfn-literal">literal</a></td>
+            <td><a data-cite="RDF12-CONCEPTS#dfn-rdf-literal">literal</a></td>
             <td>The |curVersion| is taken from a literal
               using the matched <a data-cite="RDF12-CONCEPTS#dfn-rdf-string">RDF string</a>
               lexical form and `xsd:string` datatype.
@@ -843,7 +843,7 @@
               and <a href="#cp-greater-than"><code title="greater-than sign">&gt;</code></a> are taken,
               with escape sequences unescaped,
               to form the IRI.
-              The resulting IRI be MUST comply with the
+              The resulting IRI MUST comply with the
               <a data-cite="RFC3987#section-2.2">syntactic restrictions</a> of generic IRI syntax,
               and SHOULD comply with any narrower restrictions imposed by the corresponding IRI scheme specification.
             </td>
@@ -886,7 +886,7 @@
             <td style="text-align:left;">
               <a href="#grammar-production-literal" class="type literal">literal</a>
             </td>
-            <td><a data-cite="RDF12-CONCEPTS#dfn-literal">literal</a>
+            <td><a data-cite="RDF12-CONCEPTS#dfn-rdf-literal">literal</a>
             </td>
             <td>
               The literal has a <a data-cite="RDF12-CONCEPTS#dfn-lexical-form">lexical form</a> of the first rule argument,
