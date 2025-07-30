@@ -55,38 +55,45 @@
     };
   </script>
   <style>
-  /* Style Turtle script blocks to be visable */
-  pre.example script { display:block; }
-  .separated { border-collapse: collapse; }
-  .separated thead tr th { border: 1px solid black; padding: .2em; }
-  .separated tbody tr td { border: 1px solid black; text-align: center; }
-  .separated tbody tr td.r { text-align: right; padding: .5em; }
-  .grammar td {
-    font-family: Menlo, Consolas, "DejaVu Sans Mono", Monaco, monospace;
-    font-size: .9em;
-    vertical-align: top;
-  }
-  .grammar-opt,
-  .grammar-alt,
-  .grammar-paren,
-  .grammar-diff,
-  .grammar-plus,
-  .grammar-star,
-  .grammar-brac { color: gray;}
-  #grammar-declaration-terminals h3 {
-    margin-top: 1em;
-  }
-  .grammar_comment { color: #A52A2A; font-style: italic; }
-  .hl-bold { font-weight: bold; color: #0a3; }
-  code { color: #ff4500; }  /* Old W3C Style */
-  var { color: #ff4500; }
-  abbr[title] {text-decoration: none;}
-  @media (max-width: 850px) {
-        .simple th, .simple td { font-size: 13px; padding: 3px 5px;}
-    } 
-  @media (max-width: 767px) {
-      table { word-break: normal; overflow-wrap: anywhere; }
+    /* Style Turtle script blocks to be visable */
+    pre.example script { display:block; }
+    .separated { border-collapse:collapse; }
+    .separated thead tr th { border:1px solid black; padding: .2em; min-width: 10vw }
+    .separated tbody tr td { border:1px solid black; text-align: center; min-width: 10vw }
+    .separated tbody tr td.r { text-align: right; padding: .5em; }
+    .separated tbody tr td:first-child,
+    .separated tbody tr td:last-child {text-align: left; padding: .5em; }
+    .separated.last-center tbody tr td:last-child {text-align: center; padding: .5em; }
+    .grammar td {
+      font-family: Menlo, Consolas, "DejaVu Sans Mono", Monaco, monospace;
+      font-size: .9em;
+      vertical-align: top;
+    }
+    .grammar-opt,
+    .grammar-alt,
+    .grammar-paren,
+    .grammar-diff,
+    .grammar-plus,
+    .grammar-star,
+    .grammar-brac { color: gray;}
+    .grammar_comment { color: #A52A2A; font-style: italic; }
+    #grammar-declaration-terminals h3 {
+      margin-top: 1em;
+    }
+    .hl-bold { font-weight: bold; color: #0a3; }
+    code { color: #ff4500; }  /* Old W3C Style */
+    var { color: #ff4500; }
+    abbr[title] {text-decoration: none;}
+    @media (max-width: 850px) {
+        table th, table td { font-size: 12px; padding: 3px 4px;}
+        table.ex th, table.ex td {overflow-x: scroll; max-width: 42vw !important;}
+    }
+    @media (max-width: 767px) {
+      table { word-break: break-all; }
       .separated thead tr th { border:1px solid black; padding: .2em; min-width: 10vw }
+      .separated thead tr th:nth-child(2) { word-break: break-all; }
+      .separated tbody tr td:nth-child(2) {padding: 3px 2px;}
+      .separated tbody tr td:nth-child(3) {padding: 3px 2px;}
       .separated tbody tr td { border:1px solid black; text-align: center; min-width: 10vw }
   }
 
@@ -338,7 +345,7 @@
         is preceded by an <a href="#cp-at-sign"><code title="at sign">@</code></a>,
         and, if present, the <a data-cite="RDF12-CONCEPTS#dfn-base-direction">initial text direction</a>
         is separated from the <a data-cite="RDF12-CONCEPTS#dfn-language-tag">language tag</a>
-        by <a href="#cp-hyphen-hyphen"><code>--</code></a>.
+        by <a href="#cp-hyphen-hyphen" style="white-space: nowrap"><code>--</code></a>.
         If there is no language tag, there may be a <a data-cite="RDF12-CONCEPTS#dfn-datatype-iri">datatype IRI</a>,
         preceded by <a href="#cp-double-circumflex"><code>^^</code></a>.
         If there is no datatype IRI and no language tag, then
@@ -777,7 +784,7 @@
       <dd>two concatenated circumflex accent characters, each having the code point <code class="codepoint">U+005E</code></dd>
       <dt id="cp-underscore-colon"><code>_:</code></dt>
       <dd><a href="#cp-underscore"><code title="underscore">_</code></a> followed by <a href="#cp-colon"><code title="colon">:</code></a></dd>
-      <dt id="cp-hyphen-hyphen"><code>--</code></dt>
+      <dt id="cp-hyphen-hyphen" style="white-space: nowrap"><code>--</code></dt>
       <dd>two concatenated <a href="#cp-hyphen"><code title="hyphen">-</code></a> characters</dd>
     </dl>
   </section>
@@ -802,13 +809,13 @@
     <section id="sec-parsing-terms">
       <h3>RDF Term Constructors</h3>
       <p>This table maps productions and lexical tokens to <code>RDF terms</code> or components of <code>RDF terms</code> listed in <a class="sectionRef sec-ref" href="#sec-parsing"></a>:</p>
-      <table class="simple">
+      <table id="tab-term-constructors" class="separated">
         <thead>
           <tr><th>production</th><th>type</th><th>procedure</th></tr>
         </thead>
         <tbody>
           <tr id="handle-versionSpecifier">
-            <td style="text-align:left;">
+            <td>
               <a class="type literal" href="#grammar-production-versionSpecifier">versionSpecifier</a>
             </td>
             <td><a data-cite="RDF12-CONCEPTS#dfn-rdf-literal">literal</a></td>
@@ -818,7 +825,7 @@
             </td>
           </tr>
           <tr id="handle-BLANK_NODE_LABEL">
-            <td style="text-align:left;">
+            <td>
               <a href="#grammar-production-BLANK_NODE_LABEL" class="type bNode">BLANK_NODE_LABEL</a>
             </td>
             <td>
@@ -832,7 +839,7 @@
             </td>
           </tr>
           <tr id="handle-IRIREF">
-            <td style="text-align:left;">
+            <td>
               <a href="#grammar-production-IRIREF" class="type IRI">IRIREF</a>
             </td>
             <td>
@@ -850,7 +857,7 @@
             </td>
           </tr>
           <tr id="handle-LANG_DIR">
-            <td style="text-align:left;">
+            <td>
               <a href="#grammar-production-LANG_DIR" class="type langDir">LANG_DIR</a>
             </td>
             <td>
@@ -871,7 +878,7 @@
             </td>
           </tr>
           <tr id="handle-STRING_LITERAL_QUOTE">
-            <td style="text-align:left;">
+            <td>
               <a href="#grammar-production-STRING_LITERAL_QUOTE" class="type lexicalForm">STRING_LITERAL_QUOTE</a>
             </td>
             <td>
@@ -884,7 +891,7 @@
             </td>
           </tr>
           <tr id="handle-literal">
-            <td style="text-align:left;">
+            <td>
               <a href="#grammar-production-literal" class="type literal">literal</a>
             </td>
             <td><a data-cite="RDF12-CONCEPTS#dfn-rdf-literal">literal</a>
@@ -911,7 +918,7 @@
             </td>
           </tr>
           <tr id="handle-tripleTerm">
-            <td style="text-align:left;">
+            <td>
               <a href="#grammar-production-tripleTerm" class="type tripleTerm">tripleTerm</a>
             </td>
             <td>
