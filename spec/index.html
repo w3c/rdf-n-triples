@@ -1057,6 +1057,43 @@
       <dt><code>version</code></dt><dd>this parameter is optional but SHOULD be present when using RDF 1.2-specific features.
       If present, acceptable values of <code>version</code> are
       defined in <a data-cite="RDF12-CONCEPTS#defined-version-labels">2.1 Version Lables</a> in [[RDF12-CONCEPTS]].</dd>
+      <dt><code>profile</code></dt>
+      <dd>
+        <p>A non-empty list of space-separated URIs identifying specific constraints or conventions
+          that apply to an N-Triples document according to [[RFC6906]].
+          A profile does not change the semantics of the resource representation when processed
+          without knowledge of the profile,
+          so that clients both with and without that knowledge can safely use the same representation.
+          The <code>profile</code> parameter MAY be used by clients
+          to express their preferences in the content negotiation process.
+          If the profile parameter is given,
+          a server SHOULD return a document that honors the profiles in the list which it recognizes,
+          and MUST ignore the profiles in the list which it does not recognize.
+          It is RECOMMENDED that profile URIs are dereferenceable
+          and provide useful documentation at that URI.
+          For more information and background please refer to [[RFC6906]].</p>
+        <p>This specification defines one value for the <code>profile</code> parameter:</p>
+        <dl>
+          <dt><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#canonicalNTriples</code></dt>
+          <dd>To request or specify the <a href="#canonical-ntriples">canonical form of N-Triples</a>.</dd>
+        </dl>
+        <p>All other URIs starting with <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+          are reserved for future use by RDF specifications.</p>
+  
+        <p>Other specifications may publish additional <code>profile</code> parameter URIs
+          with their own defined semantics.
+          This includes the ability to associate a file extension with a <code>profile</code> parameter.</p>
+        <p>When used as a <a href="https://tools.ietf.org/html/rfc4288#section-4.3">media type parameter</a> [[RFC4288]]
+          in an <a href="https://httpwg.org/specs/rfc7231.html#rfc.section.5.3.2">HTTP Accept header</a> [[RFC7231]],
+          the value of the <code>profile</code> parameter MUST be enclosed in quotes (<code>"</code>)
+          if it contains special characters such as whitespace,
+          which is required when multiple profile URIs are combined.</p>
+        <p>When processing the <code>profile</code> media type parameter,
+          it is important to note that its value contains one or more URIs and not IRIs.
+          In some cases it might therefore be necessary to convert between IRIs and URIs as specified in
+          <a href="https://tools.ietf.org/html/rfc3986#section-5.1">section 3 Relationship between IRIs and URIs</a>
+          of [[RFC3987]].</p>
+        </dd>
     </dl></dd>
     <dt>Encoding considerations:</dt>
     <dd>The syntax of N-Triples is expressed over code points in Unicode [[UNICODE]]. The encoding is always UTF-8 [[UTF-8]].</dd>
