@@ -509,6 +509,10 @@
       <li id="c14n-eol-tests">The token <a href="#grammar-production-EOL"><code>EOL</code></a> MUST be a single <a href="#cp-line-feed"><code title="line feed">LF</code></a>.</li>
       <li id="c14n-final-eol-tests">The final <a href="#grammar-production-EOL"><code>EOL</code></a> MUST be provided.</li>
     </ul>
+
+    <p>To signal that a representation complies with the canonical form defined above,
+      implementations can use the `profile` parameter of the media type, as described in <a href="#sec-mediaReg-n-triples"></a>.
+    </p>
   </section>
 
   <section id="conformance">
@@ -1079,7 +1083,7 @@
         </dl>
         <p>All other URIs starting with <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
           are reserved for future use by RDF specifications.</p>
-  
+
         <p>Other specifications may publish additional <code>profile</code> parameter URIs
           with their own defined semantics.
           This includes the ability to associate a file extension with a <code>profile</code> parameter.</p>
