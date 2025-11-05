@@ -1,5 +1,5 @@
 ntriplesDoc       ::= statement? (EOL statement)* EOL?
-statement         ::= directive | triple '.'
+statement         ::= directive | triple
 directive         ::= versionDirective
 versionDirective  ::= 'VERSION' versionSpecifier
 versionSpecifier  ::= STRING_LITERAL_QUOTE
