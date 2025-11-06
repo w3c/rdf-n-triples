@@ -32,15 +32,23 @@
       prevRecShortname:     "n-triples",
 
       editors: [
-        { name: "Gregg Kellogg", w3cid: "44770" },
+        {
+          name: "Gregg Kellogg",
+          w3cid: "44770",
+          //retiredDate: "2025-09-06", // Respec would automatically move Gregg to the 'Former Editors' section
+          note: "until 2025-09-06",
+          extras: [
+            {name: "in memoriam", class: "former"},
+          ],
+        },
         { name: "Dominik Tomaszuk", w3cid: "44239"},
       ],
 
       formerEditors:  [
-        { name: "Gavin Carothers" },
-        { name: "Andy Seaborne", w3cid: "29909"}
+        { name: "Gavin Carothers", note: "RDF 1.1" },
+        { name: "Andy Seaborne", note: "RDF 1.1" }
       ],
-
+      
       authors:  [
         { name: "David Beckett", url: "http://www.dajobe.org/", }
       ],
