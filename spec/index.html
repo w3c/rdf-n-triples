@@ -1072,16 +1072,7 @@
           It is RECOMMENDED that profile URIs be dereferenceable
           and provide useful documentation at that URI.
           For more information and background please refer to [[RFC6906]].</p>
-        <p>This specification defines one value for the <code>profile</code> parameter:</p>
-        <dl>
-          <dt><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#canonicalNTriples</code></dt>
-          <dd>To request or specify the <a href="#canonical-ntriples">canonical form of N-Triples</a>.</dd>
-        </dl>
-        <p>All other URIs starting with <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
-          are reserved for future use by RDF specifications.</p>
 
-        <p>Other specifications MAY publish additional <code>profile</code> parameter URIs
-          with their own defined semantics.
         <p>When used as a <a href="https://tools.ietf.org/html/rfc4288#section-4.3">media type parameter</a> [[RFC4288]]
           in an <a href="https://httpwg.org/specs/rfc7231.html#rfc.section.5.3.2">HTTP Accept header</a> [[RFC7231]],
           the value of the <code>profile</code> parameter MUST be enclosed in quotes (<code>"</code>)
