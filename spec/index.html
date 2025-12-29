@@ -1058,10 +1058,24 @@
     <dt>Required parameters:</dt>
     <dd>None</dd>
     <dt>Optional parameters:</dt>
-    <dd><code>version</code> — this parameter is optional but SHOULD be present when using RDF 1.2-specific features.
-      If present, acceptable values of <code>version</code> are
-      defined in <a data-cite="RDF12-CONCEPTS#defined-version-labels">2.1 Version Labels</a> in [[RDF12-CONCEPTS]].</dd>
-
+    <dd>
+      <dl>
+        <dt><code>version</code></dt>
+        <dd>This parameter is optional but SHOULD be present when using RDF 1.2-specific features.
+          If present, acceptable values of <code>version</code> are
+          defined in <a data-cite="RDF12-CONCEPTS#defined-version-labels">2.1 Version Labels</a>
+          in [[RDF12-CONCEPTS]] or later specifications.
+        </dd>
+        <dt><code>profile</code></dt>
+        <dd>
+          This parameter is optional and is used to include addition information.
+          It does not change the semantics of the resource representation when processed
+          without knowledge of the profile.
+          The value of a profile parameter is a non-empty list of space-separated URIs.
+          For more information and background please refer to [[RFC6906]].
+        </dd>
+      </dl>
+    </dd>
     <dt>Encoding considerations:</dt>
     <dd>The syntax of N-Triples is expressed over code points in Unicode [[UNICODE]]. The encoding is always UTF-8 [[UTF-8]].</dd>
     <dd>Unicode code points may also be expressed using an \uXXXX (U+0 to U+FFFF) or \UXXXXXXXX syntax (for U+10000 onwards) where X is a hexadecimal digit [0-9A-F]</dd>
@@ -1095,6 +1109,49 @@
     <dt>Author(s):</dt>
     <dd>The N-Triples specification is the product of the RDF &amp; SPARQL WG. The W3C reserves change control over this specifications.</dd>
   </dl>
+
+  <div id="about-profile">
+    <div class="note">
+      <p>
+        The `profile` parameter MAY be used by clients to express their preferences
+        in the content negotiation process and for a server to indicate
+        additional information about the response.
+      </p>
+      <p>
+        If the `profile` parameter is given, a server SHOULD
+        return a document that honors all the profiles in the list 
+        recognized by the server.
+        A server SHOULD NOT respond with an error solely based on the profile value.
+      </p> 
+      <p>
+        If the `profile` parameter is given, a client MAY ignore it.
+      </p>
+      <p>It is recommended that profile URIs be dereferenceable
+        and provide useful documentation at that URI.
+      </p>
+    </div>
+
+    <div class="note">
+      <p>
+        When used as a 
+        <a href="https://tools.ietf.org/html/rfc4288#section-4.3">media type parameter</a>
+        [[RFC4288]] in a
+        <a href="https://httpwg.org/specs/rfc7231.html#header.content-type">HTTP Content-Type header</a>
+        or an
+        <a href="https://httpwg.org/specs/rfc7231.html#header.accept">HTTP Accept header</a> 
+        [[RFC7231]] the value of the `profile` parameter will need to be enclosed in quotes (") 
+        if it contains special characters such as white space, including any space
+        used to separate multiple profile URIs.
+      </p>
+      <p>
+        It is important to note that the value of the `profile` parameter
+        contains one or more URIs and not IRIs. It might therefore be necessary
+        to convert between IRIs and URIs, as specified in
+        <a href="https://tools.ietf.org/html/rfc3986#section-5.1">section 3 Relationship between IRIs and URIs</a>
+        of [[RFC3987]].
+      </p>
+    </div>
+  </div>
 </section>
 
 <section id="section-ack" class="appendix informative">
@@ -1162,6 +1219,9 @@
       state and productions to announce the RDF version
       associated with the input document.
     </li>
+    <li>Added a `profile` parameter to the media type in <a href="#sec-mediaReg-n-triples"></a>.
+    </li>
+
   </ul>
 </section>
 
