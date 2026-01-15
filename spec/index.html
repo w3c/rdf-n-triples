@@ -195,6 +195,18 @@
       exactly each <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triple</a> matching the N-Triples
       <a href="#grammar-production-triple"><code>triple</code></a> production.
     </p>
+
+    <p>
+      This specification extends the original N-Triples syntax, as defined in [[N-TRIPLES]], to support the new features introduced by [[RDF12-CONCEPTS]].
+      This extension is fully backward compatible:
+      any document complying with the old version complies with the new version, and parses to the same graph.
+      Furthermore, any document complying with the new version and containing only RDF 1.1 features is also compliant with the older version
+      (with the exception of the `VERSION` directive; see <a href="#sec-version"></a>).
+      Finally, none of the new syntactic constructs are valid in the old syntax.
+      This means that any N-Triples document using RDF 1.2 features does not
+      comply with the previous version of this specification and cannot be
+      interpreted as a different graph under it.
+    </p>
   </section>
 
   <section id="sec-n-triples-language" class="informative">
