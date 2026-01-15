@@ -197,14 +197,15 @@
     </p>
 
     <p>
-      This specification extends the syntax defined in [[N-TRIPLES]] to support the new features introduced by [[RDF12-CONCEPTS]] compared to RDF 1.1.
+      This specification extends the syntax defined in [[N-TRIPLES]] to support the new features introduced by [[RDF12-CONCEPTS]].
       This extension is fully backward compatible:
-      any document complying with the old version is still complying with the new version, and parses to the exact same graph.
+      any document complying with the old version complies with the new version, and parses to the same graph.
       Furthermore, any document complying with the new version and containing only RDF 1.1 features is also compliant with the older version
-      (with the caveat of the `VERSION` directive, see <a href="#sec-version"></a>).
-      Finally, none of the new syntactic constructs were accepted by the old synyax.
-      This ensures that any N-Triples document containing RDF 1.2 new features does not comply with the old version of N-Triples,
-      and can therefore not be ambiguously parsed as a different graph by old implementations.
+      (with the exception of the `VERSION` directive; see <a href="#sec-version"></a>).
+      Finally, none of the new syntactic constructs are valid in the old syntax.
+      This means that any N-Triples document using RDF 1.2 features does not
+      comply with the previous version of this specification and cannot be
+      interpreted as a different graph under it.
     </p>
   </section>
 
