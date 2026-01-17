@@ -1080,11 +1080,11 @@
         </dd>
         <dt><code>profile</code></dt>
         <dd>
-          This parameter is optional and is used to include addition information.
+          This parameter is optional and is used to include additional information.
           It does not change the semantics of the resource representation when processed
           without knowledge of the profile.
           The value of a profile parameter is a non-empty list of space-separated URIs.
-          For more information and background please refer to [[RFC6906]].
+          For more information and background, please refer to [[RFC6906]].
         </dd>
       </dl>
     </dd>
@@ -1125,19 +1125,21 @@
   <div id="about-profile">
     <div class="note">
       <p>
-        The `profile` parameter MAY be used by clients to express their preferences
-        in the content negotiation process and for a server to indicate
+        The `profile` parameter may be used by clients to express their preferences
+        in the content negotiation process and by a server to indicate
         additional information about the response.
       </p>
       <p>
-        If the `profile` parameter is given, a server SHOULD
+        If the `profile` parameter is given by a client, a server should
         return a document that honors all the profiles in the list 
-        recognized by the server.
-        A server SHOULD NOT respond with an error solely based on the profile value.
+        that are recognized by the server.
+        A server should not respond with an error solely based upon the profile value.
       </p> 
       <p>
-        If the `profile` parameter is given, a client MAY ignore it.
+        If the `profile` parameter is given by a server, a client may choose to ignore it.
       </p>
+    </div>
+    <div class="note">
       <p>It is recommended that profile URIs be dereferenceable
         and provide useful documentation at that URI.
       </p>
@@ -1147,11 +1149,11 @@
       <p>
         When used as a 
         <a href="https://tools.ietf.org/html/rfc4288#section-4.3">media type parameter</a>
-        [[RFC4288]] in a
+        [[RFC4288]] in an
         <a href="https://httpwg.org/specs/rfc7231.html#header.content-type">HTTP Content-Type header</a>
         or an
         <a href="https://httpwg.org/specs/rfc7231.html#header.accept">HTTP Accept header</a> 
-        [[RFC7231]] the value of the `profile` parameter will need to be enclosed in quotes (") 
+        [[RFC7231]] the value of the `profile` parameter will need to be enclosed in quotes (ASCII `"`)
         if it contains special characters such as white space, including any space
         used to separate multiple profile URIs.
       </p>
