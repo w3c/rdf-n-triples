@@ -405,36 +405,40 @@
     <section id="BNodes">
       <h3>RDF Blank Nodes</h3>
       <p>
-        <a data-cite="RDF12-CONCEPTS#dfn-blank-node">RDF blank nodes</a> are expressed as <a href="#cp-underscore-colon"><code>_:</code></a>
-        followed by a blank node label which is a series of name characters.
-        The characters in the label are built upon <a href="#grammar-production-PN_CHARS_BASE"><code>PN_CHARS_BASE</code></a>,
-        liberalized as follows:
+        <a data-cite="RDF12-CONCEPTS#dfn-blank-node">RDF blank nodes</a> are expressed as
+        <a href="#cp-underscore-colon"><code>_:</code></a>
+        followed by a blank node label matching the
+        <a href="#grammar-production-BLANK_NODE_LABEL"><code>BLANK_NODE_LABEL</code></a>
+        production.
       </p>
-      <ul>
-        <li>The characters <a href="#cp-underscore"><code title="underscore">_</code></a> and
-          the digit characters <a href="#cp-zero"><code title="digit zero">0</code></a>–<a href="#cp-nine"><code title="digit nine">9</code></a>
-          may appear anywhere in a blank node label.</li>
-        <li>The character <a href="#cp-full-stop"><code title="full stop">.</code></a> may appear anywhere except the first or last character.</li>
-        <li>The characters
-          <a href="#cp-hyphen"><code title="hyphen">-</code></a>,
-          <a href="#cp-middle-dot"><code title="middle dot">·</code></a>,
-          <a href="#cp-undertie"><code title="undertie">&#x203F;</code></a>,
-          <a href="#cp-character-tie"><code title="character tie">&#x2040;</code></a>,
-          and
-          the combining diacritical marks (<code class="codepoint">U+0300</code>
-                                        to <code class="codepoint">U+036F</code>)
-          are permitted anywhere except the first character.</li>
-      </ul>
+
       <p>
-        A fresh RDF <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> is allocated for each unique <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> in a document.
-        Repeated use of the same <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> identifies the same blank node.
+        Informally, the first character after
+        <a href="#cp-underscore-colon"><code>_:</code></a>
+        is either a character matched by
+        <a href="#grammar-production-PN_CHARS_U"><code>PN_CHARS_U</code></a>
+        or a digit. Any following characters, if present, are matched by
+        <a href="#grammar-production-PN_CHARS"><code>PN_CHARS</code></a>
+        or by <a href="#cp-full-stop"><code title="full stop">.</code></a>,
+        except that <a href="#cp-full-stop"><code title="full stop">.</code></a>
+        is not permitted as the last character.
       </p>
-      <pre id="ex-bnodes" class="example ntriples" data-transform="updateExample"
-           title="Blank nodes in N-Triples">
-        <!--
-        _:alice <http://xmlns.com/foaf/0.1/knows> _:bob .
-        _:bob   <http://xmlns.com/foaf/0.1/knows> _:alice .
-        -->
+
+
+      <p>
+        A fresh RDF <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a> is allocated for each unique
+        <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a> in a document.
+        Repeated use of the same
+        <a data-cite="RDF12-CONCEPTS#dfn-blank-node-identifier">blank node identifier</a>
+        identifies the same blank node.
+      </p>
+
+      <pre id="ex-bnodes" class="example nquads" data-transform="updateExample"
+           title="Blank nodes in N-Quads">
+      <!--
+      _:alice <http://xmlns.com/foaf/0.1/knows> _:bob .
+      _:bob   <http://xmlns.com/foaf/0.1/knows> _:alice .
+      -->
       </pre>
     </section>
   </section>
