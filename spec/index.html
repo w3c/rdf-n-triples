@@ -167,7 +167,10 @@
     <p>The syntax is a revised version of N-Triples as originally defined in
       the RDF Test Cases [[RDF-TESTCASES]] document.
       Its original intent was for writing test cases,
-      but it has proven to be popular as an exchange format for RDF data.</p>
+      but it has proven to be popular as an exchange format for RDF data.
+      This specification further extends the syntax, as defined in [[N-TRIPLES]], to support the new features introduced by [[RDF12-CONCEPTS]].
+      This extension is fully backward compatible.
+    </p>
 
     <p>An <a>N-Triples document</a> can contain a single kind of parsing directive
       for announcing the RDF version of the content.
@@ -204,18 +207,6 @@
     <p>The <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a> represented by an N-Triples document contains
       exactly each <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">triple</a> matching the N-Triples
       <a href="#grammar-production-triple"><code>triple</code></a> production.
-    </p>
-
-    <p>
-      This specification extends the original N-Triples syntax, as defined in [[N-TRIPLES]], to support the new features introduced by [[RDF12-CONCEPTS]].
-      This extension is fully backward compatible:
-      any document complying with the old version complies with the new version, and parses to the same graph.
-      Furthermore, any document complying with the new version and containing only RDF 1.1 features is also compliant with the older version
-      (with the exception of the `VERSION` directive; see <a href="#sec-version"></a>).
-      Finally, none of the new syntactic constructs are valid in the old syntax.
-      This means that any N-Triples document using RDF 1.2 features does not
-      comply with the previous version of this specification and cannot be
-      interpreted as a different graph under it.
     </p>
   </section>
 
@@ -1211,6 +1202,20 @@
 
 <section id="changes-12" class="appendix informative">
   <h2>Changes between RDF 1.1 and RDF 1.2</h2>
+
+  <p>
+      This specification extends the original N-Triples syntax, as defined in [[N-TRIPLES]], to support the new features introduced by [[RDF12-CONCEPTS]].
+      This extension is fully backward compatible:
+      any document complying with the old version complies with the new version, and parses to the same graph.
+      Furthermore, any document complying with the new version and containing only RDF 1.1 features is also compliant with the older version
+      (with the exception of the `VERSION` directive; see <a href="#sec-version"></a>).
+      Finally, none of the new syntactic constructs are valid in the old syntax.
+      This means that any N-Triples document using RDF 1.2 features does not
+      comply with the previous version of this specification and cannot be
+      interpreted as a different graph under it.
+  </p>
+
+  <p>More specifically, the following changes have been made:</p>
 
   <ul>
     <li>Better align the use of white space and comments with [[RDF12-TURTLE]].</li>
