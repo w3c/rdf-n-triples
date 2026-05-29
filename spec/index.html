@@ -842,10 +842,11 @@
   </p>
 
   <p class="note">
-    While earlier versions of this specification did not specify any behaviour on erroneous input,
+    While earlier versions of this specification did not specify any behaviour on unrecognized input,
     all implementations known to the Working Group do comply with the requirement above.
-    In particular, these implementations will signal an error, as intended,
-    if they encounter the new `VERSION` directive.
+    In particular, these implementations will signal an error when they encounter any RDF 1.2 specific syntax,
+    including the VERSION directive.
+    They will not silently ignore or misinterpret it.
   </p>
 
   <section id="sec-parsing-state">
