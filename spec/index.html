@@ -836,7 +836,7 @@
   Grammar productions change the parser state and emit triples.
   </p>
 
-  <p>
+  <p id="must-signal-errors">
     A processor which detects errors on input MUST signal it as an error or a warning,
     and MAY produce fewer triples than are described in the input (including no triples whatsoever).
   </p>
@@ -1269,6 +1269,8 @@
       associated with the input document.
     </li>
     <li>Added a `profile` parameter to the media type in <a href="#sec-mediaReg-n-triples"></a>.
+    </li>
+    <li>Added a <a href="#must-signal-errors">normative requirement</a> for processors to signal input errors (as error or warning).
     </li>
 
   </ul>
