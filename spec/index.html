@@ -831,14 +831,15 @@
   <h2>Parsing</h2>
   <p>
   This section maps a string conforming to the grammar in <a href="#sec-grammar-grammar" class="sectionRef"></a>
-  to a set of triples by mapping strings matching productions and lexical tokens
+  to a stream of triples by mapping strings matching productions and lexical tokens
   to <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF terms</a> or their components (e.g., language tags, lexical forms of literals).
   Grammar productions change the parser state and emit triples.
   </p>
 
   <p id="must-signal-errors">
     A processor which detects errors on input MUST signal it as an error or a warning,
-    and MAY produce fewer triples than are described in the input (including no triples whatsoever).
+    and MAY emit only a subset of the triples that would otherwise have been emitted by
+    processing the error-free parts of the input, including no triples whatsoever).
   </p>
 
   <p class="note">
@@ -1003,9 +1004,11 @@
       </table>
 
       <p class="note">
-        In case the input contains errors,
-        consumers should consider information of any errors signaled by the processors,
-        when using the resulting graph,
+        When using the resulting graph,
+        consumers should consider the information in
+        any errors or warnings signaled by the processors,
+        as these may indicate that the input contains errors,
+        and the output may lack anticipated data and/or include
         as it may be incomplete and/or include
         <a data-cite="RDF12-CONCEPTS#dfn-ill-typed">ill-typed</a>
         or ill-formed terms.</p>
@@ -1013,7 +1016,7 @@
 
     <section id="rdf-triple-construction">
       <h3>RDF Triple Construction</h3>
-      <p>An <a>N-Triples document</a> defines an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>
+      <p>An <a>N-Triples document</a> defines an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>
         composed of a set of <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triples</a>.
         The <a href="#grammar-production-triple"><code>triple</code></a> production
         emits a triple defined by the terms constructed for
@@ -1271,7 +1274,8 @@
     </li>
     <li>Added a `profile` parameter to the media type in <a href="#sec-mediaReg-n-triples"></a>.
     </li>
-    <li>Added a <a href="#must-signal-errors">normative requirement</a> for processors to signal input errors (as error or warning).
+    <li>Added a <a href="#must-signal-errors">normative requirement</a> for processors to signal
+      input errors (as errors or warnings).
     </li>
 
   </ul>
