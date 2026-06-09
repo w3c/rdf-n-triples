@@ -830,16 +830,18 @@
 <section id="sec-parsing">
   <h2>Parsing</h2>
   <p>
-  This section maps a string conforming to the grammar in <a href="#sec-grammar-grammar" class="sectionRef"></a>
-  to a stream of triples by mapping strings matching productions and lexical tokens
-  to <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF terms</a> or their components (e.g., language tags, lexical forms of literals).
-  Grammar productions change the parser state and emit triples.
+    This section maps a string conforming to the grammar in <a href="#sec-grammar-grammar" class="sectionRef"></a>
+    to a stream of triples by mapping strings matching productions and lexical tokens
+    to <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF terms</a> or their components (e.g., language tags, lexical forms of literals).
+    Grammar productions change the parser state and emit triples.
   </p>
 
   <p id="must-signal-errors">
-    A processor which detects errors on input MUST signal it as an error or a warning,
-    and MAY emit only a subset of the triples that would otherwise have been emitted by
-    processing the error-free parts of the input, including no triples whatsoever).
+    A processor which detects errors on input MUST signal them as errors or warnings.
+    The exact output of the processor is not defined by this specification, including whether
+    any triples are emitted at all.
+    Any output SHOULD only contain a subset of the triples emitted from parsing
+    error-free regions of the input.
   </p>
 
   <p class="note">
@@ -1006,8 +1008,8 @@
       <p class="note">
         When using the resulting graph,
         consumers should consider the information in
-        any errors or warnings signaled by the processors,
-        as these may indicate that the input contains errors,
+        any errors or warnings signaled by the processor,
+        as these indicate that the input contains errors,
         and the output may lack anticipated data and/or include
         as it may be incomplete and/or include
         <a data-cite="RDF12-CONCEPTS#dfn-ill-typed">ill-typed</a>
