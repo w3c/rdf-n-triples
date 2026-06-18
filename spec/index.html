@@ -846,10 +846,10 @@
 
   <p class="note">
     While earlier versions of this specification did not specify any behaviour on unrecognized input,
-    all implementations known to the Working Group do comply with the requirement above.
-    In particular, these implementations will signal an error when they encounter any RDF 1.2 specific syntax,
-    including the VERSION directive.
-    They will not silently ignore or misinterpret it.
+    all implementations known to the Working Group already behave consistently with the requirement above.
+    In particular, these implementations will signal an error when encountering any RDF 1.2 specific syntax unrecognised by those earlier versions,
+    including the <code>VERSION</code> directive.
+    They will not silently ignore or misinterpret such syntax.
   </p>
 
   <section id="sec-parsing-state">
