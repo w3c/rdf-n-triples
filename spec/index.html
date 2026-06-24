@@ -818,8 +818,34 @@
   </section>
   </section>
 
-  <section id="sec-parsing">
-    <h2>Parsing</h2>
+<section id="sec-parsing">
+  <h2>Parsing</h2>
+  <p>
+    This section maps a string conforming to the grammar in <a href="#sec-grammar-grammar" class="sectionRef"></a>
+    to a stream of triples by mapping strings matching productions and lexical tokens
+    to <a data-cite="RDF12-CONCEPTS#dfn-rdf-term">RDF terms</a> or their components (e.g., language tags, lexical forms of literals).
+    Grammar productions change the parser state and emit triples.
+  </p>
+
+  <p id="must-signal-errors">
+    A processor which detects errors on input MUST signal them as errors or warnings.
+    The exact output of the processor is not defined by this specification, including whether
+    any triples are emitted at all.
+    Any output SHOULD only contain a subset of the triples emitted from parsing
+    error-free regions of the input.
+  </p>
+
+  <p class="note">
+    While earlier versions of this specification did not specify any behaviour on unrecognized input,
+    all implementations known to the Working Group already behave consistently with the requirement above.
+    In particular, these implementations will signal an error
+    when encountering any RDF 1.2 specific syntax unrecognised by those earlier versions,
+    including the <code>VERSION</code> directive.
+    They will not silently ignore or misinterpret such syntax.
+  </p>
+
+  <section id="sec-parsing-state">
+    <h3>Parser State</h3>
     <p>Parsing N-Triples requires a state of two items:</p>
     <ul>
       <li id="bnodeLabels">Map[string -&gt; <a data-cite="RDF12-CONCEPTS#dfn-blank-node">blank node</a>] <code class="dfn">bnodeLabels</code> — A mapping from string to blank node.</li>
@@ -833,10 +859,11 @@
         when it encounters a feature that does not match the value of |curVersion|.
       </li>
     </ul>
+  </section>
 
     <section id="sec-parsing-terms">
       <h3>RDF Term Constructors</h3>
-      <p>This table maps productions and lexical tokens to <code>RDF terms</code> or components of <code>RDF terms</code> listed in <a class="sectionRef sec-ref" href="#sec-parsing"></a>:</p>
+      <p>This table maps productions and lexical tokens to <a>RDF terms</a> or components of <a>RDF terms</a> listed in <a class="sectionRef sec-ref" href="#sec-parsing"></a>:</p>
       <table id="tab-term-constructors" class="separated">
         <thead>
           <tr><th>production</th><th>type</th><th>procedure</th></tr>
@@ -969,23 +996,14 @@
           </tr>
         </tbody>
       </table>
-
-      <p class="note">As processors which detect errors on input can result in
-        graphs which contain fewer triples than are described in the input
-        (including no triples whatsoever),
-        consumers should consider information of any errors signaled
-        when using the resulting graph,
-        which may be incomplete and/or include
-        <a data-cite="RDF12-CONCEPTS#dfn-ill-typed">ill-typed</a>
-        or ill-formed terms.</p>
     </section>
 
     <section id="rdf-triple-construction">
       <h3>RDF Triple Construction</h3>
-      <p>An <a>N-Triples document</a> defines an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graphs</a>
+      <p>An <a>N-Triples document</a> defines an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>
         composed of a set of <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triples</a>.
         The <a href="#grammar-production-triple"><code>triple</code></a> production
-        produces a triple defined by the terms constructed for
+        emits a triple defined by the terms constructed for
         <a href="#grammar-production-subject"><code>subject</code></a>,
         <a href="#grammar-production-predicate"><code>predicate</code></a>, and
         <a href="#grammar-production-object"><code>object</code></a>.</p>
@@ -1250,6 +1268,9 @@
       associated with the input document.
     </li>
     <li>Added a `profile` parameter to the media type in <a href="#sec-mediaReg-n-triples"></a>.
+    </li>
+    <li>Added a <a href="#must-signal-errors">normative requirement</a> for processors to signal
+      input errors (as errors or warnings).
     </li>
 
   </ul>
