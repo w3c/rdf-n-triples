@@ -787,23 +787,6 @@
     Grammar productions change the parser state and emit triples.
   </p>
 
-  <p id="must-signal-errors">
-    A processor which detects errors on input MUST signal them as errors or warnings.
-    The exact output of the processor is not defined by this specification, including whether
-    any triples are emitted at all.
-    Any output SHOULD only contain a subset of the triples emitted from parsing
-    error-free regions of the input.
-  </p>
-
-  <p class="note">
-    While earlier versions of this specification did not specify any behaviour on unrecognized input,
-    all implementations known to the Working Group already behave consistently with the requirement above.
-    In particular, these implementations will signal an error
-    when encountering any RDF 1.2 specific syntax unrecognised by those earlier versions,
-    including the <code>VERSION</code> directive.
-    They will not silently ignore or misinterpret such syntax.
-  </p>
-
   <section id="sec-parsing-state">
     <h3>Parser State</h3>
     <p>Parsing N-Triples requires a state of two items:</p>
@@ -959,7 +942,7 @@
     </section>
 
     <section id="rdf-triple-construction">
-      <h3>RDF Triple Construction</h3>
+      <h3>RDF Dataset Construction</h3>
       <p>An <a>N-Triples document</a> defines an <a data-cite="RDF12-CONCEPTS#dfn-rdf-graph">RDF graph</a>
         composed of a set of <a data-cite="RDF12-CONCEPTS#dfn-rdf-triple">RDF Triples</a>.
         The <a href="#grammar-production-triple"><code>triple</code></a> production
@@ -968,7 +951,16 @@
         <a href="#grammar-production-predicate"><code>predicate</code></a>, and
         <a href="#grammar-production-object"><code>object</code></a>.</p>
     </section>
+
+  <section id="non-conformant-documents">
+    <h3>Non-conformant Documents</h3>
+  <p> If the target of a parsing process does not conform to the grammar specified in section 5, the result
+    is not defined by this specification.
+    Error detection, reporting, and recovery are left to implementors,
+    because the appropriate behavior depends on the application interfaces and protocols within which the parser is used.
+    </p>
   </section>
+</section>
 
 <section id="privacy-considerations"  class="appendix informative">
   <h2>Privacy Considerations</h2>
