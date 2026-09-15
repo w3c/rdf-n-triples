@@ -519,7 +519,7 @@
 
     <p>The IRI that identifies the N-Triples language is: <code>http://www.w3.org/ns/formats/N-Triples</code></p>
 
-  <section id="n-triples-mediatype">
+   <section id="n-triples-mediatype">
     <h2>Media Type and Content Encoding</h2>
 
     <p>The media type of N-Triples is <code>application/n-triples</code>.
@@ -536,8 +536,18 @@
         As N-Triples is a subset of Turtle an <a>N-Triples document</a> MAY also be provided as <code>text/turtle</code>.
         In both of these cases the document is not an N-Triples document as an N-Triples document is only provided as <code>application/n-triples</code>.</p>
     </section>
+   </section>
 
-  </section>
+   <section id="future-proof">
+    <h2>Future-proofness of N-Triples</h2>
+
+    <p>Any future evolution of the N-Triples format, if it reuses the same media type,
+     MUST require the use of the <a href="#grammar-production-versionDirective">`VERSION` directive</a>,
+     with a version label posterior to `1.2`,
+     for any document that is not strictly compliant with N-Triples 1.2.
+     This will allow parsers to gracefully handle more recent features that they do not support.
+    </p>
+   </section>
   </section>
 
   <section id="n-triples-grammar"><span id="sec-grammar"></span>
