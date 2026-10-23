@@ -1237,8 +1237,13 @@
     </li>
     <li>Added a `profile` parameter to the media type in <a href="#sec-mediaReg-n-triples"></a>.
     </li>
-    <li>Added a <a href="#must-signal-errors">normative requirement</a> for processors to signal
-      input errors (as errors or warnings).
+    <li>Added <a href="#future-proof"></a> specifying that future versions reusing the same media type
+      must require a `VERSION` directive with a version label later than `1.2`
+      for documents that are not strictly compliant with N-Triples 1.2.
+    </li>
+    <li>Added <a href="#non-conformant-documents"></a> to clarify that the result of parsing
+      input that does not conform to the grammar is undefined by this specification,
+      and that error detection, reporting, and recovery are left to implementers.
     </li>
 
   </ul>
